@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        
+        GameManager.Instance.Test();
     }
 
     // Update is called once per frame
