@@ -14,6 +14,11 @@ public class PlayerInput : MonoBehaviour
         {
             player.SetMovementDir(ctx.ReadValue<Vector2>());
         };
+
+        _controls.Game.Interaction.performed += ctx =>
+        {
+            player.Interact();
+        };
     }
 
     public static void EnableGame()

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        GameManager.Instance.Test();
+       
     }
 
     // Update is called once per frame
@@ -38,5 +38,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.AddForce(moveDir * speed, ForceMode2D.Impulse);
+    }
+
+    public void Interact()
+    {
+        Debug.Log("test");
     }
 }
