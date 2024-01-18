@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coffee : MonoBehaviour
+public class Coffee 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string name;
+    public float beanRoastAccuracy;
+    public float grindAccuracy;
+    public float evenness;
+    public float tampAccuracy;
+    public float cupFill;
+    public List<string> ingredientsUsed;
 }

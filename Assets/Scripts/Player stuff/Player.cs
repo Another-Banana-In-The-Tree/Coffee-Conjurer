@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
      private Rigidbody2D rb;
     private Interactor interactor;
 
+    //MINIGAMES
+    private MiniGame currentGame;
+
     private void Awake()
     {
         PlayerInput.Init(this);
@@ -46,5 +49,22 @@ public class Player : MonoBehaviour
     public void Interact()
     {
         interactor.Active();
+    }
+
+    public void PlayMiniGame()
+    {
+        currentGame.Play();  
+    }
+
+    public void ExitMiniGame()
+    {
+        PlayerInput.EnableGame();  
+    }
+
+    public void StartMinigame(MiniGame newGame)
+    {
+        Debug.Log("setgame");
+        currentGame = newGame;
+        PlayerInput.EnableMinigame();
     }
 }

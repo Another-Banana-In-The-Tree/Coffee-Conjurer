@@ -11,10 +11,14 @@ public class Interactor : MonoBehaviour
     private Collider2D[] ObjHit = new Collider2D[3];
     [SerializeField] private int numFound;
 
+
+    private Player player;
+
     
 
     private void Awake()
     {
+        player = GetComponent<Player>();
         interactPoint = transform.position;
     }
     private void Update()
@@ -30,7 +34,7 @@ public class Interactor : MonoBehaviour
             
             if(interactable != null)
             {
-                interactable.Interact();
+                interactable.Interact(player);
             }
         }
     }

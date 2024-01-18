@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cash : MonoBehaviour, IInteractable
+public class TestMiniGame : MonoBehaviour, MiniGame
 {
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +16,8 @@ public class Cash : MonoBehaviour, IInteractable
         
     }
 
-    public void Interact()
+    public void Play()
     {
-        Debug.Log("test");
+        Debug.Log("minigame");
     }
 }
