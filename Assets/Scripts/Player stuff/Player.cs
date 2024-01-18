@@ -11,12 +11,15 @@ public class Player : MonoBehaviour
 
     //Components
      private Rigidbody2D rb;
+    private Interactor interactor;
+
     private void Awake()
     {
         PlayerInput.Init(this);
         PlayerInput.EnableGame();
 
         rb = GetComponent<Rigidbody2D>();
+        interactor = GetComponent<Interactor>();
     }
     void Start()
     {
@@ -42,6 +45,6 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("test");
+        interactor.Active();
     }
 }

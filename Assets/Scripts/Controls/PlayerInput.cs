@@ -24,5 +24,12 @@ public class PlayerInput : MonoBehaviour
     public static void EnableGame()
     {
         _controls.Game.Enable();
+        _controls.MiniGame.Disable();
+    }
+
+    public static void EnableMinigame()
+    {
+        _controls.Game.Disable();
+        _controls.MiniGame.Enable();
     }
 }

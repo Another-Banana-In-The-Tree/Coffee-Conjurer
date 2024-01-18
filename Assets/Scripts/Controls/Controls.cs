@@ -208,6 +208,76 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MiniGame"",
+            ""id"": ""44cb5661-13c3-4e0e-b049-79473663b15f"",
+            ""actions"": [
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""22b3ac9d-ab4d-4ba6-99fc-d6e969e6e81d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""77b3bae3-5896-4209-b7bd-71281df00697"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f0d48fb9-8c96-4967-b5a0-0132d3d8ab57"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e477bd6-a931-4482-8cee-e8a27862758c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5b66f1f-ab7d-4ef8-a310-fcc6c049b8c8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eff8ef3d-1b8d-47e4-bdfa-f79777e76f1d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -219,6 +289,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
+        // MiniGame
+        m_MiniGame = asset.FindActionMap("MiniGame", throwIfNotFound: true);
+        m_MiniGame_Exit = m_MiniGame.FindAction("Exit", throwIfNotFound: true);
+        m_MiniGame_Interact = m_MiniGame.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,6 +450,60 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // MiniGame
+    private readonly InputActionMap m_MiniGame;
+    private List<IMiniGameActions> m_MiniGameActionsCallbackInterfaces = new List<IMiniGameActions>();
+    private readonly InputAction m_MiniGame_Exit;
+    private readonly InputAction m_MiniGame_Interact;
+    public struct MiniGameActions
+    {
+        private @Controls m_Wrapper;
+        public MiniGameActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Exit => m_Wrapper.m_MiniGame_Exit;
+        public InputAction @Interact => m_Wrapper.m_MiniGame_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_MiniGame; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MiniGameActions set) { return set.Get(); }
+        public void AddCallbacks(IMiniGameActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MiniGameActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MiniGameActionsCallbackInterfaces.Add(instance);
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+        }
+
+        private void UnregisterCallbacks(IMiniGameActions instance)
+        {
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+        }
+
+        public void RemoveCallbacks(IMiniGameActions instance)
+        {
+            if (m_Wrapper.m_MiniGameActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMiniGameActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MiniGameActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MiniGameActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MiniGameActions @MiniGame => new MiniGameActions(this);
     public interface IGameActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -384,5 +512,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IMiniGameActions
+    {
+        void OnExit(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
