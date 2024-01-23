@@ -13,7 +13,9 @@ public class MiniGameTrigger : MonoBehaviour, IInteractable
     }
     public void Interact(Player player)
     {
-        Debug.Log("minigametrigger"); 
+        Debug.Log("minigametrigger");
+
+        minigameScreen.SetActive(true);  
         player.StartMinigame(game);
         
     }

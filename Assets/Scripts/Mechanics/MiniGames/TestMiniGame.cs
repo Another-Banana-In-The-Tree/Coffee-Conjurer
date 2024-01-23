@@ -20,4 +20,9 @@ public class TestMiniGame : MonoBehaviour, MiniGame
     {
         Debug.Log("minigame");
     }
+
+    public void Exit()
+    {
+
+    }
 }

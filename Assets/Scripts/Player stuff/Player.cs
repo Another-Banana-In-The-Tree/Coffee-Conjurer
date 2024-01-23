@@ -58,7 +58,8 @@ public class Player : MonoBehaviour
 
     public void ExitMiniGame()
     {
-        PlayerInput.EnableGame();  
+        PlayerInput.EnableGame(); 
+        
     }
 
     public void StartMinigame(MiniGame newGame)
