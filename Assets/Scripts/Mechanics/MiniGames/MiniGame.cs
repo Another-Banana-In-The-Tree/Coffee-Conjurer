@@ -6,4 +6,6 @@ public interface MiniGame
 {
     public void Play();
     public void Exit();
+
+    public void gameStarted();
 }

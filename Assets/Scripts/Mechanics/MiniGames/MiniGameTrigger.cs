@@ -9,13 +9,14 @@ public class MiniGameTrigger : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        game = minigameScreen.GetComponent<MiniGame>();
+        game = gameObject.GetComponent<MiniGame>();
     }
     public void Interact(Player player)
     {
         Debug.Log("minigametrigger");
 
-        minigameScreen.SetActive(true);  
+        minigameScreen.SetActive(true);
+        game.gameStarted();
         player.StartMinigame(game);
         
     }
