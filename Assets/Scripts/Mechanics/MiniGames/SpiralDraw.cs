@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoamPlace : MonoBehaviour, MiniGame
+public class SpiralDraw : MonoBehaviour, MiniGame
 {
     [SerializeField] private GameObject minigameScreen;
     [SerializeField] private GameObject boundsDraw;

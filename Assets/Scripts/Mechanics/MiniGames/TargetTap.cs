@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomIdea : MonoBehaviour, MiniGame
+public class TargetTap : MonoBehaviour, MiniGame
 {
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;

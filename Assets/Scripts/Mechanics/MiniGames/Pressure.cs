@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BeanGrind : MonoBehaviour, MiniGame 
+public class Pressure : MonoBehaviour, MiniGame 
 {
     [SerializeField] private Image fillBar;
     [SerializeField]private float fill = 0;
