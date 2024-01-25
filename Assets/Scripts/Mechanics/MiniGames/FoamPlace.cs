@@ -6,11 +6,11 @@ public class FoamPlace : MonoBehaviour, MiniGame
 {
     [SerializeField] private GameObject minigameScreen;
     [SerializeField] private GameObject boundsDraw;
-    [SerializeField] private Transform startPos;
-    [SerializeField] private float spiralSize;
-    [SerializeField] private float growSpeed;
-    [SerializeField] private int numObjects;
-    [SerializeField] private float numRev;
+    //[SerializeField] private Transform startPos;
+  //  [SerializeField] private float spiralSize;
+   // [SerializeField] private float growSpeed;
+   // [SerializeField] private int numObjects;
+   // [SerializeField] private float numRev;
 
     private GameObject[] positions = new GameObject[50];
    
