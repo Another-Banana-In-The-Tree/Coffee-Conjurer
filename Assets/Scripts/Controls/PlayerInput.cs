@@ -19,10 +19,27 @@ public class PlayerInput : MonoBehaviour
         {
             player.Interact();
         };
+
+        _controls.MiniGame.Interact.performed += ctx =>
+        {
+            player.PlayMiniGame(); 
+        };
+
+        _controls.MiniGame.Exit.performed += ctx =>
+        {
+            player.ExitMiniGame();  
+        };   
     }
 
     public static void EnableGame()
     {
         _controls.Game.Enable();
+        _controls.MiniGame.Disable();
+    }
+
+    public static void EnableMinigame()
+    {
+        _controls.Game.Disable();
+        _controls.MiniGame.Enable();
     }
 }
