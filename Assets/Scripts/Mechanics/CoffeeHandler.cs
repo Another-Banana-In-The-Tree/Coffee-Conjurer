@@ -83,9 +83,8 @@ public class CoffeeHandler : MonoBehaviour
         Debug.Log(coffee.name);
         
         Debug.Log(coffee.roast);
-        /*Debug.Log();
-        Debug.Log();
-        Debug.Log();*/
+        Debug.Log(coffee.toppingAdded);
+       
       
     }
 
