@@ -200,7 +200,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2396,7 +2396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784768601}
   m_Layer: 5
-  m_Name: BeanGrind
+  m_Name: BeanRoast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2938,7 +2938,7 @@ GameObject:
   - component: {fileID: 1038188125}
   - component: {fileID: 1038188124}
   m_Layer: 5
-  m_Name: target
+  m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2960,7 +2960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112.99994, y: 0.000030517578}
+  m_AnchoredPosition: {x: 80.4, y: 0.000030517578}
   m_SizeDelta: {x: 161.0338, y: 28.6382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1038188124
@@ -3399,7 +3399,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.81
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4390,6 +4390,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1618411846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618411847}
+  - component: {fileID: 1618411849}
+  - component: {fileID: 1618411848}
+  m_Layer: 5
+  m_Name: med
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1618411847
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618411846}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2118928654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 110.9, y: 0.000030517578}
+  m_SizeDelta: {x: 161.0338, y: 28.6382}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1618411848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618411846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.918475, g: 1, b: 0.09019607, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 031ce225f7edba84f8a47ca9ba87ad74, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 0.12
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1618411849
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618411846}
+  m_CullTransparentMesh: 1
 --- !u!1 &1654797929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,7 +4967,7 @@ GameObject:
   - component: {fileID: 1779757699}
   - component: {fileID: 1779757700}
   m_Layer: 6
-  m_Name: BeanGrindTrigger
+  m_Name: RoastTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5031,9 +5106,9 @@ MonoBehaviour:
   clickBonus: 0.1
   canvas: {fileID: 784768600}
   screen: {fileID: 3941418358786145836}
-  minTarget: 0.7
-  maxTarget: 0.9
-  points: 0.1
+  minTarget: 0.5
+  maxTarget: 1
+  timeCount: 0
   pointText: {fileID: 777182774}
 --- !u!1 &1880075593
 GameObject:
@@ -5302,6 +5377,7 @@ GameObject:
   - component: {fileID: 1959806993}
   - component: {fileID: 1959806994}
   - component: {fileID: 1959806995}
+  - component: {fileID: 1959806996}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5490,6 +5566,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   numFound: 0
+--- !u!114 &1959806996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959806988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b82c5a9ec76f4742957872091bf989a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1972602061
 GameObject:
   m_ObjectHideFlags: 0
@@ -5965,6 +6053,7 @@ RectTransform:
   m_Children:
   - {fileID: 1972602062}
   - {fileID: 1038188123}
+  - {fileID: 1618411847}
   - {fileID: 1267567124}
   - {fileID: 777182773}
   m_Father: {fileID: 784768601}

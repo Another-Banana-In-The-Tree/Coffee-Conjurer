@@ -52,7 +52,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+        
         if (Vector2.Distance(mousePos, positions[currentSpace].transform.position  ) <= sensitivity && currentSpace < positions.Length -1 )
         {
             positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;

@@ -5425,6 +5425,7 @@ MonoBehaviour:
   end: {fileID: 1385641039}
   movingBar: {fileID: 1548791377}
   target: {fileID: 791924065}
+  speed: 0.9
   maxRange: 0
   minRange: 0
 --- !u!1 &1880075593

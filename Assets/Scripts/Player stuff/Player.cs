@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     //MINIGAMES
     private MiniGame currentGame;
 
+    
+
     private void Awake()
     {
         PlayerInput.Init(this);
@@ -27,6 +29,8 @@ public class Player : MonoBehaviour
     void Start()
     {
        
+
+
     }
 
     // Update is called once per frame

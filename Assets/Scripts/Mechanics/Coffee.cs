@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Coffee 
 {
-    public string name;
-    public float beanRoastAccuracy;
-    public float grindAccuracy;
-    public float evenness;
-    public float tampAccuracy;
-    public float cupFill;
-    public List<string> ingredientsUsed;
+
+
+    public string name = null;
+
+
+    public string roast = null;
+
+    public bool toppingAdded = false;
+    public float toppingAccuracy = 0;
+    public float tampAccuracy = 0;
+    public string size = null;
+
+    public List<string> ingredientsUsed = new List<string>();
+
+
+   
 }
