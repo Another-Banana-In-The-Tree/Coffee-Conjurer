@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TargetTap : MonoBehaviour, MiniGame
 {
+    [SerializeField] private GameObject minigameScreen;
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
     [SerializeField] private Transform movingBar;
     [SerializeField] private Transform target;
+    [SerializeField] private float speed;
     
     [SerializeField] private float maxRange, minRange;
     private float minWinRange, maxWinRange;
@@ -30,7 +32,7 @@ public class TargetTap : MonoBehaviour, MiniGame
     {
 
 
-        movingBar.position = Vector3.Lerp(start.position, end.position, Mathf.PingPong(Time.time / 2, 1));
+        movingBar.position = Vector3.Lerp(start.position, end.position, Mathf.PingPong(Time.time / speed, 1));
 
     }
    
@@ -50,11 +52,11 @@ public class TargetTap : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-
+        minigameScreen.SetActive(false);
     }
 
     public void gameStarted()
     {
-
+        minigameScreen.SetActive(true);
     }
 }

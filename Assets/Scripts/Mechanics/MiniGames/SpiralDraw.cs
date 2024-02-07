@@ -16,7 +16,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
    
     public float sensitivity;
     public int currentSpace = 0;
-    
+
+    private Coffee currentCoffee;
+
+    private bool gameRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,19 +55,23 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+        
         if (Vector2.Distance(mousePos, positions[currentSpace].transform.position  ) <= sensitivity && currentSpace < positions.Length -1 )
         {
             positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
             currentSpace++;
            
-            Debug.Log("next spot");
+            //Debug.Log("next spot");
             
 
               
         }
-        if( currentSpace == positions.Length - 1)
+        if( currentSpace == positions.Length - 1 && gameRunning)
         {
+            gameRunning = false;
+            positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+            currentCoffee.toppingAdded = true;
+
             Debug.Log("Wongame"); 
         }
     }
@@ -76,14 +83,25 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
     public void Exit()
     {
+        
         currentSpace = 0;
         minigameScreen.SetActive(false);
         boundsDraw.SetActive(false);
+
+        CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+
+        foreach(GameObject i in positions)
+        {
+            i.GetComponent<Renderer>().material.color = Color.red;
+        }
     }
 
     public void gameStarted()
     {
+        gameRunning = true;
         boundsDraw.SetActive(true);
+        currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+
 
     }
 }
