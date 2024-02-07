@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TargetTap : MonoBehaviour, MiniGame
 {
+    [SerializeField] private GameObject minigameScreen;
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
     [SerializeField] private Transform movingBar;
@@ -51,11 +52,11 @@ public class TargetTap : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-
+        minigameScreen.SetActive(false);
     }
 
     public void gameStarted()
     {
-
+        minigameScreen.SetActive(true);
     }
 }

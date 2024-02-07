@@ -6,17 +6,33 @@ public class Coffee
 {
 
 
-    public string name = null;
+    private string name = null;
 
 
-    public string roast = null;
+    private string roast = null;
 
-    public bool toppingAdded = false;
-    public float toppingAccuracy = 0;
-    public float tampAccuracy = 0;
-    public string size = null;
+    private bool toppingAdded = false;
+    private float toppingAccuracy = 0;
+    private float tampAccuracy = 0;
+    private string size = null;
 
-    public List<string> ingredientsUsed = new List<string>();
+    private List<string> ingredientsUsed = new List<string>();
+
+
+
+    public void SetCustomerOrder(string customerName, string customerRoast, string customerSize, List<string> customerIngredients)
+    {
+        name = customerName;
+        roast = customerRoast;
+        size = customerSize;
+        ingredientsUsed = customerIngredients;
+
+
+
+
+
+
+    }
 
 
    
