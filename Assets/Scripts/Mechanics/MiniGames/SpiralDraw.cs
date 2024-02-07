@@ -70,7 +70,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         {
             gameRunning = false;
             positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
-            currentCoffee.toppingAdded = true;
+            currentCoffee.stirred = true;
 
             Debug.Log("Wongame"); 
         }
