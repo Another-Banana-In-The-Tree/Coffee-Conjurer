@@ -4,26 +4,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class NPCManager : MonoBehaviour, IInteractable
+public class NPCManager : MonoBehaviour
 {
-    Coffee coffee;
-    LineWaypoint currentLine;
-    bool isInteractable = false;
-    private void Awake()
-    {
-        coffee = new Coffee(); //Preload coffee here
-    }
-
-    void Update()
-    {
-        //Enter store and walk towards the current line
-        //Make sure the NPC lines up behind any currently lined up NPCs
-        //Once the NPC is at the front of the line, make them interactable
-        //NPC orders the coffee defined above
-    }
-
-    public void Interact(Player player)
-    {
-        Debug.Log("Interacted!");
-    }
+    [SerializeField] List<NPC> _customers = new List<NPC>();
+    int _inStoreCustomers;
+    [SerializeField] float _npcSpeed;
+    [SerializeField] float _npcDelayInSeconds;
+    [SerializeField] LineWaypoint _entranceWaypoint, _orderWaypoint, _pickupWaypoint;
 }
