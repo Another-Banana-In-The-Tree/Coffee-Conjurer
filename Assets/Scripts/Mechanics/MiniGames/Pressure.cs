@@ -63,8 +63,10 @@ public class Pressure : MonoBehaviour, MiniGame
     
     public void Play()
     {
-
-        AddMore();
+        if (currentCoffee.roast == null)
+        {
+            AddMore();
+        }
     }
 
     private void AddMore()

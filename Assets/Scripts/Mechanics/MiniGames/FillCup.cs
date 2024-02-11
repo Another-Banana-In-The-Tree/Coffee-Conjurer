@@ -28,11 +28,16 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private void Update()
     {
-        if (fill.fillAmount < 1)
+        if (currentCoffee.roast != null)
         {
-            currentFill += (fillMod * fillSpeed) / 100;
 
-            fill.fillAmount = currentFill;
+
+            if (fill.fillAmount < 1)
+            {
+                currentFill += (fillMod * fillSpeed) / 100;
+
+                fill.fillAmount = currentFill;
+            }
         }
     }
 
@@ -47,6 +52,6 @@ public class FillCup : MonoBehaviour, MiniGame
 
     public void gameStarted()
     {
-
+        currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
     }
 }

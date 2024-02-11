@@ -54,25 +54,31 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        if (Vector2.Distance(mousePos, positions[currentSpace].transform.position  ) <= sensitivity && currentSpace < positions.Length -1 )
-        {
-            positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
-            currentSpace++;
-           
-            //Debug.Log("next spot");
-            
 
-              
-        }
-        if( currentSpace == positions.Length - 1 && gameRunning)
+        if (!currentCoffee.stirred && currentCoffee.size != null)
         {
-            gameRunning = false;
-            positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
-            currentCoffee.stirred = true;
 
-            Debug.Log("Wongame"); 
+
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (Vector2.Distance(mousePos, positions[currentSpace].transform.position) <= sensitivity && currentSpace < positions.Length - 1)
+            {
+                positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+                currentSpace++;
+
+                //Debug.Log("next spot");
+
+
+
+            }
+            if (currentSpace == positions.Length - 1 && gameRunning)
+            {
+                gameRunning = false;
+                positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+                currentCoffee.stirred = true;
+
+                Debug.Log("Wongame");
+            }
         }
     }
 
