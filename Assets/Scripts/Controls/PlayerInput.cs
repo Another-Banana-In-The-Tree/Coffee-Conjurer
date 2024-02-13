@@ -28,7 +28,48 @@ public class PlayerInput : MonoBehaviour
         _controls.MiniGame.Exit.performed += ctx =>
         {
             player.ExitMiniGame();  
-        };   
+        };
+
+        _controls.DevTool.SetRoast.performed += ctx =>
+        {
+
+            switch (ctx.ReadValue<float>())
+            {
+                case 1:
+                    CoffeeHandler.Instance.GetCurrentCoffee().roast = "Light";
+                    break;
+                case 2:
+                    CoffeeHandler.Instance.GetCurrentCoffee().roast = "Medium";
+                    break;
+                case 3:
+                    CoffeeHandler.Instance.GetCurrentCoffee().roast = "Dark";
+                    break;
+            }
+            print(CoffeeHandler.Instance.GetCurrentCoffee().roast);
+            
+        };
+        _controls.DevTool.SetSize.performed += ctx =>
+        {
+
+            switch (ctx.ReadValue<float>())
+            {
+                case 1:
+                    CoffeeHandler.Instance.GetCurrentCoffee().size = "Small";
+                    break;
+                case 2:
+                    CoffeeHandler.Instance.GetCurrentCoffee().size = "Medium";
+                    break;
+                case 3:
+                    CoffeeHandler.Instance.GetCurrentCoffee().size = "Large";
+                    break;
+            }
+            print(CoffeeHandler.Instance.GetCurrentCoffee().size);
+
+        };
+
+
+
+        _controls.DevTool.Enable();
     }
 
     public static void EnableGame()
