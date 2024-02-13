@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.UI;
+using TMPro;
 
 public class Interactor : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class Interactor : MonoBehaviour
     private Collider2D[] ObjHit = new Collider2D[3];
     [SerializeField] private int numFound;
 
+    [SerializeField] private GameObject toolTip;
 
     private Player player;
 
@@ -24,6 +27,15 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         numFound = Physics2D.OverlapCircleNonAlloc(transform.position, radius, ObjHit, interactionLayer);
+
+        if(numFound > 0)
+        {
+            toolTip.SetActive(true);
+        }
+        if(numFound == 0)
+        {
+            toolTip.SetActive(false);
+        }
     }
 
     public void Active()

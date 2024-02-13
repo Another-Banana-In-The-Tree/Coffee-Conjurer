@@ -19,7 +19,7 @@ public class FillCup : MonoBehaviour, MiniGame
     [SerializeField] private float currentFill;
 
     [SerializeField] private Image fill;
-
+    private bool gameActive = false;
 
     public void Fill(float value)
     {
@@ -28,6 +28,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private void Update()
     {
+        if (!gameActive) return;
         if (currentCoffee.roast != null)
         {
 
@@ -47,11 +48,12 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-
+        gameActive = false;
     }
 
     public void gameStarted()
     {
+        gameActive = true;
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
     }
 }
