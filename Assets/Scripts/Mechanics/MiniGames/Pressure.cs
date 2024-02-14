@@ -24,6 +24,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
     [SerializeField] private float timeCount;
     [SerializeField] private TextMeshProUGUI pointText;
+    [SerializeField] private TextMeshProUGUI roast;
 
     private List<float> points = new List<float>();
    
@@ -38,8 +39,8 @@ public class Pressure : MonoBehaviour, MiniGame
             }
             if (fill > minTarget && fill < maxTarget)
             {
-                timeCount += 0.1f * Time.deltaTime;
-                pointText.text = timeCount.ToString();
+                timeCount += 0.2f * Time.deltaTime;
+                pointText.text = timeCount.ToString("F1");
 
                 points.Add(fill);
 
@@ -65,6 +66,7 @@ public class Pressure : MonoBehaviour, MiniGame
     {
         if (currentCoffee.roast == null)
         {
+            if (fill >= 1) return;
             AddMore();
         }
     }
@@ -105,7 +107,7 @@ public class Pressure : MonoBehaviour, MiniGame
         timeCount = 0;
         fill = 0;
         points.Clear();
-       
+        roast.text = currentCoffee.roast;
 
     }
     

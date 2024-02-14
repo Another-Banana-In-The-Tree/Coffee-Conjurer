@@ -26,7 +26,7 @@ public class FillCup : MonoBehaviour, MiniGame
     {
         
         fillMod = Mathf.Pow( value, 2);
-        print(fillMod);
+       // print(fillMod);
     }
 
     private void Update()
@@ -34,6 +34,10 @@ public class FillCup : MonoBehaviour, MiniGame
         if (!gameActive) return;
         //print(currentCoffee.roast);
 
+        if(currentFill > 0.95)
+        {
+            print("Overfill!");
+        }
         if (currentCoffee.roast != null && currentCoffee.size == null)
         {
             //print("not null");
@@ -54,16 +58,20 @@ public class FillCup : MonoBehaviour, MiniGame
         {
             currentCoffee.size = "Small";
         }
-        else if (currentFill >= 0.38 && currentFill < 0.71) 
+        else if (currentFill >= 0.61 && currentFill < 0.71) 
         {
             currentCoffee.size = "Medium";
         }
-        else if (currentFill >= 0.71)
+        else if (currentFill >= 0.89)
         {
             currentCoffee.size = "Large";
         }
         print(currentCoffee.size);
         
+    }
+    public void OverFill()
+    {
+
     }
 
     public void Play()
