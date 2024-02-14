@@ -94,7 +94,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         minigameScreen.SetActive(false);
         boundsDraw.SetActive(false);
         gameRunning = false;
-        CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+       
 
         foreach(GameObject i in positions)
         {

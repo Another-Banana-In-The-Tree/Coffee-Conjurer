@@ -36,16 +36,34 @@ public class FillCup : MonoBehaviour, MiniGame
 
         if (currentCoffee.roast != null && currentCoffee.size == null)
         {
-            print("not null");
+            //print("not null");
 
             if (fill.fillAmount < 1)
             {
-                print("notFull");
+               // print("notFull");
                 currentFill += (fillMod * fillSpeed) / 100;
 
                 fill.fillAmount = currentFill;
             }
         }
+    }
+
+    public void finish()
+    {
+        if(currentFill > 0.28 && currentFill < 0.38)
+        {
+            currentCoffee.size = "Small";
+        }
+        else if (currentFill >= 0.38 && currentFill < 0.71) 
+        {
+            currentCoffee.size = "Medium";
+        }
+        else if (currentFill >= 0.71)
+        {
+            currentCoffee.size = "Large";
+        }
+        print(currentCoffee.size);
+        
     }
 
     public void Play()
@@ -63,6 +81,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     public void gameStarted()
     {
+        background.SetActive(true);
         MiniGameScreen.SetActive(true);
         gameActive = true;
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();

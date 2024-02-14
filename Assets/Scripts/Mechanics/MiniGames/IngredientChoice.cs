@@ -6,6 +6,8 @@ public class IngredientChoice : MonoBehaviour, MiniGame
 {
 
     private Coffee currentCoffee;
+    [SerializeField] private GameObject screen;
+    [SerializeField] private GameObject backGround;
     public void AddIngredient(string ingredient)
     {
 
@@ -21,11 +23,14 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-
+        screen.SetActive(false);
+        backGround.SetActive(false);
     }
 
     public void gameStarted()
     {
+        backGround.SetActive(true);
+        screen.SetActive(true);
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
 
     }

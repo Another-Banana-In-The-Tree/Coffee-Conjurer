@@ -119,7 +119,7 @@ public class Pressure : MonoBehaviour, MiniGame
         canvas.SetActive(false);
         screen.SetActive(false);
 
-        CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+       // CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
     }
 
     public void gameStarted()

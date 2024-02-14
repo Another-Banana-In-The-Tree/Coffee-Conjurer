@@ -21,19 +21,27 @@ public class CoffeeHandler : MonoBehaviour
         }
 
         CreateNewCoffee("Karen");
+        Coffee tempCoffee = new Coffee();
+        tempCoffee.name = "Karen";
+        tempCoffee.size = "Large";
+        tempCoffee.roast = "Light";
+        tempCoffee.ingredientsUsed.Add("DMilk");
+        tempCoffee.ingredientsUsed.Add("Vanilla");
+
+        AddOrder(tempCoffee);
     }
 
     //COFFEE
     private Coffee currentCoffee;
 
 
-    private List<Coffee> coffeeQueue = new List<Coffee>();
-    private List<Coffee> customerOders = new List<Coffee>();
+    private Queue<Coffee> coffeeQueue = new Queue<Coffee>();
+    private Queue<Coffee> customerOders = new Queue<Coffee>();
 
 
     public void AddOrder(Coffee newOrder)
     {
-        customerOders.Add(newOrder);
+        customerOders.Enqueue(newOrder);
     }
 
     public void CreateNewCoffee(string name)
@@ -41,9 +49,9 @@ public class CoffeeHandler : MonoBehaviour
         Coffee newCoffee = new Coffee();
         newCoffee.name = name; 
         currentCoffee = newCoffee;
-        coffeeQueue.Add(newCoffee);
+        coffeeQueue.Enqueue(newCoffee);
 
-        print("Coffee created " + coffeeQueue[0].name);
+        print("Coffee created " + coffeeQueue.Peek().name);
     }
 
     public Coffee GetCurrentCoffee()
@@ -69,12 +77,7 @@ public class CoffeeHandler : MonoBehaviour
     }
 
 
-    public void testSpecificCoffee(string Name)
-    {
-        Coffee tempCoffee = SearchForCoffee(Name, coffeeQueue);
-
-        CoffeeStats(tempCoffee);
-    }
+    
 
     public void CoffeeStats(Coffee coffee)
     {
@@ -88,6 +91,54 @@ public class CoffeeHandler : MonoBehaviour
       
     }
 
+
+    public void CompareCoffee()
+    {
+        int points = 0;
+        var customerOrder = customerOders.Peek();
+        var finishedCoffee = coffeeQueue.Peek();
+
+        if(finishedCoffee.size == customerOrder.size)
+        {
+            points++;
+            print("size match");
+        }
+        else
+        {
+            print("size dont match");
+        }
+
+        if (finishedCoffee.roast == customerOrder.roast)
+        {
+            points++;
+            print("size match");
+        }
+        else
+        {
+            print("size dont match");
+        }
+        if (finishedCoffee.stirred)
+        {
+            points++;
+            print("stirred");
+        }
+        foreach(string i in customerOrder.ingredientsUsed)
+        {
+            if (finishedCoffee.ingredientsUsed.Contains(i))
+            {
+                points++;
+                print("contains " + i);
+            }
+        }
+        foreach(string i in finishedCoffee.ingredientsUsed)
+        {
+            if (!customerOrder.ingredientsUsed.Contains(i))
+            {
+                print("customerDidnt want that");
+            }
+        }
+
+    }
 
 
 }

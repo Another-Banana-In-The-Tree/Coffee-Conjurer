@@ -278,6 +278,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CompareCoffee",
+                    "type": "Button",
+                    "id": "cba2e067-f456-4cb1-9f84-47bef83a9ceb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -344,6 +353,17 @@
                     "processors": "Scale(factor=3)",
                     "groups": "",
                     "action": "SetSize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c12b7c95-9bff-4e82-911b-8db3941d90ab",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CompareCoffee",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -67,6 +67,11 @@ public class PlayerInput : MonoBehaviour
 
         };
 
+        _controls.DevTool.CompareCoffee.performed += ctx => 
+         {
+             CoffeeHandler.Instance.CompareCoffee();
+        };
+
 
 
         _controls.DevTool.Enable();
