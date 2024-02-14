@@ -278,6 +278,118 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DevTool"",
+            ""id"": ""794e38be-1ed9-4cb9-a3aa-5157d6257e79"",
+            ""actions"": [
+                {
+                    ""name"": ""SetRoast"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b43e893-bfcd-4a14-8f11-01b446ca491f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SetSize"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7e56db9-1239-41b6-9cef-0af4cac9b890"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CompareCoffee"",
+                    ""type"": ""Button"",
+                    ""id"": ""cba2e067-f456-4cb1-9f84-47bef83a9ceb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5f09f02c-636e-40c8-9082-8019994ee8d9"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": """",
+                    ""action"": ""SetRoast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dad8d54-692e-4ded-a9ee-be21f21e63d0"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""SetRoast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83913cae-7324-4bee-8208-b4e5aa974573"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""SetRoast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b833639d-4eae-4009-87c1-1406a0fa4fdc"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SetSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d89ba68-0f5c-473b-a8ef-0003ce586ac4"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""SetSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11c628ca-8587-4bc4-8a23-1bc0de7b83df"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""SetSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c12b7c95-9bff-4e82-911b-8db3941d90ab"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CompareCoffee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -293,6 +405,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_MiniGame = asset.FindActionMap("MiniGame", throwIfNotFound: true);
         m_MiniGame_Exit = m_MiniGame.FindAction("Exit", throwIfNotFound: true);
         m_MiniGame_Interact = m_MiniGame.FindAction("Interact", throwIfNotFound: true);
+        // DevTool
+        m_DevTool = asset.FindActionMap("DevTool", throwIfNotFound: true);
+        m_DevTool_SetRoast = m_DevTool.FindAction("SetRoast", throwIfNotFound: true);
+        m_DevTool_SetSize = m_DevTool.FindAction("SetSize", throwIfNotFound: true);
+        m_DevTool_CompareCoffee = m_DevTool.FindAction("CompareCoffee", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -504,6 +621,68 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public MiniGameActions @MiniGame => new MiniGameActions(this);
+
+    // DevTool
+    private readonly InputActionMap m_DevTool;
+    private List<IDevToolActions> m_DevToolActionsCallbackInterfaces = new List<IDevToolActions>();
+    private readonly InputAction m_DevTool_SetRoast;
+    private readonly InputAction m_DevTool_SetSize;
+    private readonly InputAction m_DevTool_CompareCoffee;
+    public struct DevToolActions
+    {
+        private @Controls m_Wrapper;
+        public DevToolActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SetRoast => m_Wrapper.m_DevTool_SetRoast;
+        public InputAction @SetSize => m_Wrapper.m_DevTool_SetSize;
+        public InputAction @CompareCoffee => m_Wrapper.m_DevTool_CompareCoffee;
+        public InputActionMap Get() { return m_Wrapper.m_DevTool; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DevToolActions set) { return set.Get(); }
+        public void AddCallbacks(IDevToolActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DevToolActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DevToolActionsCallbackInterfaces.Add(instance);
+            @SetRoast.started += instance.OnSetRoast;
+            @SetRoast.performed += instance.OnSetRoast;
+            @SetRoast.canceled += instance.OnSetRoast;
+            @SetSize.started += instance.OnSetSize;
+            @SetSize.performed += instance.OnSetSize;
+            @SetSize.canceled += instance.OnSetSize;
+            @CompareCoffee.started += instance.OnCompareCoffee;
+            @CompareCoffee.performed += instance.OnCompareCoffee;
+            @CompareCoffee.canceled += instance.OnCompareCoffee;
+        }
+
+        private void UnregisterCallbacks(IDevToolActions instance)
+        {
+            @SetRoast.started -= instance.OnSetRoast;
+            @SetRoast.performed -= instance.OnSetRoast;
+            @SetRoast.canceled -= instance.OnSetRoast;
+            @SetSize.started -= instance.OnSetSize;
+            @SetSize.performed -= instance.OnSetSize;
+            @SetSize.canceled -= instance.OnSetSize;
+            @CompareCoffee.started -= instance.OnCompareCoffee;
+            @CompareCoffee.performed -= instance.OnCompareCoffee;
+            @CompareCoffee.canceled -= instance.OnCompareCoffee;
+        }
+
+        public void RemoveCallbacks(IDevToolActions instance)
+        {
+            if (m_Wrapper.m_DevToolActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDevToolActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DevToolActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DevToolActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DevToolActions @DevTool => new DevToolActions(this);
     public interface IGameActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -517,5 +696,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnExit(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IDevToolActions
+    {
+        void OnSetRoast(InputAction.CallbackContext context);
+        void OnSetSize(InputAction.CallbackContext context);
+        void OnCompareCoffee(InputAction.CallbackContext context);
     }
 }

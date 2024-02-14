@@ -54,7 +54,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     // Update is called once per frame
     void Update()
     {
-
+        if (!gameRunning) return;
         if (!currentCoffee.stirred && currentCoffee.size != null)
         {
 
@@ -93,8 +93,8 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         currentSpace = 0;
         minigameScreen.SetActive(false);
         boundsDraw.SetActive(false);
-
-        CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+        gameRunning = false;
+       
 
         foreach(GameObject i in positions)
         {
