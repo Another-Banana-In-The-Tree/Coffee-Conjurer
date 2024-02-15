@@ -58,8 +58,16 @@ public class Player : MonoBehaviour
         moveVertical = moveDir.y;
         moveHorizontalAbs = Mathf.Abs(moveHorizontal);
         moveVerticalAbs = Mathf.Abs(moveVertical);
+
+        if (moveHorizontalAbs * -1 > 0)
+        {
+            moveHorizontalAbs = moveHorizontalAbs * -1;
+        }
         
-        
+        if (moveVerticalAbs * -1 > 0)
+        {
+            moveVerticalAbs = moveVerticalAbs * -1;
+        }
         
         if (moveHorizontalAbs != 0)
         {
