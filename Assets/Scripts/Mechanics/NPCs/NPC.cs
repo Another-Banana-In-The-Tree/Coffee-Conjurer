@@ -26,11 +26,19 @@ public class NPC : MonoBehaviour, IInteractable
     {
         npcManager = FindAnyObjectByType<NPCManager>();
         coffee = new Coffee(); //Preload coffee here
+
+        coffee.name = "Karen";
+        coffee.size = "Large";
+        coffee.roast = "Light";
+        coffee.ingredientsUsed.Add("DMilk");
+        coffee.ingredientsUsed.Add("Vanilla");
+        
     }
     private void Start()
     {
         //Set the next waypoint to the nextWaypointCounter, which starts with first waypoint in the list
         nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
+       
     }
     //Move the NPC towards a given LineWaypoint by the speed defined
     public IEnumerator MoveToWaypoint(LineWaypoint waypoint)
@@ -71,21 +79,24 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void Interact(Player player)
     {
-        if (isInteractable)
-        {
+       // if (isInteractable)
+        //{
             Debug.Log("Interacted!");
             if (currentWaypoint == npcManager._orderWaypoint)
             {
                 //Show sprite image above head based on certain variables
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = talkingImage;
+                CoffeeHandler.Instance.AddOrder(coffee);
             }
             if (currentWaypoint == npcManager._pickupWaypoint)
             {
                 //Show sprite image above head based on certain variables
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = angryImage;
+
+                CoffeeHandler.Instance.CompareCoffee();
             }
-        }
+       // }
     }
 }

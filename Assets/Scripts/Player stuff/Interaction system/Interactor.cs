@@ -42,12 +42,37 @@ public class Interactor : MonoBehaviour
     {
         if(numFound > 0)
         {
-            var interactable = ObjHit[0].GetComponent<IInteractable>();
-            
-            if(interactable != null)
+
+            foreach(Collider2D i in ObjHit)
             {
-                interactable.Interact(player);
+                var interactable = i.GetComponent<IInteractable>();
+
+                if (interactable != null)
+                {
+
+                    if (i.GetComponent<NPC>())
+                    {
+                        if(CoffeeHandler.Instance.GetCurrentCoffee() == null || CoffeeHandler.Instance.GetCurrentCoffee().stirred)
+                        {
+                            interactable.Interact(player);
+                            break;
+                        }
+                        
+                    }
+                    if (i.GetComponent<MiniGameTrigger>())
+                    {
+                        if(CoffeeHandler.Instance.GetCurrentCoffee() != null || !CoffeeHandler.Instance.GetCurrentCoffee().stirred)
+                        {
+                            interactable.Interact(player);
+                            break;
+                        }
+                    }
+
+
+                    
+                }
             }
+            
         }
     }
 

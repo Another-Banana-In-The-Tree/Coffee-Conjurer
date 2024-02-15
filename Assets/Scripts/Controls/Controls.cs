@@ -309,6 +309,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CreateCoffee"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c5ca89c-8ae4-4672-911d-e4697d4adf74"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -388,6 +397,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""CompareCoffee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4e6a47a-25e9-4ff5-81ea-a57c62b58561"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CreateCoffee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -410,6 +430,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_DevTool_SetRoast = m_DevTool.FindAction("SetRoast", throwIfNotFound: true);
         m_DevTool_SetSize = m_DevTool.FindAction("SetSize", throwIfNotFound: true);
         m_DevTool_CompareCoffee = m_DevTool.FindAction("CompareCoffee", throwIfNotFound: true);
+        m_DevTool_CreateCoffee = m_DevTool.FindAction("CreateCoffee", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -628,6 +649,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_DevTool_SetRoast;
     private readonly InputAction m_DevTool_SetSize;
     private readonly InputAction m_DevTool_CompareCoffee;
+    private readonly InputAction m_DevTool_CreateCoffee;
     public struct DevToolActions
     {
         private @Controls m_Wrapper;
@@ -635,6 +657,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @SetRoast => m_Wrapper.m_DevTool_SetRoast;
         public InputAction @SetSize => m_Wrapper.m_DevTool_SetSize;
         public InputAction @CompareCoffee => m_Wrapper.m_DevTool_CompareCoffee;
+        public InputAction @CreateCoffee => m_Wrapper.m_DevTool_CreateCoffee;
         public InputActionMap Get() { return m_Wrapper.m_DevTool; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -653,6 +676,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @CompareCoffee.started += instance.OnCompareCoffee;
             @CompareCoffee.performed += instance.OnCompareCoffee;
             @CompareCoffee.canceled += instance.OnCompareCoffee;
+            @CreateCoffee.started += instance.OnCreateCoffee;
+            @CreateCoffee.performed += instance.OnCreateCoffee;
+            @CreateCoffee.canceled += instance.OnCreateCoffee;
         }
 
         private void UnregisterCallbacks(IDevToolActions instance)
@@ -666,6 +692,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @CompareCoffee.started -= instance.OnCompareCoffee;
             @CompareCoffee.performed -= instance.OnCompareCoffee;
             @CompareCoffee.canceled -= instance.OnCompareCoffee;
+            @CreateCoffee.started -= instance.OnCreateCoffee;
+            @CreateCoffee.performed -= instance.OnCreateCoffee;
+            @CreateCoffee.canceled -= instance.OnCreateCoffee;
         }
 
         public void RemoveCallbacks(IDevToolActions instance)
@@ -702,5 +731,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSetRoast(InputAction.CallbackContext context);
         void OnSetSize(InputAction.CallbackContext context);
         void OnCompareCoffee(InputAction.CallbackContext context);
+        void OnCreateCoffee(InputAction.CallbackContext context);
     }
 }

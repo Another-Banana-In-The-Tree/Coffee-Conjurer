@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private MiniGame currentGame;
 
     //ANIMATION
-    [SerializeField] private Animator playerAnimation;
+    private Animator playerAnimation;
     float moveHorizontal;
     float moveVertical;
     float moveHorizontalAbs;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         PlayerInput.Init(this);
         PlayerInput.EnableGame();
 
+        playerAnimation = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         interactor = GetComponent<Interactor>();
     }

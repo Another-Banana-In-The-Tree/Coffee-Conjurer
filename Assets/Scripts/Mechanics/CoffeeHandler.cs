@@ -20,15 +20,7 @@ public class CoffeeHandler : MonoBehaviour
             Instance = this;
         }
 
-        CreateNewCoffee("Karen");
-        Coffee tempCoffee = new Coffee();
-        tempCoffee.name = "Karen";
-        tempCoffee.size = "Large";
-        tempCoffee.roast = "Light";
-        tempCoffee.ingredientsUsed.Add("DMilk");
-        tempCoffee.ingredientsUsed.Add("Vanilla");
-
-        AddOrder(tempCoffee);
+       
     }
 
     //COFFEE
@@ -42,6 +34,17 @@ public class CoffeeHandler : MonoBehaviour
     public void AddOrder(Coffee newOrder)
     {
         customerOders.Enqueue(newOrder);
+        CreateNewCoffee(newOrder.name);
+        Coffee test = customerOders.Peek();
+        print("Order Added");
+        print(test.name);
+        print(test.roast);
+        print(test.size);
+        foreach(string i in test.ingredientsUsed)
+        {
+            print(i);
+        }
+
     }
 
     public void CreateNewCoffee(string name)
@@ -111,11 +114,11 @@ public class CoffeeHandler : MonoBehaviour
         if (finishedCoffee.roast == customerOrder.roast)
         {
             points++;
-            print("size match");
+            print("roast match");
         }
         else
         {
-            print("size dont match");
+            print("roast dont match");
         }
         if (finishedCoffee.stirred)
         {
