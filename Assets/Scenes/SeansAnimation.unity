@@ -470,6 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   playerAnimation: {fileID: 1959806993}
+  playerSprite: {fileID: 1959806989}
 --- !u!95 &1959806993
 Animator:
   serializedVersion: 5

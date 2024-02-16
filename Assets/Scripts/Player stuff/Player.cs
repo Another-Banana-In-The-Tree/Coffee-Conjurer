@@ -19,10 +19,13 @@ public class Player : MonoBehaviour
 
     //ANIMATION
     private Animator playerAnimation;
+    [SerializeField] private SpriteRenderer playerSprite;
     float moveHorizontal;
     float moveVertical;
     float moveHorizontalAbs;
     float moveVerticalAbs;
+    
+    
     private void Awake()
     {
         PlayerInput.Init(this);
@@ -75,9 +78,11 @@ public class Player : MonoBehaviour
             if (moveHorizontal < 0)
             {
                 playerAnimation.SetBool("HoriFlip", true);
+                playerSprite.flipX = false;
             }
             else
             {
+                playerSprite.flipX = true;
                 playerAnimation.SetBool("HoriFlip", false);
             }
             playerAnimation.SetFloat("HoriSpeed",moveHorizontalAbs);
