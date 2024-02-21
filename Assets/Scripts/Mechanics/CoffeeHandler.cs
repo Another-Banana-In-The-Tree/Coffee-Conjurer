@@ -62,7 +62,7 @@ public class CoffeeHandler : MonoBehaviour
         return currentCoffee;
     }
 
-    public Coffee SearchForCoffee(string Name, List<Coffee> coffeeList)
+   /* public Coffee SearchForCoffee(string Name, List<Coffee> coffeeList)
     {
         
         foreach(Coffee i in coffeeList)
@@ -77,10 +77,13 @@ public class CoffeeHandler : MonoBehaviour
        
 
         return null;
-    }
-
+    }*/
 
     
+    public Queue<Coffee> GetCurrentOrders()
+    {
+        return customerOders;
+    }
 
     public void CoffeeStats(Coffee coffee)
     {
