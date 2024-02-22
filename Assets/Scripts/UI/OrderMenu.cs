@@ -14,7 +14,7 @@ public class OrderMenu : MonoBehaviour
     private Coffee currentCoffee;
     private Animator anim;
     [SerializeField] private TextMeshProUGUI receipt;
-
+    [SerializeField] private TextMeshProUGUI buttonText;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -27,12 +27,12 @@ public class OrderMenu : MonoBehaviour
     {
         if (!menuOpen)
         {
-            
+            buttonText.text = "Close";
             menuOpen = true;
         }
         else
         {
-            
+            buttonText.text = "Open";
             menuOpen = false;
         }
 

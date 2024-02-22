@@ -102,38 +102,41 @@ public class CoffeeHandler : MonoBehaviour
     public void CompareCoffee()
     {
         int points = 0;
+        int bad  = 0;
         var customerOrder = customerOders.Peek();
         var finishedCoffee = coffeeQueue.Peek();
 
         if(finishedCoffee.size == customerOrder.size)
         {
-            points++;
+            points += 2;
             print("size match");
         }
         else
         {
+            bad--;
             print("size dont match");
         }
 
         if (finishedCoffee.roast == customerOrder.roast)
         {
-            points++;
+            points += 2;
             print("roast match");
         }
         else
         {
+            bad--;
             print("roast dont match");
         }
         if (finishedCoffee.stirred)
         {
-            points++;
+            points += 2; ;
             print("stirred");
         }
         foreach(string i in customerOrder.ingredientsUsed)
         {
             if (finishedCoffee.ingredientsUsed.Contains(i))
             {
-                points++;
+                points += 2; ;
                 print("contains " + i);
             }
         }
@@ -141,11 +144,17 @@ public class CoffeeHandler : MonoBehaviour
         {
             if (!customerOrder.ingredientsUsed.Contains(i))
             {
+                bad--;
                 print("customerDidnt want that");
             }
         }
 
+
+        GameManager.Instance.CalculateReputation(points, bad);
+        customerOders.Dequeue();
+        coffeeQueue.Dequeue();
+
     }
 
-
+    
 }

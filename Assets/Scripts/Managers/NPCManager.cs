@@ -36,4 +36,9 @@ public class NPCManager : MonoBehaviour
     {
         return waypoints;
     }
+
+    public NPC currentCustomer()
+    {
+        return _customers[_customers.Count - 1];
+    }
 }

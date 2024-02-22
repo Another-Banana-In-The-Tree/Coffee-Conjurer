@@ -56,15 +56,15 @@ public class FillCup : MonoBehaviour, MiniGame
     {
         if(currentFill > 0.28 && currentFill < 0.38)
         {
-            currentCoffee.size = "Small";
+            currentCoffee.size = "small";
         }
         else if (currentFill >= 0.61 && currentFill < 0.71) 
         {
-            currentCoffee.size = "Medium";
+            currentCoffee.size = "medium";
         }
         else if (currentFill >= 0.89)
         {
-            currentCoffee.size = "Large";
+            currentCoffee.size = "large";
         }
         print(currentCoffee.size);
         

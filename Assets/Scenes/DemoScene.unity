@@ -1559,6 +1559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24993046defafd419183ece1396806e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcManager: {fileID: 1536621894}
 --- !u!4 &246779112
 Transform:
   m_ObjectHideFlags: 0
@@ -3345,6 +3346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receipt: {fileID: 1715251540}
+  buttonText: {fileID: 873960967}
 --- !u!95 &605513609
 Animator:
   serializedVersion: 5
