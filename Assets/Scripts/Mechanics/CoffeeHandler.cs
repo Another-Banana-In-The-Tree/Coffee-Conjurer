@@ -26,7 +26,7 @@ public class CoffeeHandler : MonoBehaviour
     //COFFEE
     private Coffee currentCoffee;
 
-
+    [SerializeField] private OrderMenu orderMenu;
     private Queue<Coffee> coffeeQueue = new Queue<Coffee>();
     private Queue<Coffee> customerOders = new Queue<Coffee>();
 
@@ -44,6 +44,7 @@ public class CoffeeHandler : MonoBehaviour
         {
             print(i);
         }
+        orderMenu.changeActiveOrders(test);
 
     }
 

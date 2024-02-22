@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OrderMenu : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class OrderMenu : MonoBehaviour
     private RectTransform menuObject;
     private int numActiveOrders;
     private int lastActiveNum;
-    private Queue<Coffee> ActiveOders = new Queue<Coffee>();
+    // private Queue<Coffee> ActiveOders = new Queue<Coffee>();
+    private Coffee currentCoffee;
     private Animator anim;
+    [SerializeField] private TextMeshProUGUI receipt;
 
     private void Awake()
     {
@@ -36,23 +39,24 @@ public class OrderMenu : MonoBehaviour
         anim.SetBool("menuOpen", menuOpen);
     }
 
-    public void changeActiveOrders(int modifier)
+    public void changeActiveOrders(Coffee newCoffee)
     {
-        lastActiveNum = numActiveOrders;
-        numActiveOrders += modifier;
-        ActiveOders = CoffeeHandler.Instance.GetCurrentOrders();
+       /* lastActiveNum = numActiveOrders;
+        numActiveOrders += modifier;*/
+        //ActiveOders = CoffeeHandler.Instance.GetCurrentOrders();
+        currentCoffee = newCoffee;
         UpdateActiveOrders();
     }
 
     private void UpdateActiveOrders()
     {
-        if(lastActiveNum > numActiveOrders)
-        {
+       
+        receipt.text = currentCoffee.name + "\n  Roast: " + currentCoffee.roast + "\n Size: " + currentCoffee.size;
 
-        }
-        else
+        print(receipt.text);
+        foreach(string i in currentCoffee.ingredientsUsed)
         {
-
+            receipt.text += "\n" + i;
         }
     }
 }
