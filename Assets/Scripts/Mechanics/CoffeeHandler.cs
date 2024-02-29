@@ -26,7 +26,7 @@ public class CoffeeHandler : MonoBehaviour
     //COFFEE
     private Coffee currentCoffee;
 
-
+    [SerializeField] private OrderMenu orderMenu;
     private Queue<Coffee> coffeeQueue = new Queue<Coffee>();
     private Queue<Coffee> customerOders = new Queue<Coffee>();
 
@@ -44,6 +44,7 @@ public class CoffeeHandler : MonoBehaviour
         {
             print(i);
         }
+        orderMenu.changeActiveOrders(test);
 
     }
 
@@ -62,7 +63,7 @@ public class CoffeeHandler : MonoBehaviour
         return currentCoffee;
     }
 
-    public Coffee SearchForCoffee(string Name, List<Coffee> coffeeList)
+   /* public Coffee SearchForCoffee(string Name, List<Coffee> coffeeList)
     {
         
         foreach(Coffee i in coffeeList)
@@ -77,10 +78,13 @@ public class CoffeeHandler : MonoBehaviour
        
 
         return null;
-    }
-
+    }*/
 
     
+    public Queue<Coffee> GetCurrentOrders()
+    {
+        return customerOders;
+    }
 
     public void CoffeeStats(Coffee coffee)
     {
@@ -98,38 +102,41 @@ public class CoffeeHandler : MonoBehaviour
     public void CompareCoffee()
     {
         int points = 0;
+        int bad  = 0;
         var customerOrder = customerOders.Peek();
         var finishedCoffee = coffeeQueue.Peek();
 
         if(finishedCoffee.size == customerOrder.size)
         {
-            points++;
+            points += 2;
             print("size match");
         }
         else
         {
+            bad--;
             print("size dont match");
         }
 
         if (finishedCoffee.roast == customerOrder.roast)
         {
-            points++;
+            points += 2;
             print("roast match");
         }
         else
         {
+            bad--;
             print("roast dont match");
         }
         if (finishedCoffee.stirred)
         {
-            points++;
+            points += 2; ;
             print("stirred");
         }
         foreach(string i in customerOrder.ingredientsUsed)
         {
             if (finishedCoffee.ingredientsUsed.Contains(i))
             {
-                points++;
+                points += 2; ;
                 print("contains " + i);
             }
         }
@@ -137,11 +144,17 @@ public class CoffeeHandler : MonoBehaviour
         {
             if (!customerOrder.ingredientsUsed.Contains(i))
             {
+                bad--;
                 print("customerDidnt want that");
             }
         }
 
+
+        GameManager.Instance.CalculateReputation(points, bad);
+        customerOders.Dequeue();
+        coffeeQueue.Dequeue();
+
     }
 
-
+    
 }

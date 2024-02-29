@@ -10,6 +10,7 @@ public class NPC : MonoBehaviour, IInteractable
     float timeWaiting = 0; //Time waiting since entering store
     [SerializeField] float patience = 0; //How much time they'll wait before becoming mad
     [SerializeField] float timeToMove; //Time it takes to move towards the given waypoint
+    private bool isWaiting = false;
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite angryImage;
     [SerializeField] Sprite coffeeImage;
@@ -22,14 +23,17 @@ public class NPC : MonoBehaviour, IInteractable
 
     NPCManager npcManager;
 
+
+
+
     private void Awake()
     {
         npcManager = FindAnyObjectByType<NPCManager>();
         coffee = new Coffee(); //Preload coffee here
 
         coffee.name = "Karen";
-        coffee.size = "Large";
-        coffee.roast = "Light";
+        coffee.size = "large";
+        coffee.roast = "light";
         coffee.ingredientsUsed.Add("DMilk");
         coffee.ingredientsUsed.Add("Vanilla");
         
@@ -40,6 +44,16 @@ public class NPC : MonoBehaviour, IInteractable
         nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
        
     }
+
+    private void Update()
+    {
+        if (isWaiting)
+        {
+            timeWaiting += Time.deltaTime;
+        }
+    }
+
+
     //Move the NPC towards a given LineWaypoint by the speed defined
     public IEnumerator MoveToWaypoint(LineWaypoint waypoint)
     {
@@ -77,6 +91,11 @@ public class NPC : MonoBehaviour, IInteractable
     {
         this.isInteractable = isInteractable;
     }
+    public float GetWaitTime()
+    {
+        return timeWaiting;
+    }
+
     public void Interact(Player player)
     {
        // if (isInteractable)
@@ -88,10 +107,12 @@ public class NPC : MonoBehaviour, IInteractable
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = talkingImage;
                 CoffeeHandler.Instance.AddOrder(coffee);
+                isWaiting = true;
             }
             if (currentWaypoint == npcManager._pickupWaypoint)
             {
-                //Show sprite image above head based on certain variables
+            //Show sprite image above head based on certain variables
+                isWaiting = false;
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = angryImage;
 
