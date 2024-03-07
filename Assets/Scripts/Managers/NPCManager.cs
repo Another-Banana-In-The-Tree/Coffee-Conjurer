@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    [SerializeField] List<NPC> _customers = new List<NPC>();
+    [SerializeField] NPC[] _customers = new NPC[3];
     [SerializeField] public LineWaypoint _entranceWaypoint, _orderWaypoint, _inBetweenWaypoint, _pickupWaypoint;
-    List<LineWaypoint> waypoints;
+    LineWaypoint[] waypoints;
     int _inStoreCustomers;
     private void Awake()
     {
         //Load waypoints into list for ease of use
-        waypoints = new List<LineWaypoint> { _entranceWaypoint, _orderWaypoint, _inBetweenWaypoint, _pickupWaypoint };
+        waypoints = new LineWaypoint[] { _entranceWaypoint, _orderWaypoint, _inBetweenWaypoint, _pickupWaypoint };
     }
     private void Update()
     {
@@ -32,13 +32,13 @@ public class NPCManager : MonoBehaviour
         }
         else _customers[0].SetInteractable(false);
     }
-    public List<LineWaypoint> GetWaypoints()
+    public LineWaypoint[] GetWaypoints()
     {
         return waypoints;
     }
 
     public NPC currentCustomer()
     {
-        return _customers[_customers.Count - 1];
+        return _customers[_customers.Length - 1];
     }
 }

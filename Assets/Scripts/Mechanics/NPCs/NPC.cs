@@ -17,6 +17,32 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] Sprite coffeeImage;
     [SerializeField] SpriteRenderer emoteRenderer;
 
+    [SerializeField] string customerName = "";
+    public enum CoffeeSize
+    {
+        small,
+        medium,
+        large,
+    }
+    [SerializeField] CoffeeSize coffeeSize;
+    public enum CoffeeRoast
+    {
+        light,
+        medium,
+        dark
+    }
+    [SerializeField] CoffeeRoast coffeeRoast;
+    public enum Ingredients
+    {
+        RegMilk,
+        DMilk,
+        Vanilla,
+        Honey,
+        Blood,
+        Cinnamon
+    }
+    [SerializeField] Ingredients[] ingredients;
+
     [SerializeField] LineWaypoint seatWaypoint;
     LineWaypoint currentWaypoint;
     LineWaypoint nextWaypoint;
@@ -38,11 +64,13 @@ public class NPC : MonoBehaviour, IInteractable
         npcManager = FindAnyObjectByType<NPCManager>();
         coffee = new Coffee(); //Preload coffee here
 
-        coffee.name = "Karen";
-        coffee.size = "large";
-        coffee.roast = "light";
-        coffee.ingredientsUsed.Add("DMilk");
-        coffee.ingredientsUsed.Add("Vanilla");
+        coffee.name = customerName;
+        coffee.size = coffeeSize.ToString();
+        coffee.roast = coffeeSize.ToString();
+        foreach (Ingredients ingredient in ingredients)
+        {
+            coffee.ingredientsUsed.Add(ingredient.ToString());
+        }
         
     }
     private void Start()
@@ -127,7 +155,7 @@ public class NPC : MonoBehaviour, IInteractable
         }
         Debug.Log("Move to Waypoint Coroutine Ended");
         currentWaypoint = nextWaypoint;
-        if (_nextWaypointCounter < npcManager.GetWaypoints().Count - 1) _nextWaypointCounter += 1;
+        if (_nextWaypointCounter < npcManager.GetWaypoints().Length - 1) _nextWaypointCounter += 1;
         nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
     }
     public LineWaypoint GetCurrentWaypoint()
