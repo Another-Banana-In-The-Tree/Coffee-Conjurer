@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private static float reputation;
-   // private List<TargetTap> messes = new List<TargetTap>();
+   private List<TargetTap> messes = new List<TargetTap>();
     [SerializeField] private NPCManager npcManager;
     private void Awake()
     {
@@ -58,6 +58,16 @@ public class GameManager : MonoBehaviour
 
 
 
+
+    }
+    
+
+    public void RemoveMess(TargetTap removeTagret)
+    {
+        messes.Remove(removeTagret);
+    }
+   public void AddMess()
+    {
 
     }
    

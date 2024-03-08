@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,13 @@ public class NPC : MonoBehaviour, IInteractable
 
     NPCManager npcManager;
 
-
+    //ANIMATION CODE - EDIT AT THE RISK OF BREAKING ALL OF THE ANIMATION
+    private Animator npcAnimation;
+    [SerializeField] private SpriteRenderer npcSprite;
+    float moveHorizontal;
+    float moveVertical;
+    float moveHorizontalAbs;
+    float moveVerticalAbs;
 
 
     private void Awake()
@@ -32,8 +39,8 @@ public class NPC : MonoBehaviour, IInteractable
         coffee = new Coffee(); //Preload coffee here
 
         coffee.name = "Karen";
-        coffee.size = "large";
-        coffee.roast = "light";
+        coffee.size = "Large";
+        coffee.roast = "Light";
         coffee.ingredientsUsed.Add("DMilk");
         coffee.ingredientsUsed.Add("Vanilla");
         
@@ -50,6 +57,59 @@ public class NPC : MonoBehaviour, IInteractable
         if (isWaiting)
         {
             timeWaiting += Time.deltaTime;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        
+        //More Bad Animation Code courtesy of yours truly, Sean M
+        //moveHorizontal = moveDir.x;
+        //moveVertical = moveDir.y;
+        moveHorizontalAbs = Mathf.Abs(moveHorizontal);
+        moveVerticalAbs = Mathf.Abs(moveVertical);
+
+        if (moveHorizontalAbs * -1 > 0)
+        {
+            moveHorizontalAbs = moveHorizontalAbs * -1;
+        }
+        
+        if (moveVerticalAbs * -1 > 0)
+        {
+            moveVerticalAbs = moveVerticalAbs * -1;
+        }
+        
+        if (moveHorizontalAbs != 0)
+        {
+            if (moveHorizontal < 0)
+            {
+                npcAnimation.SetBool("HoriFlip", true);
+                npcSprite.flipX = false;
+            }
+            else
+            {
+                npcSprite.flipX = true;
+                npcAnimation.SetBool("HoriFlip", false);
+            }
+            npcAnimation.SetFloat("HoriSpeed",moveHorizontalAbs);
+            
+        } else if (moveVerticalAbs != 0)
+        {
+            if (moveVertical < 0)
+            {
+                npcAnimation.SetBool("VertFlip", true);
+            }
+            else
+            {
+                npcAnimation.SetBool("VertFlip", false);
+            }
+            npcAnimation.SetFloat("VertSpeed",moveVerticalAbs);
+            
+        }
+        else
+        { 
+            npcAnimation.SetFloat("HoriSpeed",0);
+            npcAnimation.SetFloat("VertSpeed",0);
         }
     }
 

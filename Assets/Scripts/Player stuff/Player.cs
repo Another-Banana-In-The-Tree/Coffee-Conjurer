@@ -121,14 +121,22 @@ public class Player : MonoBehaviour
     public void ExitMiniGame()
     {
         PlayerInput.EnableGame();
+        
         currentGame.Exit();
+        currentGame = null;
         
     }
 
     public void StartMinigame(MiniGame newGame)
     {
+        if(currentGame != null)
+        {
+            
+            currentGame = null;
+        }
         Debug.Log("setgame");
         currentGame = newGame;
+        currentGame.gameStarted();
         PlayerInput.EnableMinigame();
     }
 }
