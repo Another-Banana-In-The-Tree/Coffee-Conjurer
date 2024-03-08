@@ -17,6 +17,32 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] Sprite coffeeImage;
     [SerializeField] SpriteRenderer emoteRenderer;
 
+    [SerializeField] string customerName = "";
+    public enum CoffeeSize
+    {
+        small,
+        medium,
+        large,
+    }
+    [SerializeField] CoffeeSize coffeeSize;
+    public enum CoffeeRoast
+    {
+        light,
+        medium,
+        dark
+    }
+    [SerializeField] CoffeeRoast coffeeRoast;
+    public enum Ingredients
+    {
+        RegMilk,
+        DMilk,
+        Vanilla,
+        Honey,
+        Blood,
+        Cinnamon
+    }
+    [SerializeField] Ingredients[] ingredients;
+
     [SerializeField] LineWaypoint seatWaypoint;
     LineWaypoint currentWaypoint;
     LineWaypoint nextWaypoint;
@@ -38,11 +64,14 @@ public class NPC : MonoBehaviour, IInteractable
         npcManager = FindAnyObjectByType<NPCManager>();
         coffee = new Coffee(); //Preload coffee here
 
-        coffee.name = "Karen";
-        coffee.size = "Large";
-        coffee.roast = "Light";
-        coffee.ingredientsUsed.Add("DMilk");
-        coffee.ingredientsUsed.Add("Vanilla");
+        //Load Coffee based on defined parameters
+        coffee.name = customerName;
+        coffee.size = coffeeSize.ToString();
+        coffee.roast = coffeeSize.ToString();
+        foreach (Ingredients ingredient in ingredients)
+        {
+            coffee.ingredientsUsed.Add(ingredient.ToString());
+        }
         
     }
     private void Start()
@@ -123,11 +152,14 @@ public class NPC : MonoBehaviour, IInteractable
         while (Time.timeSinceLevelLoad - startTime < timeToMove)
         {
             transform.position = Vector3.Lerp(startPosition, waypoint.GetPosition(), (Time.timeSinceLevelLoad - startTime)/timeToMove);
+            Debug.Log("Moving to " + waypoint);
             yield return null;
         }
         Debug.Log("Move to Waypoint Coroutine Ended");
+        
+        //Set the current waypoint to the next waypoint, and set the new waypoint
         currentWaypoint = nextWaypoint;
-        if (_nextWaypointCounter < npcManager.GetWaypoints().Count - 1) _nextWaypointCounter += 1;
+        if (_nextWaypointCounter < npcManager.GetWaypoints().Length - 1) _nextWaypointCounter += 1;
         nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
     }
     public LineWaypoint GetCurrentWaypoint()
@@ -163,11 +195,15 @@ public class NPC : MonoBehaviour, IInteractable
             Debug.Log("Interacted!");
             if (currentWaypoint == npcManager._orderWaypoint)
             {
+                Debug.Log("Coffee Added!");
                 //Show sprite image above head based on certain variables
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = talkingImage;
+
+                //Add coffee order and re-enable line movement
                 CoffeeHandler.Instance.AddOrder(coffee);
                 isWaiting = true;
+                npcManager.EnableLineMovement();
             }
             if (currentWaypoint == npcManager._pickupWaypoint)
             {
@@ -175,6 +211,8 @@ public class NPC : MonoBehaviour, IInteractable
                 isWaiting = false;
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = angryImage;
+
+                MoveToWaypoint(seatWaypoint);
 
                 CoffeeHandler.Instance.CompareCoffee();
             }

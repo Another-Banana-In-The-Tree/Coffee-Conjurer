@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OldDemos/OLD_DemoScene.unity
     guid: 2c71617422ec1b546a599cbbe541aa57
+  - enabled: 1
+    path: Assets/Scenes/LevelUpDemo.unity
+    guid: ccb54b5b3cb25cd42b2479edfca2379f
   m_configObjects: {}
