@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private static float reputation;
-    private List<TargetTap> messes = new List<TargetTap>();
+   private List<TargetTap> messes = new List<TargetTap>();
     [SerializeField] private NPCManager npcManager;
     private void Awake()
     {
@@ -21,32 +21,53 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        
     }
 
+    private void Update()
+    {
+       
+    }
 
     private void ChangeRep(float change)
     {
         reputation += change;
+        UpdateRep();
     }
 
-    public void CreateMess()
+    private void UpdateRep()
     {
 
     }
 
+    
     public void CalculateReputation(int correct, int incorrect)
     {
         float tempScore = 0;
 
         float timePenalty = npcManager.currentCustomer().GetWaitTime();
 
-
+        print("time penalty: " + timePenalty / 10);
         tempScore = correct + (incorrect * (timePenalty / 10));
+
+        ChangeRep(tempScore);
+
 
         print(tempScore);
 
 
 
+
+    }
+    
+
+    public void RemoveMess(TargetTap removeTagret)
+    {
+        messes.Remove(removeTagret);
+    }
+   public void AddMess()
+    {
 
     }
    

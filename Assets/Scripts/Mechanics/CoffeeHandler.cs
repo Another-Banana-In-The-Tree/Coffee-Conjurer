@@ -7,6 +7,7 @@ public class CoffeeHandler : MonoBehaviour
 
 
     public static CoffeeHandler Instance { get; private set; }
+    
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -106,7 +107,7 @@ public class CoffeeHandler : MonoBehaviour
         var customerOrder = customerOders.Peek();
         var finishedCoffee = coffeeQueue.Peek();
 
-        if(finishedCoffee.size == customerOrder.size)
+        if(finishedCoffee.size.Equals( customerOrder.size, System.StringComparison.OrdinalIgnoreCase))
         {
             points += 2;
             print("size match");
@@ -117,7 +118,7 @@ public class CoffeeHandler : MonoBehaviour
             print("size dont match");
         }
 
-        if (finishedCoffee.roast == customerOrder.roast)
+        if (finishedCoffee.roast.Equals(customerOrder.roast, System.StringComparison.OrdinalIgnoreCase))
         {
             points += 2;
             print("roast match");
@@ -139,6 +140,10 @@ public class CoffeeHandler : MonoBehaviour
                 points += 2; ;
                 print("contains " + i);
             }
+            if (!finishedCoffee.ingredientsUsed.Contains(i))
+            {
+                print("missing ingredient");
+            }
         }
         foreach(string i in finishedCoffee.ingredientsUsed)
         {
@@ -153,7 +158,8 @@ public class CoffeeHandler : MonoBehaviour
         GameManager.Instance.CalculateReputation(points, bad);
         customerOders.Dequeue();
         coffeeQueue.Dequeue();
-
+        orderMenu.changeActiveOrders(customerOders.Peek());
+        
     }
 
     

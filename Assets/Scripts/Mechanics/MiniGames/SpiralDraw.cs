@@ -41,11 +41,12 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         int iterate = 0;
         foreach (Transform child in boundsDraw.transform)
         {
+            if (iterate == 50) break;
             positions[iterate] = child.gameObject;
             iterate++;
         }
 
-        boundsDraw.SetActive(false);
+
 
     }
 
@@ -61,9 +62,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (Vector2.Distance(mousePos, positions[currentSpace].transform.position) <= sensitivity && currentSpace < positions.Length - 1)
+            if (Vector2.Distance(mousePos, positions[currentSpace].transform.position) <= sensitivity && currentSpace < positions.Length )
             {
-                positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+                // positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+                positions[currentSpace].SetActive(false);
                 currentSpace++;
 
                 //Debug.Log("next spot");
@@ -71,10 +73,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
 
             }
-            if (currentSpace == positions.Length - 1 && gameRunning)
+            if (currentSpace == positions.Length && gameRunning)
             {
                 gameRunning = false;
-                positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+               // positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
                 currentCoffee.stirred = true;
 
                 Debug.Log("Wongame");
@@ -98,7 +100,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
         foreach(GameObject i in positions)
         {
-            i.GetComponent<Renderer>().material.color = Color.red;
+            i.SetActive(true);
         }
     }
 
