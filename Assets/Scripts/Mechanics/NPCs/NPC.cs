@@ -64,6 +64,7 @@ public class NPC : MonoBehaviour, IInteractable
         npcManager = FindAnyObjectByType<NPCManager>();
         coffee = new Coffee(); //Preload coffee here
 
+        //Load Coffee based on defined parameters
         coffee.name = customerName;
         coffee.size = coffeeSize.ToString();
         coffee.roast = coffeeSize.ToString();
@@ -151,9 +152,12 @@ public class NPC : MonoBehaviour, IInteractable
         while (Time.timeSinceLevelLoad - startTime < timeToMove)
         {
             transform.position = Vector3.Lerp(startPosition, waypoint.GetPosition(), (Time.timeSinceLevelLoad - startTime)/timeToMove);
+            Debug.Log("Moving to " + waypoint);
             yield return null;
         }
         Debug.Log("Move to Waypoint Coroutine Ended");
+        
+        //Set the current waypoint to the next waypoint, and set the new waypoint
         currentWaypoint = nextWaypoint;
         if (_nextWaypointCounter < npcManager.GetWaypoints().Length - 1) _nextWaypointCounter += 1;
         nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
@@ -191,11 +195,15 @@ public class NPC : MonoBehaviour, IInteractable
             Debug.Log("Interacted!");
             if (currentWaypoint == npcManager._orderWaypoint)
             {
+                Debug.Log("Coffee Added!");
                 //Show sprite image above head based on certain variables
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = talkingImage;
+
+                //Add coffee order and re-enable line movement
                 CoffeeHandler.Instance.AddOrder(coffee);
                 isWaiting = true;
+                npcManager.EnableLineMovement();
             }
             if (currentWaypoint == npcManager._pickupWaypoint)
             {
@@ -203,6 +211,8 @@ public class NPC : MonoBehaviour, IInteractable
                 isWaiting = false;
                 emoteRenderer.enabled = true;
                 emoteRenderer.sprite = angryImage;
+
+                MoveToWaypoint(seatWaypoint);
 
                 CoffeeHandler.Instance.CompareCoffee();
             }
