@@ -41,11 +41,12 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         int iterate = 0;
         foreach (Transform child in boundsDraw.transform)
         {
+            if (iterate == 50) break;
             positions[iterate] = child.gameObject;
             iterate++;
         }
 
-        boundsDraw.SetActive(false);
+
 
     }
 
@@ -63,7 +64,8 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
             if (Vector2.Distance(mousePos, positions[currentSpace].transform.position) <= sensitivity && currentSpace < positions.Length - 1)
             {
-               // positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+                // positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
+                positions[currentSpace].SetActive(false);
                 currentSpace++;
 
                 //Debug.Log("next spot");
@@ -96,10 +98,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         gameRunning = false;
        
 
-        /*foreach(GameObject i in positions)
+        foreach(GameObject i in positions)
         {
-            i.GetComponent<Renderer>().material.color = Color.red;
-        }*/
+            i.SetActive(true);
+        }
     }
 
     public void gameStarted()

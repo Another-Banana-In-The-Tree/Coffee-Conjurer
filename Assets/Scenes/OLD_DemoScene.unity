@@ -3043,6 +3043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24993046defafd419183ece1396806e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcManager: {fileID: 0}
 --- !u!4 &246779112
 Transform:
   m_ObjectHideFlags: 0
@@ -9297,8 +9298,9 @@ MonoBehaviour:
   screen: {fileID: 3941418358786145836}
   minTarget: 0.7
   maxTarget: 0.9
-  points: 0.1
+  timeCount: 0
   pointText: {fileID: 777182774}
+  roast: {fileID: 0}
 --- !u!1 &1880075593
 GameObject:
   m_ObjectHideFlags: 0
@@ -9774,6 +9776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  playerSprite: {fileID: 0}
 --- !u!61 &1959806993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9848,6 +9851,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   numFound: 0
+  toolTip: {fileID: 0}
 --- !u!1 &1972602061
 GameObject:
   m_ObjectHideFlags: 0
