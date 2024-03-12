@@ -1,15 +1,29 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class LineWaypoint : MonoBehaviour
 {
-    List<NPC> npc;
+    [SerializeField] bool isLine = false;
+    [SerializeField] bool isLineVertical = false;
+    private int lineLength = 0;
     
     //Return the number of NPCs in line at this waypoint
-    public int GetNPCCount()
+    public int GetLineLength()
     {
-        return npc.Count;
+        return lineLength;
+    }
+
+    public bool GetIsVeritcal()
+    {
+        return isLineVertical;
+    }
+
+    public bool GetIsLine()
+    {
+        return isLine;
     }
 
     //Return the position of the GameObject
@@ -17,9 +31,12 @@ public class LineWaypoint : MonoBehaviour
     {
         return gameObject.transform.position;
     }
-
-    public void AddCustomer(NPC customer)
+    public void AddCustomer()
     {
-        this.npc.Add(customer);
+        lineLength++;
+    }
+    public void RemoveCustomer()
+    {
+        lineLength--;
     }
 }
