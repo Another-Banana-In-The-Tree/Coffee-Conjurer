@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,9 +9,10 @@ public class NPC : MonoBehaviour, IInteractable
 {
     Coffee coffee;
     bool isInteractable = false;
+    [SerializeField] bool isMoving = false;
+    [SerializeField] float speed = 5;
     float timeWaiting = 0; //Time waiting since entering store
     [SerializeField] float patience = 0; //How much time they'll wait before becoming mad
-    [SerializeField] float timeToMove; //Time it takes to move towards the given waypoint
     private bool isWaiting = false;
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite angryImage;
@@ -46,9 +48,11 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] LineWaypoint seatWaypoint;
     LineWaypoint currentWaypoint;
     LineWaypoint nextWaypoint;
+    Vector3 nextWaypointPos;
     int _nextWaypointCounter = 0;
 
     NPCManager npcManager;
+    LineWaypoint[] waypoints;
 
     //ANIMATION CODE - EDIT AT THE RISK OF BREAKING ALL OF THE ANIMATION
     private Animator npcAnimation;
@@ -59,9 +63,11 @@ public class NPC : MonoBehaviour, IInteractable
     float moveVerticalAbs;
 
 
-    private void Awake()
+    private void Start()
     {
         npcManager = FindAnyObjectByType<NPCManager>();
+        waypoints = npcManager.GetWaypoints();
+        print(waypoints.Length);
         coffee = new Coffee(); //Preload coffee here
 
         //Load Coffee based on defined parameters
@@ -72,20 +78,32 @@ public class NPC : MonoBehaviour, IInteractable
         {
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
-        
-    }
-    private void Start()
-    {
-        //Set the next waypoint to the nextWaypointCounter, which starts with first waypoint in the list
-        nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
-       
     }
 
     private void Update()
     {
         if (isWaiting)
         {
-            timeWaiting += Time.deltaTime;
+            timeWaiting += Time.timeSinceLevelLoad;
+        }
+        if (isMoving)
+        {
+            if (transform.position != nextWaypointPos)
+            {
+                emoteRenderer.enabled = false;
+                transform.position = Vector3.Lerp(transform.position, nextWaypointPos, speed * Time.deltaTime);
+            }
+            else
+            {
+                if (nextWaypoint.GetIsLine())
+                {
+                    DisableMovement();
+                }
+                else
+                {
+                    SetNextPoint();
+                }
+            }
         }
     }
 
@@ -144,23 +162,29 @@ public class NPC : MonoBehaviour, IInteractable
 
 
     //Move the NPC towards a given LineWaypoint by the speed defined
-    public IEnumerator MoveToWaypoint(LineWaypoint waypoint)
+    public void SetNextPoint()
     {
-        emoteRenderer.enabled = false;
-        Vector3 startPosition = transform.position;
-        float startTime = Time.timeSinceLevelLoad;
-        while (Time.timeSinceLevelLoad - startTime < timeToMove)
+        if (_nextWaypointCounter < waypoints.Length)
         {
-            transform.position = Vector3.Lerp(startPosition, waypoint.GetPosition(), (Time.timeSinceLevelLoad - startTime)/timeToMove);
-            Debug.Log("Moving to " + waypoint);
-            yield return null;
+            nextWaypoint = waypoints[_nextWaypointCounter];
+            if (nextWaypoint.GetIsLine())
+            {
+                if (nextWaypoint.GetIsVeritcal())
+                {
+                    nextWaypointPos = nextWaypoint.transform.position + new Vector3(0, -nextWaypoint.GetLineLength(), 0);
+                }
+                else
+                {
+                    nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength(), 0, 0);
+                }
+                nextWaypoint.AddCustomer();
+            }
+            else
+            {
+                nextWaypointPos = nextWaypoint.transform.position;
+            }
+            _nextWaypointCounter++;
         }
-        Debug.Log("Move to Waypoint Coroutine Ended");
-        
-        //Set the current waypoint to the next waypoint, and set the new waypoint
-        currentWaypoint = nextWaypoint;
-        if (_nextWaypointCounter < npcManager.GetWaypoints().Length - 1) _nextWaypointCounter += 1;
-        nextWaypoint = npcManager.GetWaypoints()[_nextWaypointCounter];
     }
     public LineWaypoint GetCurrentWaypoint()
     {
@@ -187,35 +211,42 @@ public class NPC : MonoBehaviour, IInteractable
     {
         return timeWaiting;
     }
-
+    public void EnableMovement()
+    {
+        isMoving = true;
+    }
+    public void DisableMovement()
+    {
+        isMoving = false;
+    }
     public void Interact(Player player)
     {
-       // if (isInteractable)
-        //{
-            Debug.Log("Interacted!");
-            if (currentWaypoint == npcManager._orderWaypoint)
-            {
-                Debug.Log("Coffee Added!");
-                //Show sprite image above head based on certain variables
-                emoteRenderer.enabled = true;
-                emoteRenderer.sprite = talkingImage;
-
-                //Add coffee order and re-enable line movement
-                CoffeeHandler.Instance.AddOrder(coffee);
-                isWaiting = true;
-                npcManager.EnableLineMovement();
-            }
-            if (currentWaypoint == npcManager._pickupWaypoint)
-            {
+        Debug.Log("Interacted!");
+        if (nextWaypoint == waypoints[1])
+        {
+            Debug.Log("Coffee Added!");
             //Show sprite image above head based on certain variables
-                isWaiting = false;
-                emoteRenderer.enabled = true;
-                emoteRenderer.sprite = angryImage;
+            emoteRenderer.enabled = true;
+            emoteRenderer.sprite = talkingImage;
 
-                MoveToWaypoint(seatWaypoint);
+            //Add coffee order and re-enable line movement
+            CoffeeHandler.Instance.AddOrder(coffee);
+            isWaiting = true;
+            EnableMovement();
+            nextWaypoint.RemoveCustomer();
+            SetNextPoint();
+        }
+        if (nextWaypoint == waypoints[3])
+        {
+            //Show sprite image above head based on certain variables
+            isWaiting = false;
+            emoteRenderer.enabled = true;
+            emoteRenderer.sprite = angryImage;
 
-                CoffeeHandler.Instance.CompareCoffee();
-            }
-       // }
+            CoffeeHandler.Instance.CompareCoffee();
+            EnableMovement();
+            nextWaypoint.RemoveCustomer();
+            SetNextPoint();
+        }
     }
 }
