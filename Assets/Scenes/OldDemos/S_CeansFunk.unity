@@ -7725,6 +7725,7 @@ MonoBehaviour:
   coffeeImage: {fileID: 0}
   emoteRenderer: {fileID: 443621643}
   seatWaypoint: {fileID: 1225662942}
+  npcSprite: {fileID: 1511283857}
 --- !u!212 &1511283857
 SpriteRenderer:
   m_ObjectHideFlags: 0

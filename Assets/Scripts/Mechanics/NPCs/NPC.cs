@@ -65,6 +65,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        npcAnimation = GetComponent<Animator>(); //Necessary for animations to work
         npcManager = FindAnyObjectByType<NPCManager>();
         waypoints = npcManager.GetWaypoints();
         print(waypoints.Length);
@@ -109,55 +110,28 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
+        //UGH MAN WTF I CAN'T WORK WITH THIS AM I GETTING STUPIDER OR SOMETHING UGHGHHGHGH
+        //CAN I DROP OUT WHILE STILL GIVING EVERYONE MY WORK AND BEING UNCREDITED AND ALSO NOT LOSING MONEY FUCK MAN
+        // ლ(⋋_⋌)ლ - Sean
+        
         
         //More Bad Animation Code courtesy of yours truly, Sean M
-        //moveHorizontal = moveDir.x;
-        //moveVertical = moveDir.y;
-        moveHorizontalAbs = Mathf.Abs(moveHorizontal);
-        moveVerticalAbs = Mathf.Abs(moveVertical);
+        moveHorizontal = (nextWaypointPos - transform.position).x;
+        moveVertical = (nextWaypointPos - transform.position).y;
 
-        if (moveHorizontalAbs * -1 > 0)
+        if (moveHorizontal > 0.1)
         {
-            moveHorizontalAbs = moveHorizontalAbs * -1;
-        }
-        
-        if (moveVerticalAbs * -1 > 0)
+            npcSprite.flipX = false;
+            npcAnimation.SetFloat("HoriSpeed", 1);
+        } else if (moveHorizontal < 0.1)
         {
-            moveVerticalAbs = moveVerticalAbs * -1;
+            npcSprite.flipX = true;
+            npcAnimation.SetFloat("HoriSpeed", 1);
         }
-        
-        if (moveHorizontalAbs != 0)
-        {
-            if (moveHorizontal < 0)
-            {
-                npcAnimation.SetBool("HoriFlip", true);
-                npcSprite.flipX = false;
-            }
-            else
-            {
-                npcSprite.flipX = true;
-                npcAnimation.SetBool("HoriFlip", false);
-            }
-            npcAnimation.SetFloat("HoriSpeed",moveHorizontalAbs);
-            
-        } else if (moveVerticalAbs != 0)
-        {
-            if (moveVertical < 0)
-            {
-                npcAnimation.SetBool("VertFlip", true);
-            }
-            else
-            {
-                npcAnimation.SetBool("VertFlip", false);
-            }
-            npcAnimation.SetFloat("VertSpeed",moveVerticalAbs);
-            
-        }
-        else
-        { 
-            npcAnimation.SetFloat("HoriSpeed",0);
-            npcAnimation.SetFloat("VertSpeed",0);
-        }
+
+        npcAnimation.SetBool("VertFlip", moveVertical < 0);
+        npcAnimation.SetFloat("VertSpeed",moveVertical);
+         
     }
 
 
