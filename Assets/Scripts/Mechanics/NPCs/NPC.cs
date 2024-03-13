@@ -283,7 +283,7 @@ public class NPC : MonoBehaviour, IInteractable
             emoteRenderer.enabled = true;
             emoteRenderer.sprite = angryImage;
 
-            CoffeeHandler.Instance.CompareCoffee();
+            CoffeeHandler.Instance.CompareCoffee(timeWaiting);
             EnableMovement();
             SitDown();
             nextWaypoint.RemoveCustomer();

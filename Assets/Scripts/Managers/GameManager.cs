@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public void CalculateReputation(int correct, int incorrect)
+    public void CalculateReputation(int correct, int incorrect, float time)
     {
         float tempScore = 0;
 
-        float timePenalty = npcManager.currentCustomer().GetWaitTime();
+        float timePenalty = time;
 
         print("time penalty: " + timePenalty / 10);
         tempScore = correct + (incorrect * (timePenalty / 10));

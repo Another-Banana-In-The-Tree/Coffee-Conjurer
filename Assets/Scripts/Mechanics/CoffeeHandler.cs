@@ -107,7 +107,7 @@ public class CoffeeHandler : MonoBehaviour
         print(coffeeQueue.Peek().stirred);
     }
 
-    public void CompareCoffee()
+    public void CompareCoffee(float waitTime)
     {
         int points = 0;
         int bad  = 0;
@@ -162,10 +162,15 @@ public class CoffeeHandler : MonoBehaviour
         }
 
 
-        GameManager.Instance.CalculateReputation(points, bad);
+        GameManager.Instance.CalculateReputation(points, bad, waitTime);
         customerOders.Dequeue();
         coffeeQueue.Dequeue();
-        orderMenu.changeActiveOrders(customerOders.Peek());
+        if (customerOders.Count > 0)
+        {
+
+
+            orderMenu.changeActiveOrders(customerOders.Peek());
+        }
         
     }
 
