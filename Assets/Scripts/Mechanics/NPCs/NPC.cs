@@ -2,7 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using TMPro.EditorUtilities;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class NPC : MonoBehaviour, IInteractable
@@ -13,8 +18,14 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] float speed = 5;
     float timeWaiting = 0; //Time waiting since entering store
     [SerializeField] float patience = 0; //How much time they'll wait before becoming mad
+    [SerializeField] float timeInStore = 0; //Time the customer will spend sitting in the store
     private bool isWaiting = false;
+    private bool isSitting = false;
+    private bool isUpdatingLine = false;
+
     [SerializeField] Sprite talkingImage;
+    [SerializeField] Sprite happyImage;
+    [SerializeField] Sprite disappointedImage;
     [SerializeField] Sprite angryImage;
     [SerializeField] Sprite coffeeImage;
     [SerializeField] SpriteRenderer emoteRenderer;
@@ -50,9 +61,11 @@ public class NPC : MonoBehaviour, IInteractable
     LineWaypoint nextWaypoint;
     Vector3 nextWaypointPos;
     int _nextWaypointCounter = 0;
+    [SerializeField] float distancePadding = 0.5f;
 
     NPCManager npcManager;
     LineWaypoint[] waypoints;
+    LineWaypoint exitWaypoint;
 
     //ANIMATION CODE - EDIT AT THE RISK OF BREAKING ALL OF THE ANIMATION
     private Animator npcAnimation;
@@ -68,7 +81,9 @@ public class NPC : MonoBehaviour, IInteractable
         npcAnimation = GetComponent<Animator>(); //Necessary for animations to work
         npcManager = FindAnyObjectByType<NPCManager>();
         waypoints = npcManager.GetWaypoints();
-        print(waypoints.Length);
+        exitWaypoint = npcManager.GetExitWaypoint();
+
+       
         coffee = new Coffee(); //Preload coffee here
 
         //Load Coffee based on defined parameters
@@ -85,17 +100,28 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (isWaiting)
         {
-            timeWaiting += Time.timeSinceLevelLoad;
+            timeWaiting += Time.deltaTime;
+        }
+        if (!isSitting && timeWaiting > patience)
+        {
+            LeaveStore(true);
+        }
+        if (isSitting && timeWaiting > timeInStore)
+        {
+            FinishVisit();
         }
         if (isMoving)
         {
-            if (transform.position != nextWaypointPos)
+            float distance = Vector3.Distance(transform.position, nextWaypointPos);
+            if ((distance >= distancePadding))
             {
-                emoteRenderer.enabled = false;
+                print("moving" + name);
+                if (!(timeWaiting > patience) && !isSitting) emoteRenderer.enabled = false;
                 transform.position = Vector3.Lerp(transform.position, nextWaypointPos, speed * Time.deltaTime);
             }
             else
             {
+               // if (isUpdatingLine) isUpdatingLine = false;
                 if (nextWaypoint.GetIsLine())
                 {
                     DisableMovement();
@@ -151,31 +177,83 @@ public class NPC : MonoBehaviour, IInteractable
                 {
                     nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength(), 0, 0);
                 }
-                nextWaypoint.AddCustomer();
+                nextWaypoint.AddCustomer(this);
+                isWaiting = true;
             }
             else
             {
                 nextWaypointPos = nextWaypoint.transform.position;
+                isWaiting = false;
+                timeWaiting = 0;
             }
-            _nextWaypointCounter++;
+             _nextWaypointCounter++;
+            
         }
     }
-    public LineWaypoint GetCurrentWaypoint()
+    public void LeaveStore(bool isMad)
     {
-        return currentWaypoint;
+        print("Leaving...");
+        isMoving = true;
+        if (isMad)
+        {
+            emoteRenderer.enabled = true;
+            emoteRenderer.sprite = disappointedImage;
+            if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
+            nextWaypoint.RemoveCustomer();
+        }
+        else
+        {
+            nextWaypointPos = exitWaypoint.transform.position;
+        }
     }
-    public void SetCurrentWaypoint(LineWaypoint waypoint)
+    public void UpdateLine()
     {
-        currentWaypoint = waypoint;
+        isMoving = true;
+        isUpdatingLine = true;
+        if (nextWaypoint.GetIsLine())
+        {
+            if (nextWaypoint.GetIsVeritcal())
+            {
+                nextWaypointPos = nextWaypoint.transform.position + new Vector3(0,-nextWaypoint.GetLineLength()+1, 0);
+            }
+            else
+            {
+                nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength() - 1, 0, 0);
+            }
+           
+        }
     }
-    public LineWaypoint GetNextWaypoint()
+    public void SitDown()
     {
-        return nextWaypoint;
+        timeWaiting = 0;
+        nextWaypointPos = seatWaypoint.transform.position;
+        seatWaypoint.AddCustomer(this);
+        isWaiting = true;
+        isSitting = true;
+        float distance = Vector3.Distance(transform.position, nextWaypointPos);
+        if ((distance >= distancePadding)) 
+        {
+            emoteRenderer.enabled = true;
+            Debug.Log(emoteRenderer.enabled);
+            float tempScore = GameManager.Instance.GetScore();
+            if (tempScore >= 7) emoteRenderer.sprite = happyImage; //Debug.Log("Happy");
+            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; //Debug.Log("Disppointed");
+            if (tempScore < 3) emoteRenderer.sprite = angryImage; //Debug.Log("Gross");
+        }
     }
-    public void SetNextWaypoint(LineWaypoint waypoint)
+    public void FinishVisit()
     {
-        nextWaypoint = waypoint;
+        LeaveStore(false);
+        seatWaypoint.RemoveCustomer();
+        isWaiting = false;
+        isSitting = false;
     }
+    public int GetCurrentWaypoint()
+    {
+        print("get current waypoint: " + _nextWaypointCounter);
+        return _nextWaypointCounter;
+    }
+   
     //Enable interactivity
     public void SetInteractable(bool isInteractable)
     {
@@ -214,11 +292,10 @@ public class NPC : MonoBehaviour, IInteractable
         {
             //Show sprite image above head based on certain variables
             isWaiting = false;
-            emoteRenderer.enabled = true;
-            emoteRenderer.sprite = angryImage;
 
-            CoffeeHandler.Instance.CompareCoffee();
+            CoffeeHandler.Instance.CompareCoffee(timeWaiting);
             EnableMovement();
+            SitDown();
             nextWaypoint.RemoveCustomer();
             SetNextPoint();
         }

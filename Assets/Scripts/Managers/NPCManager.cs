@@ -12,6 +12,7 @@ public class NPCManager : MonoBehaviour
     [SerializeField] NPC[] _customers = new NPC[3];
     [SerializeField] public LineWaypoint _entranceWaypoint, _orderWaypoint, _inBetweenWaypoint, _pickupWaypoint;
     LineWaypoint[] waypoints;
+    [SerializeField] LineWaypoint exitWaypoint;
 
     [SerializeField] float moveDelay;
     private int customersInStore = 0;
@@ -44,7 +45,10 @@ public class NPCManager : MonoBehaviour
     {
         return waypoints;
     }
-
+    public LineWaypoint GetExitWaypoint()
+    {
+        return exitWaypoint;
+    }
     public NPC currentCustomer()
     {
         return _customers[_customers.Length - 1];

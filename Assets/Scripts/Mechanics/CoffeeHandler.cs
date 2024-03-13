@@ -53,7 +53,7 @@ public class CoffeeHandler : MonoBehaviour
     {
         Coffee newCoffee = new Coffee();
         newCoffee.name = name; 
-        currentCoffee = newCoffee;
+       // currentCoffee = newCoffee;
         coffeeQueue.Enqueue(newCoffee);
 
         print("Coffee created " + coffeeQueue.Peek().name);
@@ -61,7 +61,11 @@ public class CoffeeHandler : MonoBehaviour
 
     public Coffee GetCurrentCoffee()
     {
-        return currentCoffee;
+        if(coffeeQueue.TryPeek(out Coffee coffee))
+        {
+            return coffee;
+        }
+        return null;
     }
 
    /* public Coffee SearchForCoffee(string Name, List<Coffee> coffeeList)
@@ -99,8 +103,15 @@ public class CoffeeHandler : MonoBehaviour
       
     }
 
+    public void PrintCurrentCoffee()
+    {
+        print(coffeeQueue.Peek().name);
+        print(coffeeQueue.Peek().roast);
+        print(coffeeQueue.Peek().size);
+        print(coffeeQueue.Peek().stirred);
+    }
 
-    public void CompareCoffee()
+    public void CompareCoffee(float waitTime)
     {
         int points = 0;
         int bad  = 0;
@@ -155,10 +166,16 @@ public class CoffeeHandler : MonoBehaviour
         }
 
 
-        GameManager.Instance.CalculateReputation(points, bad);
+        GameManager.Instance.CalculateReputation(points, bad, waitTime);
         customerOders.Dequeue();
         coffeeQueue.Dequeue();
-        orderMenu.changeActiveOrders(customerOders.Peek());
+        orderMenu.Clear();
+        if (customerOders.Count > 0)
+        {
+
+
+            orderMenu.changeActiveOrders(customerOders.Peek());
+        }
         
     }
 

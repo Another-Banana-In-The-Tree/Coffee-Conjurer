@@ -40,37 +40,57 @@ public class Interactor : MonoBehaviour
 
     public void Active()
     {
+        bool interacted = false;
+        int loopNum = 0;
+        print("active");
         if(numFound > 0)
         {
+           // print(numFound);
 
             foreach(Collider2D i in ObjHit)
             {
-                var interactable = i.GetComponent<IInteractable>();
-
-                if (interactable != null)
+                loopNum++;
+                if (i != null)
                 {
+                    IInteractable interactable = null;
+                    interactable = i.GetComponent<IInteractable>();
 
-                    if (i.GetComponent<NPC>())
+                    if (interactable != null && !interacted)
                     {
-                        if(CoffeeHandler.Instance.GetCurrentCoffee() == null || CoffeeHandler.Instance.GetCurrentCoffee().stirred)
-                        {
-                            interactable.Interact(player);
-                            break;
-                        }
-                        
-                    }
-                    if (i.GetComponent<MiniGameTrigger>())
-                    {
-                        if(CoffeeHandler.Instance.GetCurrentCoffee() != null || !CoffeeHandler.Instance.GetCurrentCoffee().stirred)
-                        {
-                            interactable.Interact(player);
-                            break;
-                        }
-                    }
+                        Coffee currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
 
 
-                    
+                        if (i.TryGetComponent(out MiniGameTrigger trigger))
+                        {
+                            //print(trigger.gameObject.name);
+                            if (currentCoffee != null)
+                            {
+                                if (!currentCoffee.stirred)
+                                {
+                                    //print("trigger Chosen" + loopNum);
+                                    interacted = true;
+                                    interactable.Interact(player);
+                                    //return;
+                                }
+                            }
+                        }
+                        if (i.TryGetComponent(out NPC npc))
+                        {
+                           // print(npc.gameObject.name );
+                            if (currentCoffee == null || currentCoffee.name != i.name || (currentCoffee.stirred && npc.GetCurrentWaypoint() == 4))
+                            {
+                                //print("npc Chosen" + loopNum);
+                                interacted = true;
+                                interactable.Interact(player);
+                                //return;
+                            }
+
+                        }
+
+
+                    }
                 }
+                //if (interacted) break;
             }
             
         }
