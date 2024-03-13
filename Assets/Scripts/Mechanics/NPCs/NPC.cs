@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class NPC : MonoBehaviour, IInteractable
@@ -21,6 +24,8 @@ public class NPC : MonoBehaviour, IInteractable
     private bool isUpdatingLine = false;
 
     [SerializeField] Sprite talkingImage;
+    [SerializeField] Sprite happyImage;
+    [SerializeField] Sprite disappointedImage;
     [SerializeField] Sprite angryImage;
     [SerializeField] Sprite coffeeImage;
     [SerializeField] SpriteRenderer emoteRenderer;
@@ -110,7 +115,7 @@ public class NPC : MonoBehaviour, IInteractable
             if ((distance >= distancePadding))
             {
                 print("moving" + name);
-                if (!(timeWaiting > patience)) emoteRenderer.enabled = false;
+                if (!(timeWaiting > patience) && !isSitting) emoteRenderer.enabled = false;
                 transform.position = Vector3.Lerp(transform.position, nextWaypointPos, speed * Time.deltaTime);
             }
             else
@@ -218,7 +223,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isMad)
         {
             emoteRenderer.enabled = true;
-            emoteRenderer.sprite = angryImage;
+            emoteRenderer.sprite = disappointedImage;
             if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
             nextWaypoint.RemoveCustomer();
         }
@@ -246,10 +251,21 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void SitDown()
     {
+        timeWaiting = 0;
         nextWaypointPos = seatWaypoint.transform.position;
         seatWaypoint.AddCustomer(this);
         isWaiting = true;
         isSitting = true;
+        float distance = Vector3.Distance(transform.position, nextWaypointPos);
+        if ((distance >= distancePadding)) 
+        {
+            emoteRenderer.enabled = true;
+            Debug.Log(emoteRenderer.enabled);
+            float tempScore = GameManager.Instance.GetScore();
+            if (tempScore >= 7) emoteRenderer.sprite = happyImage; //Debug.Log("Happy");
+            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; //Debug.Log("Disppointed");
+            if (tempScore < 3) emoteRenderer.sprite = angryImage; //Debug.Log("Gross");
+        }
     }
     public void FinishVisit()
     {
@@ -302,8 +318,6 @@ public class NPC : MonoBehaviour, IInteractable
         {
             //Show sprite image above head based on certain variables
             isWaiting = false;
-            emoteRenderer.enabled = true;
-            emoteRenderer.sprite = angryImage;
 
             CoffeeHandler.Instance.CompareCoffee(timeWaiting);
             EnableMovement();
