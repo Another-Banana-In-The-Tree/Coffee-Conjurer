@@ -55,10 +55,13 @@ public class GameManager : MonoBehaviour
         float tempScore = 0;
 
         float timePenalty = time;
-
+        //float superDelay = 0;
         
-        tempScore = correct + (incorrect * (timePenalty / 10));
-        print("correct: " + correct + " -incorrect: " + incorrect + " * time penalty:" + timePenalty / 10);
+        tempScore = correct + (incorrect * (timePenalty / 50));
+       
+        print("correct: " + correct + " -incorrect: " + incorrect + " * time penalty:" + timePenalty / 50 );
+
+        Mathf.Clamp(tempScore, -10f, 10f);
 
         ChangeRep(tempScore);
 
