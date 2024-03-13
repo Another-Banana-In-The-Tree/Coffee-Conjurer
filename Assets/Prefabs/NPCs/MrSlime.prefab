@@ -185,10 +185,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f37547b19414d6459799398ada845dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
+  speed: 5
   patience: 0
-  timeToMove: 1
+  timeInStore: 0
   talkingImage: {fileID: 21300000, guid: 4674a8441f50f704b93be14e53e9d49c, type: 3}
-  angryImage: {fileID: 21300000, guid: 34202d3b7ffb1d042a8389f8b9923677, type: 3}
+  happyImage: {fileID: 1555358138, guid: 7fa7453c35b60b946bbd21ff08fd65cc, type: 3}
+  disappointedImage: {fileID: 21300000, guid: 34202d3b7ffb1d042a8389f8b9923677, type: 3}
+  angryImage: {fileID: 1922298099, guid: 5b4dd27e9968b4a43adf444d68315c76, type: 3}
   coffeeImage: {fileID: 0}
   emoteRenderer: {fileID: 5790123757454804547}
   customerName: Goob
@@ -196,6 +200,7 @@ MonoBehaviour:
   coffeeRoast: 2
   ingredients: 0000000002000000
   seatWaypoint: {fileID: 0}
+  distancePadding: 0.5
   npcSprite: {fileID: 0}
 --- !u!50 &7501690101214262305
 Rigidbody2D:
@@ -295,7 +300,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 59446
+  m_InstanceId: 201390
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
