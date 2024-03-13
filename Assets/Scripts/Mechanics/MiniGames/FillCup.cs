@@ -143,6 +143,7 @@ public class FillCup : MonoBehaviour, MiniGame
         fill.fillAmount = 0;
         background.SetActive(false);
         MiniGameScreen.SetActive(false);
+        PlayerInput.EnableGame();
     }
 
     public void gameStarted()
