@@ -76,7 +76,7 @@ public class NPC : MonoBehaviour, IInteractable
         waypoints = npcManager.GetWaypoints();
         exitWaypoint = npcManager.GetExitWaypoint();
 
-        print(waypoints.Length);
+       
         coffee = new Coffee(); //Preload coffee here
 
         //Load Coffee based on defined parameters
@@ -130,7 +130,7 @@ public class NPC : MonoBehaviour, IInteractable
         //More Bad Animation Code courtesy of yours truly, Sean M
         //moveHorizontal = moveDir.x;
         //moveVertical = moveDir.y;
-        moveHorizontalAbs = Mathf.Abs(moveHorizontal);
+       /* moveHorizontalAbs = Mathf.Abs(moveHorizontal);
         moveVerticalAbs = Mathf.Abs(moveVertical);
 
         if (moveHorizontalAbs * -1 > 0)
@@ -174,7 +174,7 @@ public class NPC : MonoBehaviour, IInteractable
         { 
             npcAnimation.SetFloat("HoriSpeed",0);
             npcAnimation.SetFloat("VertSpeed",0);
-        }
+        }*/
     }
 
 
@@ -236,22 +236,12 @@ public class NPC : MonoBehaviour, IInteractable
         isWaiting = false;
         isSitting = false;
     }
-    public LineWaypoint GetCurrentWaypoint()
+    public int GetCurrentWaypoint()
     {
-        return currentWaypoint;
+        print("get current waypoint: " + _nextWaypointCounter);
+        return _nextWaypointCounter;
     }
-    public void SetCurrentWaypoint(LineWaypoint waypoint)
-    {
-        currentWaypoint = waypoint;
-    }
-    public LineWaypoint GetNextWaypoint()
-    {
-        return nextWaypoint;
-    }
-    public void SetNextWaypoint(LineWaypoint waypoint)
-    {
-        nextWaypoint = waypoint;
-    }
+   
     //Enable interactivity
     public void SetInteractable(bool isInteractable)
     {

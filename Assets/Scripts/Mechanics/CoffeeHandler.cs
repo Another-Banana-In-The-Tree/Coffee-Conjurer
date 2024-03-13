@@ -99,6 +99,13 @@ public class CoffeeHandler : MonoBehaviour
       
     }
 
+    public void PrintCurrentCoffee()
+    {
+        print(coffeeQueue.Peek().name);
+        print(coffeeQueue.Peek().roast);
+        print(coffeeQueue.Peek().size);
+        print(coffeeQueue.Peek().stirred);
+    }
 
     public void CompareCoffee()
     {
