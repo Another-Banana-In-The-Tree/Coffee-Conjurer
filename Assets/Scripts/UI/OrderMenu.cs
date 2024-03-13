@@ -15,6 +15,9 @@ public class OrderMenu : MonoBehaviour
     private Animator anim;
     [SerializeField] private TextMeshProUGUI receipt;
     [SerializeField] private TextMeshProUGUI buttonText;
+
+    [SerializeField] private TextMeshProUGUI repText;
+    [SerializeField] private TextMeshProUGUI goldText;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -57,6 +60,18 @@ public class OrderMenu : MonoBehaviour
         foreach(string i in currentCoffee.ingredientsUsed)
         {
             receipt.text += "\n" + i;
+            if (i.Equals("RegMilk"))
+            {
+                receipt.text += "\n 2% Milk";
+            }
+            else if (i.Equals("DMilk"))
+            {
+                receipt.text += "\n Dragons Milk";
+            }
+            else
+            {
+                receipt.text += "\n" + i;
+            }
         }
     }
 
@@ -64,4 +79,16 @@ public class OrderMenu : MonoBehaviour
     {
         receipt.text = " ";
     }
+
+    public void UpdateRep(float newScore)
+    {
+        repText.text = "Reputation: " + newScore.ToString("F1");
+
+    }
+    public void UpdateGold(float gold)
+    {
+        repText.text = "Gold: " + gold.ToString("F1");
+    } 
+
 }
+
