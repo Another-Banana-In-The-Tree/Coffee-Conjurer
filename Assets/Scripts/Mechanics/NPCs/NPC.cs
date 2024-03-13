@@ -18,7 +18,7 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] float timeInStore = 0; //Time the customer will spend sitting in the store
     private bool isWaiting = false;
     private bool isSitting = false;
-    private bool isUpdatingLine = false;
+    
 
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite angryImage;
@@ -230,7 +230,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void UpdateLine()
     {
         isMoving = true;
-        isUpdatingLine = true;
+        
         if (nextWaypoint.GetIsLine())
         {
             if (nextWaypoint.GetIsVeritcal())
