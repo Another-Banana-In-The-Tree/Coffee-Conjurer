@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
        
     }
 
-    private void ChangeRep(float change)
+    public void ChangeRep(float change)
     {
         reputation += change;
         UpdateRep();
@@ -48,8 +48,9 @@ public class GameManager : MonoBehaviour
 
         float timePenalty = time;
 
-        print("time penalty: " + timePenalty / 10);
+        
         tempScore = correct + (incorrect * (timePenalty / 10));
+        print("correct: " + correct + " -incorrect: " + incorrect + " * time penalty:" + timePenalty / 10);
 
         ChangeRep(tempScore);
 

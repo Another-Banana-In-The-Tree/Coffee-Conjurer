@@ -59,4 +59,9 @@ public class OrderMenu : MonoBehaviour
             receipt.text += "\n" + i;
         }
     }
+
+    public void Clear()
+    {
+        receipt.text = " ";
+    }
 }
