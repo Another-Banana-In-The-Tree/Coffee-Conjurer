@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
     public void ExitMiniGame()
     {
-        PlayerInput.EnableGame();
+        //PlayerInput.EnableGame();
         
         currentGame.Exit();
         currentGame = null;

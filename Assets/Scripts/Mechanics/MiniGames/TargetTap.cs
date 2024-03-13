@@ -21,7 +21,7 @@ public class TargetTap : MonoBehaviour, MiniGame
   
     void OnEnable()
     {
-
+       // PlayerInput.EnableMinigame();
         minRange = start.position.x;
         maxRange = end.position.x;
         var temp = Random.Range(minRange + (target.localScale.x / 2), maxRange - (target.localScale.x / 2));

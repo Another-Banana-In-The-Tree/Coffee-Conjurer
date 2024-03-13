@@ -97,9 +97,9 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         minigameScreen.SetActive(false);
         boundsDraw.SetActive(false);
         gameRunning = false;
-       
+        PlayerInput.EnableGame();
 
-        foreach(GameObject i in positions)
+        foreach (GameObject i in positions)
         {
             i.SetActive(true);
         }

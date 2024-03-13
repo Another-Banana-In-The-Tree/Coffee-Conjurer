@@ -27,6 +27,8 @@ public class FillCup : MonoBehaviour, MiniGame
 
     [SerializeField] private TextMeshProUGUI sizeText;
 
+    
+
     public void Fill(float value)
     {
         
@@ -124,7 +126,7 @@ public class FillCup : MonoBehaviour, MiniGame
     {
         
         finish();
-        Exit();
+       // Exit();
 
         player.StartMinigame(spill);
         
@@ -143,7 +145,11 @@ public class FillCup : MonoBehaviour, MiniGame
         fill.fillAmount = 0;
         background.SetActive(false);
         MiniGameScreen.SetActive(false);
-        PlayerInput.EnableGame();
+        if (currentFill < 0.95)
+        {
+            PlayerInput.EnableGame();
+        }
+       
     }
 
     public void gameStarted()
