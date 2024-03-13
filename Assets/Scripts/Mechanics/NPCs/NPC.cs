@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using UnityEditor;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,7 +15,10 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] float speed = 5;
     float timeWaiting = 0; //Time waiting since entering store
     [SerializeField] float patience = 0; //How much time they'll wait before becoming mad
+    [SerializeField] float timeInStore = 0; //Time the customer will spend sitting in the store
     private bool isWaiting = false;
+    private bool isSitting = false;
+
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite angryImage;
     [SerializeField] Sprite coffeeImage;
@@ -50,9 +55,11 @@ public class NPC : MonoBehaviour, IInteractable
     LineWaypoint nextWaypoint;
     Vector3 nextWaypointPos;
     int _nextWaypointCounter = 0;
+    [SerializeField] float distancePadding = 0.5f;
 
     NPCManager npcManager;
     LineWaypoint[] waypoints;
+    LineWaypoint exitWaypoint;
 
     //ANIMATION CODE - EDIT AT THE RISK OF BREAKING ALL OF THE ANIMATION
     private Animator npcAnimation;
@@ -67,6 +74,8 @@ public class NPC : MonoBehaviour, IInteractable
     {
         npcManager = FindAnyObjectByType<NPCManager>();
         waypoints = npcManager.GetWaypoints();
+        exitWaypoint = npcManager.GetExitWaypoint();
+
         print(waypoints.Length);
         coffee = new Coffee(); //Preload coffee here
 
@@ -84,13 +93,21 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (isWaiting)
         {
-            timeWaiting += Time.timeSinceLevelLoad;
+            timeWaiting += Time.deltaTime;
+        }
+        if (!isSitting && timeWaiting > patience)
+        {
+            LeaveStore(true);
+        }
+        if (isSitting && timeWaiting > timeInStore)
+        {
+            FinishVisit();
         }
         if (isMoving)
         {
-            if (transform.position != nextWaypointPos)
+            if (Vector3.Distance(transform.position, nextWaypointPos) >= distancePadding)
             {
-                emoteRenderer.enabled = false;
+                if (!(timeWaiting > patience)) emoteRenderer.enabled = false;
                 transform.position = Vector3.Lerp(transform.position, nextWaypointPos, speed * Time.deltaTime);
             }
             else
@@ -178,13 +195,46 @@ public class NPC : MonoBehaviour, IInteractable
                     nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength(), 0, 0);
                 }
                 nextWaypoint.AddCustomer();
+                isWaiting = true;
             }
             else
             {
                 nextWaypointPos = nextWaypoint.transform.position;
+                isWaiting = false;
+                timeWaiting = 0;
             }
             _nextWaypointCounter++;
         }
+    }
+    public void LeaveStore(bool isMad)
+    {
+        print("Leaving...");
+        isMoving = true;
+        if (isMad)
+        {
+            emoteRenderer.enabled = true;
+            emoteRenderer.sprite = angryImage;
+            if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
+            nextWaypoint.RemoveCustomer();
+        }
+        else
+        {
+            nextWaypointPos = exitWaypoint.transform.position;
+        }
+    }
+    public void SitDown()
+    {
+        nextWaypointPos = seatWaypoint.transform.position;
+        seatWaypoint.AddCustomer();
+        isWaiting = true;
+        isSitting = true;
+    }
+    public void FinishVisit()
+    {
+        LeaveStore(false);
+        seatWaypoint.RemoveCustomer();
+        isWaiting = false;
+        isSitting = false;
     }
     public LineWaypoint GetCurrentWaypoint()
     {
@@ -245,6 +295,7 @@ public class NPC : MonoBehaviour, IInteractable
 
             CoffeeHandler.Instance.CompareCoffee();
             EnableMovement();
+            SitDown();
             nextWaypoint.RemoveCustomer();
             SetNextPoint();
         }
