@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private static float reputation;
-   private List<TargetTap> messes = new List<TargetTap>();
+    private List<TargetTap> messes = new List<TargetTap>();
     [SerializeField] private NPCManager npcManager;
+    float currentScore = 0;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
        
     }
 
-    private void ChangeRep(float change)
+    public void ChangeRep(float change)
     {
         reputation += change;
         UpdateRep();
@@ -48,19 +49,24 @@ public class GameManager : MonoBehaviour
 
         float timePenalty = time;
 
-        print("time penalty: " + timePenalty / 10);
+        
         tempScore = correct + (incorrect * (timePenalty / 10));
+        print("correct: " + correct + " -incorrect: " + incorrect + " * time penalty:" + timePenalty / 10);
 
         ChangeRep(tempScore);
 
 
         print(tempScore);
 
-
+        currentScore = tempScore;
 
 
     }
     
+    public float GetScore()
+    {
+        return currentScore;
+    }
 
     public void RemoveMess(TargetTap removeTagret)
     {
