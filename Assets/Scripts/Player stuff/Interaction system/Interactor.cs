@@ -62,12 +62,12 @@ public class Interactor : MonoBehaviour
 
                         if (i.TryGetComponent(out MiniGameTrigger trigger))
                         {
-                            print(trigger.gameObject.name);
+                            //print(trigger.gameObject.name);
                             if (currentCoffee != null)
                             {
                                 if (!currentCoffee.stirred)
                                 {
-                                    print("trigger Chosen" + loopNum);
+                                    //print("trigger Chosen" + loopNum);
                                     interacted = true;
                                     interactable.Interact(player);
                                     //return;
@@ -76,10 +76,10 @@ public class Interactor : MonoBehaviour
                         }
                         if (i.TryGetComponent(out NPC npc))
                         {
-                            print(npc.gameObject.name );
+                           // print(npc.gameObject.name );
                             if (currentCoffee == null || currentCoffee.name != i.name || (currentCoffee.stirred && npc.GetCurrentWaypoint() == 4))
                             {
-                                print("npc Chosen" + loopNum);
+                                //print("npc Chosen" + loopNum);
                                 interacted = true;
                                 interactable.Interact(player);
                                 //return;

@@ -18,6 +18,7 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] float timeInStore = 0; //Time the customer will spend sitting in the store
     private bool isWaiting = false;
     private bool isSitting = false;
+    private bool isUpdatingLine = false;
 
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite angryImage;
@@ -105,13 +106,16 @@ public class NPC : MonoBehaviour, IInteractable
         }
         if (isMoving)
         {
-            if (Vector3.Distance(transform.position, nextWaypointPos) >= distancePadding)
+            float distance = Vector3.Distance(transform.position, nextWaypointPos);
+            if ((distance >= distancePadding))
             {
+                print("moving" + name);
                 if (!(timeWaiting > patience)) emoteRenderer.enabled = false;
                 transform.position = Vector3.Lerp(transform.position, nextWaypointPos, speed * Time.deltaTime);
             }
             else
             {
+               // if (isUpdatingLine) isUpdatingLine = false;
                 if (nextWaypoint.GetIsLine())
                 {
                     DisableMovement();
@@ -194,7 +198,7 @@ public class NPC : MonoBehaviour, IInteractable
                 {
                     nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength(), 0, 0);
                 }
-                nextWaypoint.AddCustomer();
+                nextWaypoint.AddCustomer(this);
                 isWaiting = true;
             }
             else
@@ -203,7 +207,8 @@ public class NPC : MonoBehaviour, IInteractable
                 isWaiting = false;
                 timeWaiting = 0;
             }
-            _nextWaypointCounter++;
+             _nextWaypointCounter++;
+            
         }
     }
     public void LeaveStore(bool isMad)
@@ -222,10 +227,27 @@ public class NPC : MonoBehaviour, IInteractable
             nextWaypointPos = exitWaypoint.transform.position;
         }
     }
+    public void UpdateLine()
+    {
+        isMoving = true;
+        isUpdatingLine = true;
+        if (nextWaypoint.GetIsLine())
+        {
+            if (nextWaypoint.GetIsVeritcal())
+            {
+                nextWaypointPos = nextWaypoint.transform.position + new Vector3(0,-nextWaypoint.GetLineLength()+1, 0);
+            }
+            else
+            {
+                nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength() - 1, 0, 0);
+            }
+           
+        }
+    }
     public void SitDown()
     {
         nextWaypointPos = seatWaypoint.transform.position;
-        seatWaypoint.AddCustomer();
+        seatWaypoint.AddCustomer(this);
         isWaiting = true;
         isSitting = true;
     }
