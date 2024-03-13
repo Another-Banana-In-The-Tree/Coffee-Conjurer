@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
 
     public void StartMinigame(MiniGame newGame)
     {
+        SetMovementDir(Vector2.zero);
         if(currentGame != null)
         {
             

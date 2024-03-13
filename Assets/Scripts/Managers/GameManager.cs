@@ -7,9 +7,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private static float reputation;
+    private static float gold;
     private List<TargetTap> messes = new List<TargetTap>();
     [SerializeField] private NPCManager npcManager;
     float currentScore = 0;
+    [SerializeField] OrderMenu orderMenu;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -26,9 +28,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void Update()
+    public void UpdateGold(float change)
     {
-       
+        gold += change;
+
     }
 
     public void ChangeRep(float change)
@@ -39,7 +42,11 @@ public class GameManager : MonoBehaviour
 
     private void UpdateRep()
     {
-
+        orderMenu.UpdateRep(reputation);
+    } 
+    private void UpdateGold()
+    {
+        orderMenu.UpdateGold(gold);
     }
 
     

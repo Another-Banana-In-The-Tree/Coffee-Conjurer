@@ -99,6 +99,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     public void finish()
     {
+        if (currentCoffee.roast == null) return;
         if(currentFill > 0.28 && currentFill < 0.38)
         {
             currentCoffee.size = "Small";
@@ -115,6 +116,7 @@ public class FillCup : MonoBehaviour, MiniGame
         {
             currentCoffee.size = "Not Right";
         }
+        Exit();
         print(currentCoffee.size);
         
     }
@@ -134,6 +136,7 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
+        sizeText.text = "empty";
         slider.value = 0;
         gameActive = false;
         currentFill = 0;
