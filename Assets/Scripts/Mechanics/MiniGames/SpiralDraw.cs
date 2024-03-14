@@ -78,7 +78,8 @@ public class SpiralDraw : MonoBehaviour, MiniGame
                 gameRunning = false;
                // positions[currentSpace].GetComponent<Renderer>().material.color = Color.blue;
                 currentCoffee.stirred = true;
-
+                PlayerInput.EnableGame();
+                Exit();
                 Debug.Log("Wongame");
             }
         }
@@ -96,9 +97,9 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         minigameScreen.SetActive(false);
         boundsDraw.SetActive(false);
         gameRunning = false;
-       
+        PlayerInput.EnableGame();
 
-        foreach(GameObject i in positions)
+        foreach (GameObject i in positions)
         {
             i.SetActive(true);
         }

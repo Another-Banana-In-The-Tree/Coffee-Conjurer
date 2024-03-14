@@ -40,10 +40,13 @@ public class LineWaypoint : MonoBehaviour
     {
         lineLength--;
         linedNPC.Dequeue();
+        int x = lineLength;
         foreach(NPC i in linedNPC)
         {
+            
             print(i.gameObject.name);
-            i.UpdateLine();
+            i.UpdateLine( x);
+            x--;
         }
     }
 }

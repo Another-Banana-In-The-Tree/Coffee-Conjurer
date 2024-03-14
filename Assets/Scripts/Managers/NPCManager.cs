@@ -18,6 +18,7 @@ public class NPCManager : MonoBehaviour
     private int customersInStore = 0;
     private float timeSinceLastMove = 0;
     private float lastMoveTime = 0;
+    private float totalTime;
     private void Awake()
     {
         //Load waypoints into list for ease of use
@@ -25,12 +26,13 @@ public class NPCManager : MonoBehaviour
     }
     private void Update()
     {
-        timeSinceLastMove = Time.realtimeSinceStartup - lastMoveTime;
+        totalTime += Time.deltaTime;
+        timeSinceLastMove = totalTime - lastMoveTime;
 
         if (timeSinceLastMove >= moveDelay && customersInStore < _customers.Length)
         {
             MoveNext();
-            lastMoveTime = Time.realtimeSinceStartup;
+            lastMoveTime = totalTime;
         }
     }
 

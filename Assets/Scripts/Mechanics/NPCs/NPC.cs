@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using TMPro.EditorUtilities;
+//using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Timeline;
+//using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
@@ -33,26 +33,29 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] string customerName = "";
     public enum CoffeeSize
     {
-        small,
-        medium,
-        large,
+        Small,
+        Medium,
+        Large,
     }
     [SerializeField] CoffeeSize coffeeSize;
     public enum CoffeeRoast
     {
-        light,
-        medium,
-        dark
+        Light,
+        Medium,
+        Dark
     }
     [SerializeField] CoffeeRoast coffeeRoast;
     public enum Ingredients
     {
         RegMilk,
         DMilk,
+        VegetableMilk,
         Vanilla,
         Honey,
         Blood,
-        Cinnamon
+        Cinnamon,
+        CaramelDrizzle,
+        YetiTears
     }
     [SerializeField] Ingredients[] ingredients;
 
@@ -88,7 +91,7 @@ public class NPC : MonoBehaviour, IInteractable
         //Load Coffee based on defined parameters
         coffee.name = customerName;
         coffee.size = coffeeSize.ToString();
-        coffee.roast = coffeeSize.ToString();
+        coffee.roast = coffeeRoast.ToString();
         foreach (Ingredients ingredient in ingredients)
         {
             coffee.ingredientsUsed.Add(ingredient.ToString());
@@ -104,6 +107,7 @@ public class NPC : MonoBehaviour, IInteractable
         }
         if (!isSitting && timeWaiting > patience)
         {
+            print("leaving");
             LeaveStore(true);
         }
         if (isSitting && timeWaiting > timeInStore)
@@ -115,7 +119,7 @@ public class NPC : MonoBehaviour, IInteractable
             float distance = Vector3.Distance(transform.position, nextWaypointPos);
             if ((distance >= distancePadding))
             {
-                print("moving" + name);
+                //print("moving" + name);
                 if (!(timeWaiting > patience) && !isSitting) emoteRenderer.enabled = false;
                 transform.position = Vector3.Lerp(transform.position, nextWaypointPos, speed * Time.deltaTime);
             }
@@ -125,6 +129,8 @@ public class NPC : MonoBehaviour, IInteractable
                 if (nextWaypoint.GetIsLine())
                 {
                     DisableMovement();
+                    
+                    
                 }
                 else
                 {
@@ -206,6 +212,11 @@ public class NPC : MonoBehaviour, IInteractable
                 }
                 nextWaypoint.AddCustomer(this);
                 isWaiting = true;
+                print(nextWaypoint.GetLineLength());
+                if (nextWaypoint.GetLineLength() == 1)
+                {
+                    SetInteractable();
+                }
             }
             else
             {
@@ -233,22 +244,29 @@ public class NPC : MonoBehaviour, IInteractable
             nextWaypointPos = exitWaypoint.transform.position;
         }
     }
-    public void UpdateLine()
+    public void UpdateLine(int offset)
     {
+        print("updating line" + gameObject.name);
         isMoving = true;
         isUpdatingLine = true;
-        if (nextWaypoint.GetIsLine())
-        {
+        
             if (nextWaypoint.GetIsVeritcal())
             {
-                nextWaypointPos = nextWaypoint.transform.position + new Vector3(0,-nextWaypoint.GetLineLength()+1, 0);
+                nextWaypointPos = waypoints[3].transform.position + new Vector3(0,-nextWaypoint.GetLineLength()+offset, 0);
             }
             else
             {
-                nextWaypointPos = nextWaypoint.transform.position + new Vector3(nextWaypoint.GetLineLength() - 1, 0, 0);
+            print("horizontal");
+            nextWaypointPos = waypoints[1].transform.position + new Vector3((nextWaypoint.GetLineLength() - offset), 0, 0);
             }
-           
-        }
+
+            if((nextWaypoint.GetLineLength() - offset) == 0 && !isInteractable)
+             {
+
+                 SetInteractable();
+             }
+
+        print("updating line " + gameObject.name + " new pos: " + nextWaypointPos);
     }
     public void SitDown()
     {
@@ -277,14 +295,15 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public int GetCurrentWaypoint()
     {
-        print("get current waypoint: " + _nextWaypointCounter);
+       // print("get current waypoint: " + _nextWaypointCounter);
         return _nextWaypointCounter;
     }
    
     //Enable interactivity
-    public void SetInteractable(bool isInteractable)
+    public void SetInteractable()
     {
-        this.isInteractable = isInteractable;
+        isInteractable = !isInteractable;
+        print(name + isInteractable);
     }
     public float GetWaitTime()
     {
@@ -301,6 +320,8 @@ public class NPC : MonoBehaviour, IInteractable
     public void Interact(Player player)
     {
         Debug.Log("Interacted!");
+        if (!isInteractable) return;
+        SetInteractable();
         if (nextWaypoint == waypoints[1])
         {
             DT.Trigger();

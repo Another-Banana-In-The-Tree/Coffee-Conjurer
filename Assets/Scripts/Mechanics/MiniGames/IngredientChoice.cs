@@ -11,7 +11,7 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     public void AddIngredient(string ingredient)
     {
 
-        if (!currentCoffee.stirred)
+        if (!currentCoffee.stirred && currentCoffee.size !=null)
         {
             currentCoffee.ingredientsUsed.Add(ingredient);
         }
@@ -25,6 +25,7 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     {
         screen.SetActive(false);
         backGround.SetActive(false);
+        PlayerInput.EnableGame();
     }
 
     public void gameStarted()
