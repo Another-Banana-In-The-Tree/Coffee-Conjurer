@@ -410,6 +410,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""86f06904-7a8f-4b1d-b3fa-5c933de00951"",
+            ""actions"": [
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2d485d2-b77e-40a8-a472-7f33d9d098b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5dcbda61-f0e9-4244-ad73-610e247f600b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -431,6 +459,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_DevTool_SetSize = m_DevTool.FindAction("SetSize", throwIfNotFound: true);
         m_DevTool_CompareCoffee = m_DevTool.FindAction("CompareCoffee", throwIfNotFound: true);
         m_DevTool_CreateCoffee = m_DevTool.FindAction("CreateCoffee", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_Select = m_Dialogue.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -712,6 +743,52 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public DevToolActions @DevTool => new DevToolActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
+    private readonly InputAction m_Dialogue_Select;
+    public struct DialogueActions
+    {
+        private @Controls m_Wrapper;
+        public DialogueActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Select => m_Wrapper.m_Dialogue_Select;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+        }
+
+        private void UnregisterCallbacks(IDialogueActions instance)
+        {
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+        }
+
+        public void RemoveCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
     public interface IGameActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -732,5 +809,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSetSize(InputAction.CallbackContext context);
         void OnCompareCoffee(InputAction.CallbackContext context);
         void OnCreateCoffee(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnSelect(InputAction.CallbackContext context);
     }
 }

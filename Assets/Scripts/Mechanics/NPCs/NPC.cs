@@ -77,7 +77,7 @@ public class NPC : MonoBehaviour, IInteractable
     float moveVertical;
     float moveHorizontalAbs;
     float moveVerticalAbs;
-
+    DialogueTrigger DT;
 
     private void Start()
     {
@@ -96,6 +96,7 @@ public class NPC : MonoBehaviour, IInteractable
         {
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
+       DT =  gameObject.GetComponent<DialogueTrigger>();
     }
 
     private void Update()
@@ -323,6 +324,8 @@ public class NPC : MonoBehaviour, IInteractable
         SetInteractable();
         if (nextWaypoint == waypoints[1])
         {
+            DT.Trigger();
+            //remember to chhange iswaiting to true when dialogue finishes (for later)
             Debug.Log("Coffee Added!");
             //Show sprite image above head based on certain variables
             emoteRenderer.enabled = true;
