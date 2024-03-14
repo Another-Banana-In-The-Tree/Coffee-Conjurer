@@ -27,6 +27,8 @@ public class FillCup : MonoBehaviour, MiniGame
 
     [SerializeField] private TextMeshProUGUI sizeText;
 
+    
+
     public void Fill(float value)
     {
         
@@ -99,6 +101,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     public void finish()
     {
+        if (currentCoffee.roast == null) return;
         if(currentFill > 0.28 && currentFill < 0.38)
         {
             currentCoffee.size = "Small";
@@ -115,6 +118,7 @@ public class FillCup : MonoBehaviour, MiniGame
         {
             currentCoffee.size = "Not Right";
         }
+        Exit();
         print(currentCoffee.size);
         
     }
@@ -122,7 +126,7 @@ public class FillCup : MonoBehaviour, MiniGame
     {
         
         finish();
-        Exit();
+       // Exit();
 
         player.StartMinigame(spill);
         
@@ -134,12 +138,18 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
+        sizeText.text = "empty";
         slider.value = 0;
         gameActive = false;
         currentFill = 0;
         fill.fillAmount = 0;
         background.SetActive(false);
         MiniGameScreen.SetActive(false);
+        if (currentFill < 0.95)
+        {
+            PlayerInput.EnableGame();
+        }
+       
     }
 
     public void gameStarted()
