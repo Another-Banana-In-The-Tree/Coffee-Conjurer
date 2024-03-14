@@ -33,26 +33,29 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] string customerName = "";
     public enum CoffeeSize
     {
-        small,
-        medium,
-        large,
+        Small,
+        Medium,
+        Large,
     }
     [SerializeField] CoffeeSize coffeeSize;
     public enum CoffeeRoast
     {
-        light,
-        medium,
-        dark
+        Light,
+        Medium,
+        Dark
     }
     [SerializeField] CoffeeRoast coffeeRoast;
     public enum Ingredients
     {
         RegMilk,
         DMilk,
+        VegetableMilk,
         Vanilla,
         Honey,
         Blood,
-        Cinnamon
+        Cinnamon,
+        CaramelDrizzle,
+        YetiTears
     }
     [SerializeField] Ingredients[] ingredients;
 
