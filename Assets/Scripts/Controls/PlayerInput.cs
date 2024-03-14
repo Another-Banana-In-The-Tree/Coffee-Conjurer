@@ -77,7 +77,10 @@ public class PlayerInput : MonoBehaviour
              CoffeeHandler.Instance.PrintCurrentCoffee();
         };
 
+        _controls.Dialogue.Select.performed += ctx =>
+        {
 
+        };
 
         _controls.DevTool.Enable();
     }
@@ -92,5 +95,9 @@ public class PlayerInput : MonoBehaviour
     {
         _controls.Game.Disable();
         _controls.MiniGame.Enable();
+    }
+    public static void DisableGame()
+    {
+        _controls.Game.Disable();
     }
 }

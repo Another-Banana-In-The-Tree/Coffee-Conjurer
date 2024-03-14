@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7501690101214262305}
   - component: {fileID: 125584169423108323}
   - component: {fileID: 5589754465361537085}
+  - component: {fileID: 8268206244324701815}
   m_Layer: 6
   m_Name: MrSlime
   m_TagString: Untagged
@@ -300,7 +301,20 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 201390
+  m_InstanceId: 34522
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
+--- !u!114 &8268206244324701815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991188926388027738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af702c219f053a74285e7498f3d03c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguestrings: []
