@@ -198,7 +198,7 @@ MonoBehaviour:
   customerName: Goob
   coffeeSize: 2
   coffeeRoast: 0
-  ingredients: 010000000200000005000000
+  ingredients: 010000000300000006000000
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   npcSprite: {fileID: 0}
