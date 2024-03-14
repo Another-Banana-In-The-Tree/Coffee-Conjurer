@@ -38,7 +38,7 @@ public class Pressure : MonoBehaviour, MiniGame
                 GameEnd();
                 isPlaying = false;
             }
-            if (fill > minTarget && fill < maxTarget)
+            if (fill > minTarget)
             {
                 timeCount += 0.2f * Time.deltaTime;
 
@@ -71,7 +71,7 @@ public class Pressure : MonoBehaviour, MiniGame
     {
         if (currentCoffee.roast == null)
         {
-            if (fill >= 1) return;
+           // if (fill >= 1) return;
             AddMore();
         }
     }
@@ -79,7 +79,8 @@ public class Pressure : MonoBehaviour, MiniGame
     private void AddMore()
     {
         fill += clickBonus;
-        float tempSum = 0;
+        Mathf.Clamp(fill, 0f, 1f);
+            float tempSum = 0;
         foreach (float i in points)
         {
             tempSum += i;
@@ -135,8 +136,8 @@ public class Pressure : MonoBehaviour, MiniGame
         isPlaying = false;
         canvas.SetActive(false);
         screen.SetActive(false);
-
-       // CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+        PlayerInput.EnableGame();
+        // CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
     }
 
     public void gameStarted()

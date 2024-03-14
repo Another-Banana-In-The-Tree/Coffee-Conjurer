@@ -25,6 +25,7 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     {
         screen.SetActive(false);
         backGround.SetActive(false);
+        PlayerInput.EnableGame();
     }
 
     public void gameStarted()
