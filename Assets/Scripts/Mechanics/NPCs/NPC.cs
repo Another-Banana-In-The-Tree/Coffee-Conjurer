@@ -128,6 +128,8 @@ public class NPC : MonoBehaviour, IInteractable
                 if (nextWaypoint.GetIsLine())
                 {
                     DisableMovement();
+                    
+                    
                 }
                 else
                 {
@@ -209,6 +211,11 @@ public class NPC : MonoBehaviour, IInteractable
                 }
                 nextWaypoint.AddCustomer(this);
                 isWaiting = true;
+                print(nextWaypoint.GetLineLength());
+                if (nextWaypoint.GetLineLength() == 1)
+                {
+                    SetInteractable();
+                }
             }
             else
             {
@@ -252,6 +259,12 @@ public class NPC : MonoBehaviour, IInteractable
             nextWaypointPos = waypoints[1].transform.position + new Vector3((nextWaypoint.GetLineLength() - offset), 0, 0);
             }
 
+            if((nextWaypoint.GetLineLength() - offset) == 0 && !isInteractable)
+             {
+
+                 SetInteractable();
+             }
+
         print("updating line " + gameObject.name + " new pos: " + nextWaypointPos);
     }
     public void SitDown()
@@ -286,9 +299,10 @@ public class NPC : MonoBehaviour, IInteractable
     }
    
     //Enable interactivity
-    public void SetInteractable(bool isInteractable)
+    public void SetInteractable()
     {
-        this.isInteractable = isInteractable;
+        isInteractable = !isInteractable;
+        print(name + isInteractable);
     }
     public float GetWaitTime()
     {
@@ -305,6 +319,8 @@ public class NPC : MonoBehaviour, IInteractable
     public void Interact(Player player)
     {
         Debug.Log("Interacted!");
+        if (!isInteractable) return;
+        SetInteractable();
         if (nextWaypoint == waypoints[1])
         {
             Debug.Log("Coffee Added!");

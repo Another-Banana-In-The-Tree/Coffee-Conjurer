@@ -59,7 +59,7 @@ public class OrderMenu : MonoBehaviour
         print(receipt.text);
         foreach(string i in currentCoffee.ingredientsUsed)
         {
-            receipt.text += "\n" + i;
+            
             if (i.Equals("RegMilk"))
             {
                 receipt.text += "\n 2% Milk";
