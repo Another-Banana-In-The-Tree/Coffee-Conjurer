@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5464061139150913415}
   - component: {fileID: 6169093778577700876}
   - component: {fileID: 5834722193979335284}
+  - component: {fileID: 8618693502604315775}
   m_Layer: 6
   m_Name: Haider
   m_TagString: Untagged
@@ -300,7 +301,84 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -20628
+  m_InstanceId: 119278
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
+--- !u!114 &8618693502604315775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412117421223361595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af702c219f053a74285e7498f3d03c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguestrings:
+  - text: Hey, usually I'd get a shaken espresso but you nerds don't carry it, so
+      I'll just get a large light roast coffee with dragon milk, vanilla and a bit
+      of cinnamon on top.
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: Oh, sorry about that.
+    dialogueOption2: Shut up, nerd!
+    dialogueOption3: Coming right up!
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: No you're not.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Thanks. Also, did you know they had to cut out one of my lines because
+      it would have made the game too good? It's true!
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Nerd? Says the one who belongs in a green Zelda shirt with cargo shorts.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  other: {fileID: 0}
