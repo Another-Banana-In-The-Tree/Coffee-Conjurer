@@ -13975,6 +13975,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jimmy
       objectReference: {fileID: 0}
+    - target: {fileID: 4576755983665376989, guid: deaf48f2797665c499e1fdbf7ade3a7b, type: 3}
+      propertyPath: other
+      value: 
+      objectReference: {fileID: 643126774}
+    - target: {fileID: 4576755983665376989, guid: deaf48f2797665c499e1fdbf7ade3a7b, type: 3}
+      propertyPath: dialoguestrings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576755983665376989, guid: deaf48f2797665c499e1fdbf7ade3a7b, type: 3}
+      propertyPath: dialoguestrings.Array.data[0].text
+      value: Hm. Pretty nice place you got here. It's clearly still in production,
+        but I like what I see
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576755983665376989, guid: deaf48f2797665c499e1fdbf7ade3a7b, type: 3}
+      propertyPath: dialoguestrings.Array.data[1].text
+      value: I'll have a large coffee, medium roast with 2%
+      objectReference: {fileID: 0}
     - target: {fileID: 8362743879112861666, guid: deaf48f2797665c499e1fdbf7ade3a7b, type: 3}
       propertyPath: m_Mesh
       value: 
