@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
         if (moveHorizontalAbs * -1 > 0)
         {
             moveHorizontalAbs = moveHorizontalAbs * -1;
+            FindObjectOfType<AudioManager>().Play("Walking");
         }
         
         if (moveVerticalAbs * -1 > 0)
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
     public void Interact()
     {
         interactor.Active();
+        FindObjectOfType<AudioManager>().Play("Select");
     }
 
     public void PlayMiniGame()
