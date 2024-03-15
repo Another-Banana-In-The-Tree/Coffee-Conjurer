@@ -33,8 +33,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+
 
         dialoguelist = textToPrint;
         currentDialougeIndex = 0;
@@ -50,9 +49,9 @@ public class DialogueManager : MonoBehaviour
         option3Button.interactable = false;
 
 
-        option1Button.GetComponentInChildren<TMP_Text>().text = "No Option";
-        option2Button.GetComponentInChildren<TMP_Text>().text = "No Option";
-        option3Button.GetComponentInChildren<TMP_Text>().text = "No Option";
+        option1Button.GetComponentInChildren<TMP_Text>().text = "";
+        option2Button.GetComponentInChildren<TMP_Text>().text = "";
+        option3Button.GetComponentInChildren<TMP_Text>().text = "";
 
     }
     private bool optionSelected = false;
@@ -122,7 +121,6 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 }
