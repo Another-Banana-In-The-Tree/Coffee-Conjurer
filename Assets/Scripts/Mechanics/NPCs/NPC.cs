@@ -317,6 +317,13 @@ public class NPC : MonoBehaviour, IInteractable
     {
         isMoving = false;
     }
+    public void DialogueFinish()
+    {
+        isWaiting = true;
+        EnableMovement();
+        nextWaypoint.RemoveCustomer();
+        SetNextPoint();
+    }
     public void Interact(Player player)
     {
         Debug.Log("Interacted!");
@@ -333,10 +340,8 @@ public class NPC : MonoBehaviour, IInteractable
 
             //Add coffee order and re-enable line movement
             CoffeeHandler.Instance.AddOrder(coffee);
-            isWaiting = true;
-            EnableMovement();
-            nextWaypoint.RemoveCustomer();
-            SetNextPoint();
+            
+            
         }
         if (nextWaypoint == waypoints[3])
         {

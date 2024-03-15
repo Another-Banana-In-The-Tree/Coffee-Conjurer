@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float turnSpeed = 2f;
 
     private List<dialogueString> dialoguelist;
-
+    private NPC currentNPC;
     [Header("Player")]
     //playercontroller reference
     private Transform playerCamera;
@@ -29,8 +29,10 @@ public class DialogueManager : MonoBehaviour
         playerCamera = Camera.main.transform;
     }
 
-    public void DialogueStart(List<dialogueString> textToPrint)
+    public void DialogueStart(List<dialogueString> textToPrint, NPC npc)
     {
+        PlayerInput.DisableGame();
+        currentNPC = npc;
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 
@@ -121,6 +123,8 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);
+        currentNPC.DialogueFinish();
+        PlayerInput.EnableGame();
 
     }
 }
