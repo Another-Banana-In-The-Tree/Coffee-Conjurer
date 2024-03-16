@@ -105,7 +105,7 @@ public class Pressure : MonoBehaviour, MiniGame
         print("you scored an average of: " +  tempSum);
         
 
-        if(tempSum > 0.49 && tempSum < 0.69)
+        if( tempSum < 0.69)
         {
             currentCoffee.roast = "light";
             print("light");
@@ -120,10 +120,14 @@ public class Pressure : MonoBehaviour, MiniGame
             currentCoffee.roast = "dark";
             print("Dark");
         }
-        timeCount = 0;
-        fill = 0;
-        points.Clear();
-        roast.text = currentCoffee.roast;
+        if (currentCoffee.roast != null)
+        {
+            timeCount = 0;
+            fill = 0;
+            points.Clear();
+            roast.text = currentCoffee.roast;
+        }
+        
 
     }
     

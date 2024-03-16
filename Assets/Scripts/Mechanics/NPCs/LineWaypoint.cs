@@ -9,7 +9,7 @@ public class LineWaypoint : MonoBehaviour
     [SerializeField] bool isLine = false;
     [SerializeField] bool isLineVertical = false;
     private int lineLength = 0;
-    private Queue<NPC> linedNPC = new Queue<NPC>();
+    private List<NPC> linedNPC = new List<NPC>();
     //Return the number of NPCs in line at this waypoint
     public int GetLineLength()
     {
@@ -34,19 +34,23 @@ public class LineWaypoint : MonoBehaviour
     public void AddCustomer(NPC newNPC)
     {
         lineLength++;
-        linedNPC.Enqueue(newNPC);
+        linedNPC.Add(newNPC);
     }
-    public void RemoveCustomer()
+    public void RemoveCustomer(NPC removeThisOne)
     {
         lineLength--;
-        linedNPC.Dequeue();
-        int x = lineLength;
+        linedNPC.Remove(removeThisOne);
         foreach(NPC i in linedNPC)
         {
-            
-            print(i.gameObject.name);
-            i.UpdateLine( x);
-            x--;
+            print(i.name);
         }
+        int t = 1;
+        for(int x = linedNPC.Count-1; x >= 0; x--)
+        {
+            linedNPC[x].UpdateLine(t);
+            t++;
+            print("updating " + linedNPC[x].gameObject.name);
+        }
+        
     }
 }

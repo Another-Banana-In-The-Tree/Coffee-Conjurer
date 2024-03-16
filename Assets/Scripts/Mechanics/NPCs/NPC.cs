@@ -105,7 +105,7 @@ public class NPC : MonoBehaviour, IInteractable
         {
             timeWaiting += Time.deltaTime;
         }
-        if (!isSitting && timeWaiting > patience)
+        if (!isSitting && timeWaiting > patience && nextWaypointPos != exitWaypoint.transform.position)
         {
             print("leaving");
             LeaveStore(true);
@@ -237,16 +237,17 @@ public class NPC : MonoBehaviour, IInteractable
             emoteRenderer.enabled = true;
             emoteRenderer.sprite = disappointedImage;
             if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
-            nextWaypoint.RemoveCustomer();
+            
         }
         else
         {
             nextWaypointPos = exitWaypoint.transform.position;
         }
+        nextWaypoint.RemoveCustomer(this);
     }
     public void UpdateLine(int offset)
     {
-        print("updating line" + gameObject.name);
+        
         isMoving = true;
         isUpdatingLine = true;
         
@@ -256,7 +257,7 @@ public class NPC : MonoBehaviour, IInteractable
             }
             else
             {
-            print("horizontal");
+            //print("horizontal");
             nextWaypointPos = waypoints[1].transform.position + new Vector3((nextWaypoint.GetLineLength() - offset), 0, 0);
             }
 
@@ -289,7 +290,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void FinishVisit()
     {
         LeaveStore(false);
-        seatWaypoint.RemoveCustomer();
+       
         isWaiting = false;
         isSitting = false;
     }
@@ -319,9 +320,11 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void DialogueFinish()
     {
+        print(name + "finish dialogue");
+        if (isMoving) return;
         isWaiting = true;
         EnableMovement();
-        nextWaypoint.RemoveCustomer();
+        nextWaypoint.RemoveCustomer(this);
         SetNextPoint();
     }
     public void Interact(Player player)
@@ -331,6 +334,7 @@ public class NPC : MonoBehaviour, IInteractable
         SetInteractable();
         if (nextWaypoint == waypoints[1])
         {
+            isWaiting = false;
             DT.Trigger();
             //remember to chhange iswaiting to true when dialogue finishes (for later)
             Debug.Log("Coffee Added!");
@@ -351,7 +355,7 @@ public class NPC : MonoBehaviour, IInteractable
             CoffeeHandler.Instance.CompareCoffee(timeWaiting);
             EnableMovement();
             SitDown();
-            nextWaypoint.RemoveCustomer();
+            nextWaypoint.RemoveCustomer(this);
             SetNextPoint();
         }
     }

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     //Components
      private Rigidbody2D rb;
     private Interactor interactor;
+    private AudioManager audio;
 
     //MINIGAMES
     private MiniGame currentGame;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
         playerAnimation = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         interactor = GetComponent<Interactor>();
+        audio = FindObjectOfType<AudioManager>();
     }
     void Start()
     {
@@ -111,8 +113,9 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
+        SetMovementDir(Vector2.zero);
         interactor.Active();
-        FindObjectOfType<AudioManager>().Play("Select");
+        audio.Play("Select");
     }
 
     public void PlayMiniGame()
@@ -131,7 +134,7 @@ public class Player : MonoBehaviour
 
     public void StartMinigame(MiniGame newGame)
     {
-        SetMovementDir(Vector2.zero);
+       
         if(currentGame != null)
         {
             

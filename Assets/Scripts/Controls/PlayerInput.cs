@@ -82,7 +82,7 @@ public class PlayerInput : MonoBehaviour
 
         };
 
-        _controls.DevTool.Enable();
+       // _controls.DevTool.Enable();
     }
 
     public static void EnableGame()
