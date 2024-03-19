@@ -188,8 +188,8 @@ public class NPC : MonoBehaviour, IInteractable
         }
         else
         { 
-            npcAnimation.SetFloat("HoriSpeed",0);
-            npcAnimation.SetFloat("VertSpeed",0);
+            //npcAnimation.SetFloat("HoriSpeed",0);
+            //npcAnimation.SetFloat("VertSpeed",0);
         }
     }
 
@@ -335,7 +335,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (nextWaypoint == waypoints[1])
         {
             isWaiting = false;
-            DT.Trigger();
+            DT.Trigger(false);
             //remember to chhange iswaiting to true when dialogue finishes (for later)
             Debug.Log("Coffee Added!");
             //Show sprite image above head based on certain variables

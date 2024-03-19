@@ -15,6 +15,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.05f;
     [SerializeField] private float turnSpeed = 2f;
 
+    [SerializeField] private bool isTutorial = false;
+    [SerializeField] private Oswald oswald;
+
     private List<dialogueString> dialoguelist;
     private NPC currentNPC;
     [Header("Player")]
@@ -36,6 +39,18 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 
+
+        dialoguelist = textToPrint;
+        currentDialougeIndex = 0;
+        DisableButtons();
+
+        StartCoroutine(PrintDialogue());
+    }
+    public void DialogueStart(List<dialogueString> textToPrint)
+    {
+        PlayerInput.DisableGame();
+        Debug.Log("DialogueBegin");
+        dialogueParent.SetActive(true);
 
         dialoguelist = textToPrint;
         currentDialougeIndex = 0;
@@ -89,7 +104,8 @@ public class DialogueManager : MonoBehaviour
             line.endDialogueEvent?.Invoke();
             optionSelected = false;
         }
-        DialogueStop();
+        if (isTutorial) DialogueStop();
+        else DialogueStop();
     }
     private void HandleOptionSelected(int indexJump)
     {
@@ -123,8 +139,12 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);
-        currentNPC.DialogueFinish();
+        if (isTutorial)
+        {
+            Debug.Log("Finishing tutorial dialogue...");
+            oswald.DialogueFinish();
+        }
+        else currentNPC.DialogueFinish();
         PlayerInput.EnableGame();
-
     }
 }
