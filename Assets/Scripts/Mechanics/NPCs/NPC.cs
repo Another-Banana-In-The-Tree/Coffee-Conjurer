@@ -108,7 +108,7 @@ public class NPC : MonoBehaviour, IInteractable
         }
         if (timeWaiting > patience && nextWaypoint == waypoints[1] && !isLeaving)
         {
-            print("leaving");
+            
             LeaveStore(true);
         }
         if (isSitting && timeWaiting > timeInStore)
@@ -232,7 +232,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void LeaveStore(bool isMad)
     {
         isLeaving = true;
-        print("Leaving...");
+        
         isMoving = true;
         if (isMad)
         {
@@ -269,7 +269,7 @@ public class NPC : MonoBehaviour, IInteractable
                  SetInteractable();
              }
 
-        print("updating line " + gameObject.name + " new pos: " + nextWaypointPos);
+        
     }
     public void SitDown()
     {

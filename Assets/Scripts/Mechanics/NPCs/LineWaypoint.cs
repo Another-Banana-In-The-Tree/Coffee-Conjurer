@@ -49,7 +49,7 @@ public class LineWaypoint : MonoBehaviour
         {
             linedNPC[x].UpdateLine(t);
             t++;
-            print("updating " + linedNPC[x].gameObject.name);
+            
         }
         
     }

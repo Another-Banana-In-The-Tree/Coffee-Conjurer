@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private OrderMenu menu;
+
     //MOVEMENT
     [field: Header("Movement")]
     [SerializeField] private float speed;
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-       
+        menu = GameManager.Instance.orderMenu;
 
 
     }
@@ -126,7 +128,7 @@ public class Player : MonoBehaviour
     public void ExitMiniGame()
     {
         //PlayerInput.EnableGame();
-        
+        menu.UpdateCompletion();
         currentGame.Exit();
         currentGame = null;
         
