@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Sound 
 {
+    
     //sound name
     public string name;
     //store audioclip

@@ -1,12 +1,19 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
     //Create Array for sounds
     public Sound[] sounds;
+    private List<Sound> bgm = new List<Sound>();
     private float volumeMod = 1f;
+    private Sound currentMusic;
+    private Sound nextInQueue;
+    private int indexer = 0;
+    private float timer;
 
     void Awake()
     {
@@ -14,6 +21,10 @@ public class AudioManager : MonoBehaviour
         {
             //get the Audiosource from the AudioManager GameObject
             //add things to inspector
+            if (s.name.Contains("Theme"))
+            {
+                bgm.Add(s);
+            }
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
@@ -26,8 +37,29 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         //play Theme on start
-        Play("Theme");
+        ChangeBackgroundMusic();
     }
+
+
+    private void ChangeBackgroundMusic()
+    {
+        
+        currentMusic = bgm[indexer % bgm.Count];
+        print("playing" + currentMusic.name);
+        indexer++;
+        Play(currentMusic);
+    }
+
+    private void Update()
+    {
+        timer += Time.unscaledDeltaTime;
+        if ((currentMusic.clip.length - currentMusic.source.time)/currentMusic.pitch <= 0)
+        {
+            timer = 0;
+            ChangeBackgroundMusic();
+        }
+    }
+
 
     public void Play (string name)
     {
@@ -39,13 +71,22 @@ public class AudioManager : MonoBehaviour
             return;  
         }
         //play sound
-        s.source.volume = s.volume * volumeMod;
+        
+        s.source.Play();
+    }
+
+    private void Play(Sound s)
+    {
         s.source.Play();
     }
 
     public void SetVolume(float mod)
     {
         volumeMod = mod;
+        foreach(Sound s in sounds)
+        {
+            s.source.volume = s.volume * volumeMod;
+        }
     }
 }
 
