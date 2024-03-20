@@ -87,7 +87,7 @@ public class OrderMenu : MonoBehaviour
     }
     public void UpdateGold(float gold)
     {
-        repText.text = "Gold: " + gold.ToString("F1");
+        goldText.text = "Gold: " + gold.ToString("F1");
     } 
 
 }
