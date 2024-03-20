@@ -22,6 +22,7 @@ public class NPC : MonoBehaviour, IInteractable
     private bool isWaiting = false;
     private bool isSitting = false;
     private bool isUpdatingLine = false;
+    private bool isLeaving = false;
 
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite happyImage;
@@ -105,7 +106,7 @@ public class NPC : MonoBehaviour, IInteractable
         {
             timeWaiting += Time.deltaTime;
         }
-        if (!isSitting && timeWaiting > patience && nextWaypointPos != exitWaypoint.transform.position)
+        if (timeWaiting > patience && nextWaypoint == waypoints[1] && !isLeaving)
         {
             print("leaving");
             LeaveStore(true);
@@ -230,6 +231,7 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void LeaveStore(bool isMad)
     {
+        isLeaving = true;
         print("Leaving...");
         isMoving = true;
         if (isMad)
