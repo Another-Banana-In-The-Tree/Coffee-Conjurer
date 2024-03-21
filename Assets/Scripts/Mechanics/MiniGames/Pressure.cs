@@ -107,17 +107,17 @@ public class Pressure : MonoBehaviour, MiniGame
 
         if( tempSum < 0.69)
         {
-            currentCoffee.roast = "light";
+            currentCoffee.roast = "Light";
             print("light");
         }
         else if(tempSum > 0.7 && tempSum <= 0.82 )
         {
-            currentCoffee.roast = "medium";
+            currentCoffee.roast = "Medium";
             print("Medium");
         }
         else if (tempSum >= 0.83)
         {
-            currentCoffee.roast = "dark";
+            currentCoffee.roast = "Dark";
             print("Dark");
         }
         if (currentCoffee.roast != null)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: Greetings apprentice, I have news for you!
-    isEnd: 1
+    isEnd: 0
     isQuestion: 1
     dialogueOption1: Oh? What kind of news?
     dialogueOption2: News? I love news!

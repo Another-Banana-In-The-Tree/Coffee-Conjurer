@@ -22,6 +22,8 @@ public class OrderMenu : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI repText;
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private bool isTutorial = false;
+    [SerializeField] private Oswald oswald;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -90,6 +92,10 @@ public class OrderMenu : MonoBehaviour
                 ingredients[ingredientIndexer].color = Color.green;
                 ingredientIndexer++;
             }
+        }
+        if (isTutorial)
+        {
+            oswald.CheckTaskStatus();
         }
     }
     

@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     float moveVerticalAbs;
     float timer = 0.5f;
     float footDelay;
+
+    private Oswald oswald;
+    [SerializeField] private bool isTutorial = false;
     
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
         menu = GameManager.Instance.orderMenu;
 
         footDelay = audio.GetAudioLength("Walking");
+        oswald = FindObjectOfType<Oswald>();
     }
 
     // Update is called once per frame
@@ -154,6 +158,10 @@ public class Player : MonoBehaviour
         Debug.Log("setgame");
         currentGame = newGame;
         currentGame.gameStarted();
+        if (isTutorial)
+        {
+            oswald.MiniGameOpened();
+        }
         PlayerInput.EnableMinigame();
     }
     public MiniGame GetMinigame()
