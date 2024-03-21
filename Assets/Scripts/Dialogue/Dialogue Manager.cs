@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     private Transform playerCamera;
 
     private int currentDialougeIndex = 0;
-
+    
 
     public static DialogueManager Instance { get; private set; }
 
@@ -46,7 +46,7 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
         }
 
-
+        
     }
 
     private void Start()
@@ -174,13 +174,15 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);
+        PlayerInput.EndDialogueMode();
         if (isTutorial)
         {
             Debug.Log("Finishing tutorial dialogue...");
             oswald.DialogueFinish();
+            
         }
         else currentNPC.DialogueFinish();
-        PlayerInput.EndDialogueMode();
+        
     }
 
     public void SetDialogueSpeed(float newSpeed)
@@ -190,6 +192,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void SkipDialogue()
     {
+        print(skippable);
         if (skippable)
         {
             typingSpeed = 0;

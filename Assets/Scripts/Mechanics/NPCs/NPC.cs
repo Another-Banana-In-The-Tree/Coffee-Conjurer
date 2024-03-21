@@ -79,7 +79,8 @@ public class NPC : MonoBehaviour, IInteractable
     float moveHorizontalAbs;
     float moveVerticalAbs;
     DialogueTrigger DT;
-
+    DialogueObject dialogueObject;
+    
     private void Start()
     {
         npcManager = FindAnyObjectByType<NPCManager>();
@@ -97,7 +98,8 @@ public class NPC : MonoBehaviour, IInteractable
         {
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
-       DT =  gameObject.GetComponent<DialogueTrigger>();
+        DT =  gameObject.GetComponent<DialogueTrigger>();
+        DT.SetDialogueList(dialogueObject.GetDialogueStrings());
     }
 
     private void Update()
@@ -284,9 +286,9 @@ public class NPC : MonoBehaviour, IInteractable
             emoteRenderer.enabled = true;
             Debug.Log(emoteRenderer.enabled);
             float tempScore = GameManager.Instance.GetScore();
-            if (tempScore >= 7) emoteRenderer.sprite = happyImage; //Debug.Log("Happy");
-            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; //Debug.Log("Disppointed");
-            if (tempScore < 3) emoteRenderer.sprite = angryImage; //Debug.Log("Gross");
+            if (tempScore >= 7) emoteRenderer.sprite = happyImage; FindObjectOfType<AudioManager>().Play("Done Well");//Debug.Log("Happy");
+            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; FindObjectOfType<AudioManager>().Play("Done Poor"); //Debug.Log("Disppointed");
+            if (tempScore < 3) emoteRenderer.sprite = angryImage; FindObjectOfType<AudioManager>().Play("Guest Unsatisfied");//Debug.Log("Gross");
         }
     }
     public void FinishVisit()
@@ -359,6 +361,14 @@ public class NPC : MonoBehaviour, IInteractable
             SitDown();
             nextWaypoint.RemoveCustomer(this);
             SetNextPoint();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "GuestTrigger")
+        {
+            FindObjectOfType<AudioManager>().Play("Bell");
+            Debug.Log("Trigger works");
         }
     }
 }
