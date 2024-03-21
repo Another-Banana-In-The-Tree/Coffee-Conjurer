@@ -13,6 +13,7 @@ public class NPCManager : MonoBehaviour
     [SerializeField] public LineWaypoint _entranceWaypoint, _orderWaypoint, _inBetweenWaypoint, _pickupWaypoint;
     LineWaypoint[] waypoints;
     [SerializeField] LineWaypoint exitWaypoint;
+    private AudioManager audio;
 
     [SerializeField] float moveDelay;
     private int customersInStore = 0;
@@ -23,6 +24,7 @@ public class NPCManager : MonoBehaviour
     {
         //Load waypoints into list for ease of use
         waypoints = new LineWaypoint[] { _entranceWaypoint, _orderWaypoint, _inBetweenWaypoint, _pickupWaypoint };
+        audio = FindObjectOfType<AudioManager>();
     }
     private void Update()
     {
@@ -42,6 +44,7 @@ public class NPCManager : MonoBehaviour
         _customers[customersInStore].SetNextPoint();
         _customers[customersInStore].EnableMovement();
         customersInStore++;
+        audio.Play("Bell");
     }
     public LineWaypoint[] GetWaypoints()
     {
