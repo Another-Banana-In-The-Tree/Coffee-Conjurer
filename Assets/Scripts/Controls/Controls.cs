@@ -429,7 +429,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c4c8285f-2025-4bd0-8187-0e92c7253d3f"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

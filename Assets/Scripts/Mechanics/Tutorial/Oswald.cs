@@ -25,12 +25,13 @@ public class Oswald : MonoBehaviour, IInteractable
         dialogueTrigger = GetComponent<DialogueTrigger>();
         dialogueTrigger.SetDialogueList(dialogueList[state].GetDialogueStrings());
         coffee = new Coffee();
+        coffee.name = "Oswald";
         coffee.size = "Medium";
         coffee.roast = "Dark";
         coffee.ingredientsUsed = new List<string> {"RegMilk", "Vanilla"};
         Debug.Log(coffee.size + " " + coffee.roast + " roast coffee created with " + coffee.ingredientsUsed[0] + " and " + coffee.ingredientsUsed[1]);
     }
-    private void LateUpdate()
+    private void Update()
     {
         Coffee tempCoffee;
         if (state >= 2)
@@ -60,26 +61,28 @@ public class Oswald : MonoBehaviour, IInteractable
     }
     public void DialogueFinish()
     {
-        Debug.Log("switching state");
-        //fadeScreen.FadeOut();
-        int currentState = animator.GetInteger("state");
-        animator.SetInteger("state", currentState + 1);
-        NextState();
-        isWrong = false;
         if (state < dialogueList.Count) dialogueTrigger.SetDialogueList(dialogueList[state].GetDialogueStrings());
+        //When dialogue finishes, check state condition and
+        //Do things on specific states
         switch (state) {
             case 2:
-                CoffeeHandler.Instance.AddOrder(coffee);
+                Debug.Log(CoffeeHandler.Instance);
+                CoffeeHandler.Instance.AddOrder(coffee); //Load coffee when on state 2
                 break;
             case 8:
-                fadeScreen.FadeOutToLevel(levelScene);
+                fadeScreen.FadeOutToLevel(levelScene); //Fade out to the level scene on state 8
                 break;
-        //dialogueTrigger.SetDialogueList();
         }
+        //Set the animator state to the next state
+        if (!isWrong) NextState();
+        isWrong = false;
     }
     public void NextState()
     {
-        if (!isWrong) state++;
+        Debug.Log("switching state");
+        int currentState = animator.GetInteger("state");
+        animator.SetInteger("state", currentState + 1);
+        state++;
     }
     public void Incorrect()
     {

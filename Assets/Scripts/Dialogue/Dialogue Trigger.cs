@@ -25,7 +25,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (isTutorial) dialogue.DialogueStart(dialoguestrings);
         else dialogue.DialogueStart(dialoguestrings, npc);
-        Debug.Log("hi");
     }
     public void SetDialogueList(List<dialogueString> list)
     {
