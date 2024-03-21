@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: State1
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: Greetings apprentice, I have news for you!
+    isEnd: 1
+    isQuestion: 1
+    dialogueOption1: Oh? What kind of news?
+    dialogueOption2: News? I love news!
+    dialogueOption3: Oh god, again?
+    option1IndexJump: 1
+    option2IndexJump: 1
+    option3IndexJump: 1
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: You're now officially running Coffee Conjurer on your own! I've decided
+      to go on an adventure, or something... I think.
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: What? An adventure?
+    dialogueOption2: This'll be interesting...
+    dialogueOption3: Don't get lost again!
+    option1IndexJump: 2
+    option2IndexJump: 2
+    option3IndexJump: 2
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I'll give you a quick rundown, but after that it's retirement for me!
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: Huh?!? I didn't sign up for this!
+    dialogueOption2: Sweet, I get a free coffee shop!
+    dialogueOption3: Is this a joke?
+    option1IndexJump: 3
+    option2IndexJump: 4
+    option3IndexJump: 5
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Nonsense, this'll be fun! Let's begin.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Free? Oh no, this store is not profitable. Anyways, let's get on with it.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: A joke? Haha, you're quite the comedian. Let's get started!
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
