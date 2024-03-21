@@ -147,4 +147,8 @@ public class Player : MonoBehaviour
         currentGame.gameStarted();
         PlayerInput.EnableMinigame();
     }
+    public MiniGame GetMinigame()
+    {
+        return currentGame;
+    }
 }
