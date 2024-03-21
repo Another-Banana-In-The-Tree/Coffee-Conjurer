@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     float moveVertical;
     float moveHorizontalAbs;
     float moveVerticalAbs;
-    
+    float timer = 0.5f;
+    float footDelay;
     
     private void Awake()
     {
@@ -43,13 +44,21 @@ public class Player : MonoBehaviour
     {
         menu = GameManager.Instance.orderMenu;
 
-
+        footDelay = audio.GetAudioLength("Walking");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (moveDir.magnitude !=0)
+        {
+            timer += Time.deltaTime;
+            if (timer > footDelay + 0.01f)
+            {
+                audio.Play("Walking");
+                timer = 0;
+            }
+        }
     }
 
     public void SetMovementDir(Vector2 Dir)
