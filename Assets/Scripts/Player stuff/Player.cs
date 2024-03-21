@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private OrderMenu menu;
+
     //MOVEMENT
     [field: Header("Movement")]
     [SerializeField] private float speed;
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
     //Components
      private Rigidbody2D rb;
     private Interactor interactor;
+    private AudioManager audio;
 
     //MINIGAMES
     private MiniGame currentGame;
@@ -34,10 +37,11 @@ public class Player : MonoBehaviour
         playerAnimation = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         interactor = GetComponent<Interactor>();
+        audio = FindObjectOfType<AudioManager>();
     }
     void Start()
     {
-       
+        menu = GameManager.Instance.orderMenu;
 
 
     }
@@ -66,6 +70,7 @@ public class Player : MonoBehaviour
         if (moveHorizontalAbs * -1 > 0)
         {
             moveHorizontalAbs = moveHorizontalAbs * -1;
+            FindObjectOfType<AudioManager>().Play("Walking");
         }
         
         if (moveVerticalAbs * -1 > 0)
@@ -110,7 +115,9 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
+        SetMovementDir(Vector2.zero);
         interactor.Active();
+        audio.Play("Select");
     }
 
     public void PlayMiniGame()
@@ -121,7 +128,7 @@ public class Player : MonoBehaviour
     public void ExitMiniGame()
     {
         //PlayerInput.EnableGame();
-        
+        menu.UpdateCompletion();
         currentGame.Exit();
         currentGame = null;
         
@@ -129,7 +136,7 @@ public class Player : MonoBehaviour
 
     public void StartMinigame(MiniGame newGame)
     {
-        SetMovementDir(Vector2.zero);
+       
         if(currentGame != null)
         {
             

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TargetTap : MonoBehaviour, MiniGame
 {
@@ -11,6 +12,7 @@ public class TargetTap : MonoBehaviour, MiniGame
     [SerializeField] private Transform movingBar;
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
+    [SerializeField] private TextMeshProUGUI countdown;
     private float fakeTime = 0;
     private float maxRange, minRange;
     private float minWinRange, maxWinRange;
@@ -29,7 +31,7 @@ public class TargetTap : MonoBehaviour, MiniGame
 
         minWinRange = temp - (target.localScale.x / 2);
         maxWinRange = temp + (target.localScale.x / 2);
-
+        countdown.text = "Messes left: " + (3 - numWins).ToString();
     }
 
     // Update is called once per frame
@@ -53,6 +55,7 @@ public class TargetTap : MonoBehaviour, MiniGame
         if(movingBar.position.x >= minWinRange && movingBar.position.x <= maxWinRange)
         {
             numWins++;
+            countdown.text = "Messes left: " + (3 - numWins).ToString();
             if(numWins >= numWinsReq)
             {
                 EndGame();

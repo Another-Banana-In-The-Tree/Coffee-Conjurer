@@ -169,11 +169,11 @@ public class CoffeeHandler : MonoBehaviour
         GameManager.Instance.CalculateReputation(points, bad, waitTime);
         customerOders.Dequeue();
         coffeeQueue.Dequeue();
-        orderMenu.Clear();
+       // orderMenu.Clear();
         if (customerOders.Count > 0)
         {
 
-
+            
             orderMenu.changeActiveOrders(customerOders.Peek());
         }
         

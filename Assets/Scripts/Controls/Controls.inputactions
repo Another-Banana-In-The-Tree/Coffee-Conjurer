@@ -160,34 +160,6 @@
             ]
         },
         {
-            "name": "Menu",
-            "id": "36108e3c-1720-462f-92c4-dfd27b2a410e",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "9f039f4d-300f-4916-922c-8b399f818a92",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "ea666920-eacc-4a13-99a5-764db47077b3",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "MiniGame",
             "id": "44cb5661-13c3-4e0e-b049-79473663b15f",
             "actions": [
@@ -384,6 +356,62 @@
                     "processors": "",
                     "groups": "",
                     "action": "CreateCoffee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "86f06904-7a8f-4b1d-b3fa-5c933de00951",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "a2d485d2-b77e-40a8-a472-7f33d9d098b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5dcbda61-f0e9-4244-ad73-610e247f600b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MenuControls",
+            "id": "c4265c4f-6189-4036-a211-0d684063a607",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "8ced0bb5-822e-4199-846f-b7bc899b414b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c4c8285f-2025-4bd0-8187-0e92c7253d3f",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
