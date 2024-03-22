@@ -138,6 +138,7 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
+        GameManager.Instance.orderMenu.UpdateCompletion();
         sizeText.text = "empty";
         slider.value = 0;
         gameActive = false;

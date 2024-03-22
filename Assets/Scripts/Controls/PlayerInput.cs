@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private static Controls _controls;
-
+    private DialogueManager dialogue;
+    public static bool isPaused = false;
     public static void Init(Player player)
     {
         _controls = new Controls();
@@ -77,11 +78,30 @@ public class PlayerInput : MonoBehaviour
              CoffeeHandler.Instance.PrintCurrentCoffee();
         };
 
-        _controls.Dialogue.Select.performed += ctx =>
+        _controls.Dialogue.Skip.performed += ctx =>
         {
-
+            DialogueManager.Instance.SkipDialogue();
         };
 
+
+        _controls.MenuControls.Pause.performed += ctx =>
+        {
+            if (!isPaused)
+            {
+                
+                Time.timeScale = 0;
+                Settings.Instance.gameObject.SetActive(true);
+            }
+            else
+            {
+                
+                Time.timeScale = 1;
+                Settings.Instance.gameObject.SetActive(false);
+            }
+            isPaused = !isPaused;
+        };
+
+        _controls.MenuControls.Enable();
         _controls.DevTool.Enable();
     }
 
@@ -93,11 +113,22 @@ public class PlayerInput : MonoBehaviour
 
     public static void EnableMinigame()
     {
+        
         _controls.Game.Disable();
         _controls.MiniGame.Enable();
     }
     public static void DisableGame()
     {
         _controls.Game.Disable();
+    }
+    public static void DialogueMode()
+    {
+        _controls.Dialogue.Enable();
+        _controls.Game.Disable();
+    }
+    public static void EndDialogueMode()
+    {
+        _controls.Dialogue.Disable();
+        _controls.Game.Enable();
     }
 }

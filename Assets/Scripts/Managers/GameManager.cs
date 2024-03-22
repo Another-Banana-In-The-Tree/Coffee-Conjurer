@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private List<TargetTap> messes = new List<TargetTap>();
     [SerializeField] private NPCManager npcManager;
     float currentScore = 0;
-    [SerializeField] OrderMenu orderMenu;
+    [SerializeField] public OrderMenu orderMenu;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.

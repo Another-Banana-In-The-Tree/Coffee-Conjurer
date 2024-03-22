@@ -101,24 +101,24 @@ public class Oswald : MonoBehaviour, IInteractable
         print("testing chck status");
         Coffee tempCoffee;
         
-                tempCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+            tempCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
         if (tempCoffee.roast != null && state == 4)
-        {
-            Debug.Log("Coffee exists");
-            if (tempCoffee.roast != coffee.roast)
             {
-                Debug.Log("Roast is incorrect");
-                tempCoffee.roast = null;
-                Incorrect();
-            }
+                Debug.Log("Coffee exists");
+                if (tempCoffee.roast != coffee.roast)
+                {
+                    Debug.Log("Roast is incorrect");
+                    tempCoffee.roast = null;
+                    Incorrect();
+                }
             else
             {
                 dialogueTrigger.Trigger(true);
                 int currentState = animator.GetInteger("state");
                 animator.SetInteger("state", currentState + 1);
             }
-
-        }
+                
+            }
         if (tempCoffee.size != null && state == 6)
         {
             if (tempCoffee.size != coffee.size)
@@ -128,13 +128,13 @@ public class Oswald : MonoBehaviour, IInteractable
             }
             else
             {
-
+        
                 dialogueTrigger.Trigger(true);
                 int currentState = animator.GetInteger("state");
                 animator.SetInteger("state", currentState + 1);
             }
-        }
-       
+    }
+
                 
     }
 

@@ -12,8 +12,15 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button option2Button;
     [SerializeField] private Button option3Button;
 
-    [SerializeField] private float typingSpeed = 0.05f;
+    private float typingSpeed = 0.05f;
+    [SerializeField] private float defaultTypingSpeed = 0.05f;
+    
     [SerializeField] private float turnSpeed = 2f;
+
+    [SerializeField] private bool isTutorial = false;
+    private bool skipTyping = false;
+    private bool skippable = false;
+    [SerializeField] private Oswald oswald;
 
     private List<dialogueString> dialoguelist;
     private NPC currentNPC;
@@ -22,20 +29,53 @@ public class DialogueManager : MonoBehaviour
     private Transform playerCamera;
 
     private int currentDialougeIndex = 0;
+    
+
+    public static DialogueManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        
+    }
 
     private void Start()
     {
         dialogueParent.SetActive(false);
         playerCamera = Camera.main.transform;
+        typingSpeed = defaultTypingSpeed;
     }
 
+    
     public void DialogueStart(List<dialogueString> textToPrint, NPC npc)
     {
-        PlayerInput.DisableGame();
+        PlayerInput.DialogueMode();
         currentNPC = npc;
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 
+
+        dialoguelist = textToPrint;
+        currentDialougeIndex = 0;
+        DisableButtons();
+
+        StartCoroutine(PrintDialogue());
+    }
+    public void DialogueStart(List<dialogueString> textToPrint)
+    {
+        PlayerInput.DialogueMode();
+        Debug.Log("DialogueBegin");
+        dialogueParent.SetActive(true);
 
         dialoguelist = textToPrint;
         currentDialougeIndex = 0;
@@ -59,8 +99,15 @@ public class DialogueManager : MonoBehaviour
     private bool optionSelected = false;
     private IEnumerator PrintDialogue()
     {
+        
         while (currentDialougeIndex < dialoguelist.Count)
         {
+            skippable = true;
+            if (skipTyping)
+            {
+                typingSpeed = defaultTypingSpeed;
+                skipTyping = false;
+            }
             dialogueString line = dialoguelist[currentDialougeIndex];
 
             line.startDialogueEvent?.Invoke();
@@ -80,7 +127,9 @@ public class DialogueManager : MonoBehaviour
                 option1Button.onClick.AddListener(() => HandleOptionSelected(line.option1IndexJump));
                 option2Button.onClick.AddListener(() => HandleOptionSelected(line.option2IndexJump));
                 option3Button.onClick.AddListener(() => HandleOptionSelected(line.option3IndexJump));
+                skippable = false;
                 yield return new WaitUntil(() => optionSelected);
+                
             }
             else
             {
@@ -89,7 +138,8 @@ public class DialogueManager : MonoBehaviour
             line.endDialogueEvent?.Invoke();
             optionSelected = false;
         }
-        DialogueStop();
+        if (isTutorial) DialogueStop();
+        else DialogueStop();
     }
     private void HandleOptionSelected(int indexJump)
     {
@@ -107,6 +157,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        
         if (!dialoguelist[currentDialougeIndex].isQuestion)
         {
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
@@ -116,15 +167,38 @@ public class DialogueManager : MonoBehaviour
             DialogueStop();
         }
         currentDialougeIndex++;
-
+        
     }
     private void DialogueStop()
     {
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);
-        currentNPC.DialogueFinish();
-        PlayerInput.EnableGame();
+        PlayerInput.EndDialogueMode();
+        if (isTutorial)
+        {
+            Debug.Log("Finishing tutorial dialogue...");
+            oswald.DialogueFinish();
+            
+        }
+        else currentNPC.DialogueFinish();
+        
+    }
 
+    public void SetDialogueSpeed(float newSpeed)
+    {
+        defaultTypingSpeed = newSpeed;
+        typingSpeed = defaultTypingSpeed;
+    }
+    public void SkipDialogue()
+    {
+        print(skippable);
+        if (skippable)
+        {
+            typingSpeed = 0;
+            skipTyping = true;
+        }
+        
+        
     }
 }
