@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
-  m_Name: State7
+  m_Name: GoToPour
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Hey this is temp dialogue!!!! anyway, lets go over here and add some ingredients
-      in. make sure you only put in what I want and not anything like a dead rat
-      or a whole carrot
+  - text: A fantastic roast, apprentice. Now follow me over here to pour my drink!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
