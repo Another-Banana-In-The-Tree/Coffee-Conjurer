@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: State4
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: To roast the coffee, press the 'E' button repeatedly and keep the bar on
+      the right temperature!
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Green is for light roast, yellow is for medium roast, and red is for dark
+      roast!
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: Sounds simple enough!
+    dialogueOption2: Finally, a use for my magic!
+    dialogueOption3: I know how to use fire old man!!
+    option1IndexJump: 3
+    option2IndexJump: 3
+    option3IndexJump: 2
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: No need to get mad, young lad! Fire magic is all you need at this store
+      until I come back!
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 0
+    dialogueOption2: 0
+    dialogueOption3: 0
+    option1IndexJump: 3
+    option2IndexJump: 3
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: And don't worry about small mistakes either, the roast will match whatever
+      temperature you've roasted it at the longest.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
