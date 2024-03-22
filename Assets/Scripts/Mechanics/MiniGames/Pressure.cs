@@ -27,12 +27,34 @@ public class Pressure : MonoBehaviour, MiniGame
     [SerializeField] private TextMeshProUGUI roast;
     [SerializeField] private SpriteRenderer beanSprite;
 
+    //for audio
+    [SerializeField] private float soundTimer;
+    [SerializeField] private float roastDelay = 2;
+    private AudioManager audio;
+    
+
     private List<float> points = new List<float>();
-   
+
+    private void Awake()
+    {
+        audio = FindObjectOfType<AudioManager>();
+    }
+    void Start()
+    {
+        //roastDelay = audio.GetAudioLength("Heat");
+    }
     private void Update()
     {
         if (isPlaying)
         {
+            
+            soundTimer += Time.deltaTime;
+            if (soundTimer > roastDelay + 0.5f)
+            {
+                Debug.Log("Should Make Sound?");
+                audio.Play("Heat");
+                soundTimer = 0;
+            }
             if (timeCount >= 1)
             {
                 GameEnd();
@@ -60,6 +82,9 @@ public class Pressure : MonoBehaviour, MiniGame
                 fill = 0;
             }
             fillBar.fillAmount = fill;
+
+            
+
         }
     }
 
