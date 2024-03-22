@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogueStrings:
   - text: To roast the coffee, press the 'E' button repeatedly and keep the bar on
       the right temperature!
-    isEnd: 1
+    isEnd: 0
     isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
