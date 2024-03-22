@@ -22,6 +22,7 @@ public class NPC : MonoBehaviour, IInteractable
     private bool isWaiting = false;
     private bool isSitting = false;
     private bool isUpdatingLine = false;
+    private bool isLeaving = false;
 
     [SerializeField] Sprite talkingImage;
     [SerializeField] Sprite happyImage;
@@ -78,7 +79,8 @@ public class NPC : MonoBehaviour, IInteractable
     float moveHorizontalAbs;
     float moveVerticalAbs;
     DialogueTrigger DT;
-
+    DialogueObject dialogueObject;
+    
     private void Start()
     {
         npcManager = FindAnyObjectByType<NPCManager>();
@@ -96,7 +98,8 @@ public class NPC : MonoBehaviour, IInteractable
         {
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
-       DT =  gameObject.GetComponent<DialogueTrigger>();
+        DT =  gameObject.GetComponent<DialogueTrigger>();
+        DT.SetDialogueList(dialogueObject.GetDialogueStrings());
     }
 
     private void Update()
@@ -105,9 +108,9 @@ public class NPC : MonoBehaviour, IInteractable
         {
             timeWaiting += Time.deltaTime;
         }
-        if (!isSitting && timeWaiting > patience)
+        if (timeWaiting > patience && nextWaypoint == waypoints[1] && !isLeaving)
         {
-            print("leaving");
+            
             LeaveStore(true);
         }
         if (isSitting && timeWaiting > timeInStore)
@@ -188,8 +191,8 @@ public class NPC : MonoBehaviour, IInteractable
         }
         else
         { 
-            npcAnimation.SetFloat("HoriSpeed",0);
-            npcAnimation.SetFloat("VertSpeed",0);
+            //npcAnimation.SetFloat("HoriSpeed",0);
+            //npcAnimation.SetFloat("VertSpeed",0);
         }
     }
 
@@ -230,23 +233,25 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void LeaveStore(bool isMad)
     {
-        print("Leaving...");
+        isLeaving = true;
+        
         isMoving = true;
         if (isMad)
         {
             emoteRenderer.enabled = true;
             emoteRenderer.sprite = disappointedImage;
             if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
-            nextWaypoint.RemoveCustomer();
+            
         }
         else
         {
             nextWaypointPos = exitWaypoint.transform.position;
         }
+        nextWaypoint.RemoveCustomer(this);
     }
     public void UpdateLine(int offset)
     {
-        print("updating line" + gameObject.name);
+        
         isMoving = true;
         isUpdatingLine = true;
         
@@ -256,7 +261,7 @@ public class NPC : MonoBehaviour, IInteractable
             }
             else
             {
-            print("horizontal");
+            //print("horizontal");
             nextWaypointPos = waypoints[1].transform.position + new Vector3((nextWaypoint.GetLineLength() - offset), 0, 0);
             }
 
@@ -266,13 +271,13 @@ public class NPC : MonoBehaviour, IInteractable
                  SetInteractable();
              }
 
-        print("updating line " + gameObject.name + " new pos: " + nextWaypointPos);
+        
     }
     public void SitDown()
     {
         timeWaiting = 0;
         nextWaypointPos = seatWaypoint.transform.position;
-        seatWaypoint.AddCustomer(this);
+       // seatWaypoint.AddCustomer(this);
         isWaiting = true;
         isSitting = true;
         float distance = Vector3.Distance(transform.position, nextWaypointPos);
@@ -281,15 +286,15 @@ public class NPC : MonoBehaviour, IInteractable
             emoteRenderer.enabled = true;
             Debug.Log(emoteRenderer.enabled);
             float tempScore = GameManager.Instance.GetScore();
-            if (tempScore >= 7) emoteRenderer.sprite = happyImage; //Debug.Log("Happy");
-            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; //Debug.Log("Disppointed");
-            if (tempScore < 3) emoteRenderer.sprite = angryImage; //Debug.Log("Gross");
+            if (tempScore >= 7) emoteRenderer.sprite = happyImage; FindObjectOfType<AudioManager>().Play("Done Well");//Debug.Log("Happy");
+            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; FindObjectOfType<AudioManager>().Play("Done Poor"); //Debug.Log("Disppointed");
+            if (tempScore < 3) emoteRenderer.sprite = angryImage; FindObjectOfType<AudioManager>().Play("Guest Unsatisfied");//Debug.Log("Gross");
         }
     }
     public void FinishVisit()
     {
         LeaveStore(false);
-        seatWaypoint.RemoveCustomer();
+       
         isWaiting = false;
         isSitting = false;
     }
@@ -317,6 +322,15 @@ public class NPC : MonoBehaviour, IInteractable
     {
         isMoving = false;
     }
+    public void DialogueFinish()
+    {
+        print(name + "finish dialogue");
+        if (isMoving) return;
+        isWaiting = true;
+        EnableMovement();
+        nextWaypoint.RemoveCustomer(this);
+        SetNextPoint();
+    }
     public void Interact(Player player)
     {
         Debug.Log("Interacted!");
@@ -324,7 +338,8 @@ public class NPC : MonoBehaviour, IInteractable
         SetInteractable();
         if (nextWaypoint == waypoints[1])
         {
-            DT.Trigger();
+            isWaiting = false;
+            DT.Trigger(false);
             //remember to chhange iswaiting to true when dialogue finishes (for later)
             Debug.Log("Coffee Added!");
             //Show sprite image above head based on certain variables
@@ -333,10 +348,8 @@ public class NPC : MonoBehaviour, IInteractable
 
             //Add coffee order and re-enable line movement
             CoffeeHandler.Instance.AddOrder(coffee);
-            isWaiting = true;
-            EnableMovement();
-            nextWaypoint.RemoveCustomer();
-            SetNextPoint();
+            
+            
         }
         if (nextWaypoint == waypoints[3])
         {
@@ -346,8 +359,16 @@ public class NPC : MonoBehaviour, IInteractable
             CoffeeHandler.Instance.CompareCoffee(timeWaiting);
             EnableMovement();
             SitDown();
-            nextWaypoint.RemoveCustomer();
+            nextWaypoint.RemoveCustomer(this);
             SetNextPoint();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "GuestTrigger")
+        {
+            FindObjectOfType<AudioManager>().Play("Bell");
+            Debug.Log("Trigger works");
         }
     }
 }

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: Order&MachineIntroduction
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: So, apprentice, before you are the many machines you'll be using to conjuer
+      coffee! Seeing as you're inept at magic...
+    isEnd: 1
+    isQuestion: 1
+    dialogueOption1: Wow, thanks...
+    dialogueOption2: I can use fire magic!!
+    dialogueOption3: Inept? Says the senile old man!
+    option1IndexJump: 1
+    option2IndexJump: 1
+    option3IndexJump: 1
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: No matter, let's get started roasting the beans for my drink.
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: And your order is...?
+    dialogueOption2: You need to order, old man.
+    dialogueOption3: What coffee??
+    option1IndexJump: 2
+    option2IndexJump: 2
+    option3IndexJump: 2
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Ah yes, sorry. Here's the order reciept! Click the button on the top right
+      of the screen to view the current order! After you're done with that, join
+      me at the roasting station.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private List<TargetTap> messes = new List<TargetTap>();
     [SerializeField] private NPCManager npcManager;
     float currentScore = 0;
-    [SerializeField] OrderMenu orderMenu;
+    [SerializeField] public OrderMenu orderMenu;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -28,9 +28,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateGold(float change)
+    public void changeGold(float change)
     {
         gold += change;
+        UpdateGold();
 
     }
 
@@ -59,17 +60,31 @@ public class GameManager : MonoBehaviour
         
         tempScore = correct + (incorrect * (timePenalty / 50));
        
-        print("correct: " + correct + " -incorrect: " + incorrect + " * time penalty:" + timePenalty / 50 );
+        
 
-        Mathf.Clamp(tempScore, -10f, 10f);
+        tempScore = Mathf.Clamp(tempScore, -10f, 10f);
+        if(reputation > 0)
+        {
+            tempScore += (Mathf.Log(reputation));
+            print("2log(rep) = " + (Mathf.Log(reputation)));
+        }
 
         ChangeRep(tempScore);
 
 
-        print(tempScore);
+        print("rep change: " + tempScore);
 
         currentScore = tempScore;
 
+        if(currentScore > 0)
+        {
+            float tempCoinCalc = 0;
+            tempCoinCalc = ((tempScore / 3) * Mathf.Log(2+reputation))/4;
+            print("log(2+rep) " + Mathf.Log(2 + reputation));
+            tempCoinCalc = Mathf.Clamp(tempCoinCalc, 0, 100);
+            print("gold earned: " + tempCoinCalc);
+            changeGold(tempCoinCalc);
+        }
 
     }
     

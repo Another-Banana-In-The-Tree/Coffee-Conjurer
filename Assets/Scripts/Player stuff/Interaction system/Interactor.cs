@@ -86,7 +86,14 @@ public class Interactor : MonoBehaviour
                             }
 
                         }
-
+                        if (i.TryGetComponent(out Oswald oswald))
+                        {
+                            if (!oswald.GetInteracted())
+                            {
+                                interacted = true;
+                                interactable.Interact(player);
+                            }
+                        }
 
                     }
                 }

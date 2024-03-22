@@ -9,13 +9,26 @@ public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] private List<dialogueString> dialoguestrings = new List<dialogueString>();
     [SerializeField] private GameObject other;
+    private DialogueManager dialogue;
+    private NPC npc;
+    //private Oswald oswald;
     private bool hasSpoken = false;
     //add the real trigger later
     //other.gameObject.GetComponent<DialougeManager>.DialogueStart();
-    public void Trigger()
+    private void Start()
     {
-        other.gameObject.GetComponent<DialogueManager>().DialogueStart(dialoguestrings);
-        Debug.Log("hi");
+        npc = GetComponent<NPC>();
+        //if (GetComponent<Oswald>() != null) oswald = GetComponent<Oswald>();
+        dialogue = other.gameObject.GetComponent<DialogueManager>();
+    }
+    public void Trigger(bool isTutorial)
+    {
+        if (isTutorial) dialogue.DialogueStart(dialoguestrings);
+        else dialogue.DialogueStart(dialoguestrings, npc);
+    }
+    public void SetDialogueList(List<dialogueString> list)
+    {
+        dialoguestrings = list;
     }
 
 }
