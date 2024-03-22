@@ -10,11 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
-  m_Name: State6
+  m_Name: PourInstructions
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: pull down the lever to fill the cup, try not to over fill or you might
-      spill!
+  - text: Great job roasting the beans, lad! Now to pour the coffee!
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Pull down the lever to fill the cup and up to stop pouring. Try not to
+      over fill or you might spill!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
