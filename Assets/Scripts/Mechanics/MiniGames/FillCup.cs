@@ -15,9 +15,14 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private Coffee currentCoffee;
 
+    //for audio
+    [SerializeField] private float timer;
+    [SerializeField] private float soundDelay = 1;
+    private AudioManager audio;
 
 
-     private float fillMod;
+
+    private float fillMod;
     [SerializeField] private float fillSpeed;
 
     [SerializeField] private float currentFill;
@@ -27,11 +32,20 @@ public class FillCup : MonoBehaviour, MiniGame
 
     [SerializeField] private TextMeshProUGUI sizeText;
 
-    
 
+    private void Awake()
+    {
+        audio = FindObjectOfType<AudioManager>();
+    }
     public void Fill(float value)
     {
-        
+        timer += Time.deltaTime;
+        if (timer > soundDelay + 0.5f)
+        {
+            Debug.Log("Should Make Sound?");
+            audio.Play("Heat");
+            timer = 0;
+        }
         fillMod = Mathf.Pow( value, 2);
        // print(fillMod);
     }
