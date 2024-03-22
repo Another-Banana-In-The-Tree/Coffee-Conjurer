@@ -102,6 +102,7 @@ public class Oswald : MonoBehaviour, IInteractable
         Coffee tempCoffee;
         
             tempCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+        if (state < dialogueList.Count) dialogueTrigger.SetDialogueList(dialogueList[state].GetDialogueStrings());
         if (tempCoffee.roast != null && state == 4)
             {
                 Debug.Log("Coffee exists");
