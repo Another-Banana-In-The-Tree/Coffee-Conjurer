@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     private bool skipTyping = false;
     private bool skippable = false;
     [SerializeField] private Oswald oswald;
-
+    private Player player;
     private List<dialogueString> dialoguelist;
     private NPC currentNPC;
     [Header("Player")]
@@ -54,13 +54,16 @@ public class DialogueManager : MonoBehaviour
         dialogueParent.SetActive(false);
         playerCamera = Camera.main.transform;
         typingSpeed = defaultTypingSpeed;
+        player = FindObjectOfType<Player>();
     }
 
     
     public void DialogueStart(List<dialogueString> textToPrint, NPC npc)
     {
+       
         PlayerInput.DialogueMode();
-        currentNPC = npc;
+        player.SetMovementDir(Vector2.zero);
+       currentNPC = npc;
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 
@@ -74,6 +77,7 @@ public class DialogueManager : MonoBehaviour
     public void DialogueStart(List<dialogueString> textToPrint)
     {
         PlayerInput.DialogueMode();
+        player.SetMovementDir(Vector2.zero);
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 

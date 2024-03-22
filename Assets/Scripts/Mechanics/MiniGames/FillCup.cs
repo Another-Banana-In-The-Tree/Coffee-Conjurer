@@ -12,7 +12,7 @@ public class FillCup : MonoBehaviour, MiniGame
     [SerializeField] private TargetTap spill;
     [SerializeField] private Player player;
     [SerializeField] private Slider slider;
-
+    public bool isTutorial;
     private Coffee currentCoffee;
 
 
@@ -138,7 +138,10 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-        GameManager.Instance.orderMenu.UpdateCompletion();
+        if (!isTutorial || currentFill < 0.95)
+        {
+            GameManager.Instance.orderMenu.UpdateCompletion();
+        }
         sizeText.text = "empty";
         slider.value = 0;
         gameActive = false;

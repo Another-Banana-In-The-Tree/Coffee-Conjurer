@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
                 timer = 0;
             }
         }
+
+        //playerSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
     }
 
     public void SetMovementDir(Vector2 Dir)

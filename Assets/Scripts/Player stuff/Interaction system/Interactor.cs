@@ -90,6 +90,7 @@ public class Interactor : MonoBehaviour
                         {
                             if (!oswald.GetInteracted())
                             {
+                                Debug.Log("this is where we talk to oswald");
                                 interacted = true;
                                 interactable.Interact(player);
                             }
