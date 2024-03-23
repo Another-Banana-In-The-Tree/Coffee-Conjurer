@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Player")]
     //playercontroller reference
     private Transform playerCamera;
+    private bool inDialogue = false;
 
     private int currentDialougeIndex = 0;
     
@@ -60,6 +61,8 @@ public class DialogueManager : MonoBehaviour
     
     public void DialogueStart(List<dialogueString> textToPrint, NPC npc)
     {
+        if (inDialogue) return;
+        inDialogue = true;
        
         PlayerInput.DialogueMode();
         player.SetMovementDir(Vector2.zero);
@@ -76,6 +79,8 @@ public class DialogueManager : MonoBehaviour
     }
     public void DialogueStart(List<dialogueString> textToPrint)
     {
+        if (inDialogue) return;
+        inDialogue = true;
         PlayerInput.DialogueMode();
         player.SetMovementDir(Vector2.zero);
         Debug.Log("DialogueBegin");
@@ -175,6 +180,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void DialogueStop()
     {
+        inDialogue = false;
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);

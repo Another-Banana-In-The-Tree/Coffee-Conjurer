@@ -27,8 +27,18 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         numFound = Physics2D.OverlapCircleNonAlloc(transform.position, radius, ObjHit, interactionLayer);
-
-        if(numFound > 0)
+        if(numFound == 1 && ObjHit[0].TryGetComponent<Oswald>(out Oswald tut))
+        {
+            if (tut.GetInteracted())
+            {
+                toolTip.SetActive(false);
+            }
+            else
+            {
+                toolTip.SetActive(true);
+            }
+        }
+        else if (numFound > 0)
         {
             toolTip.SetActive(true);
         }

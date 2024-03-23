@@ -36,7 +36,7 @@ public class Oswald : MonoBehaviour, IInteractable
     private void Update()
     {
        
-        if(state ==2 && menuOpened && (Vector2.Distance(player.transform.position, transform.position)< 0.7f) && !menuOpenWasTriggered)
+        if(state ==2 && menuOpened && (Vector2.Distance(player.transform.position, transform.position)< 0.9f) && !menuOpenWasTriggered)
         {
             //NextState();
             menuOpened = false;

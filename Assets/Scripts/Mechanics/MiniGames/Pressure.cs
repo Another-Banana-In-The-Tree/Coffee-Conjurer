@@ -134,6 +134,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
     public void Exit()
     {
+        roast.text = " ";
         fill = 0;
         timeCount = 0;
         points.Clear();
