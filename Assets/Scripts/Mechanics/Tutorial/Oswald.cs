@@ -20,6 +20,7 @@ public class Oswald : MonoBehaviour, IInteractable
     private bool menuOpened;
     private bool interacted = false;
     private bool menuOpenWasTriggered = false;
+    private bool waitForDialogueFinish = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +80,15 @@ public class Oswald : MonoBehaviour, IInteractable
                 break;
         }
         //Set the animator state to the next state
-        if (!isWrong) NextState();
+        if (state == 3 || state == 5 || state == 7 || state == 9)
+        {
+            PlayerInput.EnableMinigame();
+            if (waitForDialogueFinish)
+            {
+                waitForDialogueFinish = false;
+            }
+        }
+            if (!isWrong) NextState();
         isWrong = false;
     }
     public void NextState()
@@ -174,9 +183,12 @@ public class Oswald : MonoBehaviour, IInteractable
 
     public void MiniGameOpened()
     {
+        
         print("minigame opened");
         if(state == 3 || state == 5 || state == 7 || state == 9)
         {
+            waitForDialogueFinish = true;
+            PlayerInput.DialogueMode();
             dialogueTrigger.Trigger(true);
             
         }
@@ -193,5 +205,10 @@ public class Oswald : MonoBehaviour, IInteractable
     public bool GetInteracted()
     {
         return interacted;
+    }
+
+    public bool WaitForDialogueFinish()
+    {
+        return waitForDialogueFinish;
     }
 }

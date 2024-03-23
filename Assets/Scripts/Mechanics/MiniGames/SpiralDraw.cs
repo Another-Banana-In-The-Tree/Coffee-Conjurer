@@ -21,6 +21,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
     private bool gameRunning = false;
     public bool isTutorial;
+    [SerializeField] private Oswald oswald;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     // Update is called once per frame
     void Update()
     {
+        if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (!gameRunning) return;
         if (!currentCoffee.stirred && currentCoffee.size != null)
         {

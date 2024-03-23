@@ -111,6 +111,7 @@ public class DialogueManager : MonoBehaviour
         
         while (currentDialougeIndex < dialoguelist.Count)
         {
+            //PlayerInput.DialogueMode();
             skippable = true;
             if (skipTyping)
             {

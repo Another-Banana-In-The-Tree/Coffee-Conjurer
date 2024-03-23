@@ -151,8 +151,8 @@ public class Player : MonoBehaviour
 
     public void StartMinigame(MiniGame newGame)
     {
-       
-        if(currentGame != null)
+        PlayerInput.EnableMinigame();
+        if (currentGame != null)
         {
             
             currentGame = null;
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
         {
             oswald.MiniGameOpened();
         }
-        PlayerInput.EnableMinigame();
+        
     }
     public MiniGame GetMinigame()
     {

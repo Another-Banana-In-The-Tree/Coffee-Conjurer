@@ -125,6 +125,7 @@ public class PlayerInput : MonoBehaviour
     {
         _controls.Dialogue.Enable();
         _controls.Game.Disable();
+        _controls.MiniGame.Disable();
     }
     public static void EndDialogueMode()
     {

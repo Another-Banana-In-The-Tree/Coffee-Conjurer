@@ -26,7 +26,7 @@ public class FillCup : MonoBehaviour, MiniGame
     private bool gameActive = false;
 
     [SerializeField] private TextMeshProUGUI sizeText;
-
+    [SerializeField]private Oswald oswald;
     
 
     public void Fill(float value)
@@ -38,6 +38,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private void Update()
     {
+        if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (!gameActive) return;
         //print(currentCoffee.roast);
 
