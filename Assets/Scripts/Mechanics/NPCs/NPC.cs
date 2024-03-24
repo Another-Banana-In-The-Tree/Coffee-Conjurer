@@ -233,6 +233,8 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void LeaveStore(bool isMad)
     {
+
+        FindObjectOfType<NPCManager>().UpdateCustomersInStore();
         isLeaving = true;
         
         isMoving = true;
