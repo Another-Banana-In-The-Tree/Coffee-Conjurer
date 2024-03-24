@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 5589754465361537085}
   - component: {fileID: 8268206244324701815}
   m_Layer: 6
-  m_Name: MrSlime
+  m_Name: NPCGeneric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
-  speed: 5
+  speed: 1
   patience: 0
   timeInStore: 0
   talkingImage: {fileID: 21300000, guid: 4674a8441f50f704b93be14e53e9d49c, type: 3}
@@ -196,10 +196,10 @@ MonoBehaviour:
   angryImage: {fileID: 1922298099, guid: 5b4dd27e9968b4a43adf444d68315c76, type: 3}
   coffeeImage: {fileID: 0}
   emoteRenderer: {fileID: 5790123757454804547}
-  customerName: MrSlime
+  customerName: 
   coffeeSize: 1
   coffeeRoast: 1
-  ingredients: 0000000003000000
+  ingredients: 
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   npcSprite: {fileID: 0}
