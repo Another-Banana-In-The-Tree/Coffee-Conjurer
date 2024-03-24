@@ -350,8 +350,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Thanks. Also, did you know they had to cut out one of my lines because
-      it would have made the game too good? It's true!
+  - text: Nerd? Says the one who belongs in a green Zelda shirt with cargo shorts.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: ' '
@@ -366,7 +365,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Nerd? Says the one who belongs in a green Zelda shirt with cargo shorts.
+  - text: Thanks. Also, did you know they had to cut out one of my lines because
+      it would have made the game too good? It's true!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: ' '

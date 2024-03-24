@@ -216,7 +216,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!114 &2291377366943784575
 MonoBehaviour:
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202.58002, y: 476.13007}
+  m_AnchoredPosition: {x: -219, y: 476.13007}
   m_SizeDelta: {x: 74.56, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7703121542252865467
@@ -390,6 +390,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Oswald, Assembly-CSharp
+        m_MethodName: MenuOpened
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &689511953817246609
 GameObject:
@@ -1747,7 +1759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Open
+  m_text: Orders
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f523230abbce749448293552dce3c276, type: 2}
   m_sharedMaterial: {fileID: 774358764061585151, guid: f523230abbce749448293552dce3c276, type: 2}
@@ -3171,6 +3183,8 @@ MonoBehaviour:
   buttonText: {fileID: 2265635842948201998}
   repText: {fileID: 5712707802558884769}
   goldText: {fileID: 8744760237972601502}
+  isTutorial: 1
+  oswald: {fileID: 0}
 --- !u!95 &8894505784739941985
 Animator:
   serializedVersion: 5
@@ -4553,7 +4567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.4, y: 215}
+  m_AnchoredPosition: {x: 1.4, y: 212}
   m_SizeDelta: {x: 200, y: 39.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9087741880888469618

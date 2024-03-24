@@ -20,6 +20,8 @@ public class TargetTap : MonoBehaviour, MiniGame
    [SerializeField] private int numWinsReq = 3;
     private int numWins = 0;
     [SerializeField]private bool isActive = false;
+    public bool isTutorial;
+    
   
     void OnEnable()
     {
@@ -69,6 +71,10 @@ public class TargetTap : MonoBehaviour, MiniGame
     }
     private void EndGame()
     {
+        if (isTutorial)
+        {
+            GameManager.Instance.orderMenu.UpdateCompletion();
+        }
         PlayerInput.EnableGame();
         minigameScreen.SetActive(false);
         background.SetActive(false);
@@ -85,5 +91,10 @@ public class TargetTap : MonoBehaviour, MiniGame
         print("trgetTapStarted");
         minigameScreen.SetActive(true);
         background.SetActive(true);
+    }
+
+    public int MiniGameNumber()
+    {
+        return 0;
     }
 }

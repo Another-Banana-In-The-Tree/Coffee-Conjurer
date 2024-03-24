@@ -8,12 +8,21 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     private Coffee currentCoffee;
     [SerializeField] private GameObject screen;
     [SerializeField] private GameObject backGround;
+    [SerializeField] private Oswald oswald;
     public void AddIngredient(string ingredient)
     {
-
+        if (oswald != null && oswald.WaitForDialogueFinish()) return;
+        if (oswald != null)
+        {
+            if (oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (!currentCoffee.stirred && currentCoffee.size !=null)
         {
             currentCoffee.ingredientsUsed.Add(ingredient);
+            GameManager.Instance.orderMenu.IngredientInput();
         }
 
     }
@@ -34,5 +43,9 @@ public class IngredientChoice : MonoBehaviour, MiniGame
         screen.SetActive(true);
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
 
+    }
+    public int MiniGameNumber()
+    {
+        return 7;
     }
 }

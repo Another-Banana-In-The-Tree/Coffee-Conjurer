@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     float moveVerticalAbs;
     float timer = 0.5f;
     float footDelay;
+
+    private Oswald oswald;
+    public bool isTutorial = false;
     
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
         menu = GameManager.Instance.orderMenu;
 
         footDelay = audio.GetAudioLength("Walking");
+        oswald = FindObjectOfType<Oswald>();
     }
 
     // Update is called once per frame
@@ -59,6 +63,8 @@ public class Player : MonoBehaviour
                 timer = 0;
             }
         }
+
+        //playerSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
     }
 
     public void SetMovementDir(Vector2 Dir)
@@ -145,8 +151,8 @@ public class Player : MonoBehaviour
 
     public void StartMinigame(MiniGame newGame)
     {
-       
-        if(currentGame != null)
+        PlayerInput.EnableMinigame();
+        if (currentGame != null)
         {
             
             currentGame = null;
@@ -154,7 +160,11 @@ public class Player : MonoBehaviour
         Debug.Log("setgame");
         currentGame = newGame;
         currentGame.gameStarted();
-        PlayerInput.EnableMinigame();
+        if (isTutorial)
+        {
+            oswald.MiniGameOpened();
+        }
+        
     }
     public MiniGame GetMinigame()
     {

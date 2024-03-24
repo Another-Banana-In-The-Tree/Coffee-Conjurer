@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: IncorrectDIalogue
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Not quite finished there, apprentice! Come back when you completed the
-      last step I gave you, and make sure you did it correctly!
+  - text: Not quite right, apprentice! Try it again, and don't screw it up this time!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

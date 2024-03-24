@@ -37,7 +37,7 @@ public class CoffeeHandler : MonoBehaviour
         customerOders.Enqueue(newOrder);
         CreateNewCoffee(newOrder.name);
         Coffee test = customerOders.Peek();
-        print("Order Added");
+        //print("Order Added");
         print(test.name);
         print(test.roast);
         print(test.size);
@@ -56,7 +56,7 @@ public class CoffeeHandler : MonoBehaviour
        // currentCoffee = newCoffee;
         coffeeQueue.Enqueue(newCoffee);
 
-        print("Coffee created " + coffeeQueue.Peek().name);
+        //print("Coffee created " + coffeeQueue.Peek().name);
     }
 
     public Coffee GetCurrentCoffee()
@@ -94,10 +94,10 @@ public class CoffeeHandler : MonoBehaviour
     public void CoffeeStats(Coffee coffee)
     {
 
-        Debug.Log("This coffee is: ");
-        Debug.Log(coffee.name);
+        //Debug.Log("This coffee is: ");
+       // Debug.Log(coffee.name);
         
-        Debug.Log(coffee.roast);
+        //Debug.Log(coffee.roast);
         //Debug.Log(coffee.toppingAdded);
        
       

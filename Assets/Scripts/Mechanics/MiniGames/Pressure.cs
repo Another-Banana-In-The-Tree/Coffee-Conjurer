@@ -15,9 +15,9 @@ public class Pressure : MonoBehaviour, MiniGame
     private bool isPlaying = false;
     [SerializeField] private float minTarget;
     [SerializeField] private float maxTarget;
-
+    private int miniGameNum = 2;
     private Coffee currentCoffee;
-    
+    private Oswald oswald;
 
 
 
@@ -37,11 +37,15 @@ public class Pressure : MonoBehaviour, MiniGame
 
     private void Awake()
     {
+<<<<<<< HEAD
         audio = FindObjectOfType<AudioManager>();
     }
     void Start()
     {
         //roastDelay = audio.GetAudioLength("Heat");
+=======
+        oswald = FindObjectOfType<Oswald>();
+>>>>>>> main
     }
     private void Update()
     {
@@ -94,6 +98,13 @@ public class Pressure : MonoBehaviour, MiniGame
     }
     public void Play()
     {
+        if(oswald != null)
+        {
+            if(oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (currentCoffee.roast == null)
         {
            // if (fill >= 1) return;
@@ -132,17 +143,17 @@ public class Pressure : MonoBehaviour, MiniGame
 
         if( tempSum < 0.69)
         {
-            currentCoffee.roast = "light";
+            currentCoffee.roast = "Light";
             print("light");
         }
         else if(tempSum > 0.7 && tempSum <= 0.82 )
         {
-            currentCoffee.roast = "medium";
+            currentCoffee.roast = "Medium";
             print("Medium");
         }
         else if (tempSum >= 0.83)
         {
-            currentCoffee.roast = "dark";
+            currentCoffee.roast = "Dark";
             print("Dark");
         }
         if (currentCoffee.roast != null)
@@ -159,6 +170,8 @@ public class Pressure : MonoBehaviour, MiniGame
 
     public void Exit()
     {
+        print("this is your coffees roast" + currentCoffee.roast);
+        roast.text = " ";
         fill = 0;
         timeCount = 0;
         points.Clear();
@@ -175,5 +188,10 @@ public class Pressure : MonoBehaviour, MiniGame
         canvas.SetActive(true);
         screen.SetActive(true);
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+    }
+
+    public int MiniGameNumber()
+    {
+        return 3;
     }
 }

@@ -21,15 +21,16 @@ public class DialogueManager : MonoBehaviour
     private bool skipTyping = false;
     private bool skippable = false;
     [SerializeField] private Oswald oswald;
-
+    private Player player;
     private List<dialogueString> dialoguelist;
     private NPC currentNPC;
     [Header("Player")]
     //playercontroller reference
     private Transform playerCamera;
+    private bool inDialogue = false;
 
     private int currentDialougeIndex = 0;
-
+    
 
     public static DialogueManager Instance { get; private set; }
 
@@ -46,7 +47,7 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
         }
 
-
+        
     }
 
     private void Start()
@@ -54,13 +55,18 @@ public class DialogueManager : MonoBehaviour
         dialogueParent.SetActive(false);
         playerCamera = Camera.main.transform;
         typingSpeed = defaultTypingSpeed;
+        player = FindObjectOfType<Player>();
     }
 
     
     public void DialogueStart(List<dialogueString> textToPrint, NPC npc)
     {
+        if (inDialogue) return;
+        inDialogue = true;
+       
         PlayerInput.DialogueMode();
-        currentNPC = npc;
+        player.SetMovementDir(Vector2.zero);
+       currentNPC = npc;
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 
@@ -73,7 +79,10 @@ public class DialogueManager : MonoBehaviour
     }
     public void DialogueStart(List<dialogueString> textToPrint)
     {
+        if (inDialogue) return;
+        inDialogue = true;
         PlayerInput.DialogueMode();
+        player.SetMovementDir(Vector2.zero);
         Debug.Log("DialogueBegin");
         dialogueParent.SetActive(true);
 
@@ -102,6 +111,7 @@ public class DialogueManager : MonoBehaviour
         
         while (currentDialougeIndex < dialoguelist.Count)
         {
+            //PlayerInput.DialogueMode();
             skippable = true;
             if (skipTyping)
             {
@@ -171,16 +181,19 @@ public class DialogueManager : MonoBehaviour
     }
     private void DialogueStop()
     {
+        inDialogue = false;
         StopAllCoroutines();
         dialogueText.text = "";
         dialogueParent.SetActive(false);
+        PlayerInput.EndDialogueMode();
         if (isTutorial)
         {
             Debug.Log("Finishing tutorial dialogue...");
             oswald.DialogueFinish();
+            
         }
         else currentNPC.DialogueFinish();
-        PlayerInput.EndDialogueMode();
+        
     }
 
     public void SetDialogueSpeed(float newSpeed)
@@ -190,6 +203,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void SkipDialogue()
     {
+        print(skippable);
         if (skippable)
         {
             typingSpeed = 0;

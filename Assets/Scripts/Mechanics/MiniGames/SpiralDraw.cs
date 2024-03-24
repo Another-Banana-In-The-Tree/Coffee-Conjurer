@@ -20,6 +20,8 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     private Coffee currentCoffee;
 
     private bool gameRunning = false;
+    public bool isTutorial;
+    [SerializeField] private Oswald oswald;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +57,15 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     // Update is called once per frame
     void Update()
     {
+        if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (!gameRunning) return;
+        if (oswald != null)
+        {
+            if (oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (!currentCoffee.stirred && currentCoffee.size != null)
         {
 
@@ -92,6 +102,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
     public void Exit()
     {
+        if (isTutorial)
+        {
+            GameManager.Instance.orderMenu.UpdateCompletion();
+        }
         
         currentSpace = 0;
         minigameScreen.SetActive(false);
@@ -112,5 +126,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
 
 
+    }
+
+    public int MiniGameNumber()
+    {
+        return 9;
     }
 }

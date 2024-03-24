@@ -79,7 +79,7 @@ public class NPC : MonoBehaviour, IInteractable
     float moveHorizontalAbs;
     float moveVerticalAbs;
     DialogueTrigger DT;
-
+    DialogueObject dialogueObject;
     
     private void Start()
     {
@@ -98,7 +98,8 @@ public class NPC : MonoBehaviour, IInteractable
         {
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
-       DT =  gameObject.GetComponent<DialogueTrigger>();
+        DT =  gameObject.GetComponent<DialogueTrigger>();
+       // DT.SetDialogueList(dialogueObject.GetDialogueStrings());
     }
 
     private void Update()
@@ -276,14 +277,14 @@ public class NPC : MonoBehaviour, IInteractable
     {
         timeWaiting = 0;
         nextWaypointPos = seatWaypoint.transform.position;
-        seatWaypoint.AddCustomer(this);
+       // seatWaypoint.AddCustomer(this);
         isWaiting = true;
         isSitting = true;
         float distance = Vector3.Distance(transform.position, nextWaypointPos);
         if ((distance >= distancePadding)) 
         {
             emoteRenderer.enabled = true;
-            Debug.Log(emoteRenderer.enabled);
+            //Debug.Log(emoteRenderer.enabled);
             float tempScore = GameManager.Instance.GetScore();
             if (tempScore >= 7) emoteRenderer.sprite = happyImage; FindObjectOfType<AudioManager>().Play("Done Well");//Debug.Log("Happy");
             if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; FindObjectOfType<AudioManager>().Play("Done Poor"); //Debug.Log("Disppointed");
@@ -323,7 +324,7 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void DialogueFinish()
     {
-        print(name + "finish dialogue");
+        //print(name + "finish dialogue");
         if (isMoving) return;
         isWaiting = true;
         EnableMovement();
@@ -332,7 +333,7 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void Interact(Player player)
     {
-        Debug.Log("Interacted!");
+        //Debug.Log("Interacted!");
         if (!isInteractable) return;
         SetInteractable();
         if (nextWaypoint == waypoints[1])
@@ -340,7 +341,7 @@ public class NPC : MonoBehaviour, IInteractable
             isWaiting = false;
             DT.Trigger(false);
             //remember to chhange iswaiting to true when dialogue finishes (for later)
-            Debug.Log("Coffee Added!");
+            //Debug.Log("Coffee Added!");
             //Show sprite image above head based on certain variables
             emoteRenderer.enabled = true;
             emoteRenderer.sprite = talkingImage;

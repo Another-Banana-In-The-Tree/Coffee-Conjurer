@@ -8,4 +8,6 @@ public interface MiniGame
     public void Exit();
 
     public void gameStarted();
+
+    public int MiniGameNumber();
 }

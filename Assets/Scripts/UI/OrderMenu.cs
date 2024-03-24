@@ -22,6 +22,8 @@ public class OrderMenu : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI repText;
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private bool isTutorial = false;
+    [SerializeField] private Oswald oswald;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -39,7 +41,7 @@ public class OrderMenu : MonoBehaviour
         }
         else
         {
-            buttonText.text = "Open";
+            buttonText.text = "Orders";
             menuOpen = false;
         }
 
@@ -83,17 +85,29 @@ public class OrderMenu : MonoBehaviour
             sizeText.color = Compare(playerMade.size, currentCoffee.size);
             
         }
-        foreach (string i in currentCoffee.ingredientsUsed)
+        
+        if (isTutorial)
         {
-            if (playerMade.ingredientsUsed.Contains(i))
-            {
-                ingredients[ingredientIndexer].color = Color.green;
-                ingredientIndexer++;
-            }
+            oswald.CheckTaskStatus();
         }
     }
     
-
+    public void IngredientInput()
+    {
+        Coffee playerMade = CoffeeHandler.Instance.GetCurrentCoffee();
+        int indexer = 0;
+        foreach (string i in playerMade.ingredientsUsed)
+        {
+            
+            for(int x = 0; x <currentCoffee.ingredientsUsed.Count; x++)
+            {
+                if(i == currentCoffee.ingredientsUsed[x])
+                {
+                    ingredients[x].color = Color.green;
+                }
+            }
+        }
+    }
 
 
     private Color Compare(string player, string customer)
@@ -154,7 +168,7 @@ public class OrderMenu : MonoBehaviour
     }
     public void UpdateGold(float gold)
     {
-        repText.text = "Gold: " + gold.ToString("F1");
+        goldText.text = "Gold: " + gold.ToString("F1");
     } 
 
 }
