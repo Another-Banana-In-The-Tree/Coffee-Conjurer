@@ -59,6 +59,13 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     {
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (!gameRunning) return;
+        if (oswald != null)
+        {
+            if (oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (!currentCoffee.stirred && currentCoffee.size != null)
         {
 
@@ -119,5 +126,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
 
 
+    }
+
+    public int MiniGameNumber()
+    {
+        return 9;
     }
 }

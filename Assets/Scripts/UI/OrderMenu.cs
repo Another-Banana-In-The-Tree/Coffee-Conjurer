@@ -95,12 +95,16 @@ public class OrderMenu : MonoBehaviour
     public void IngredientInput()
     {
         Coffee playerMade = CoffeeHandler.Instance.GetCurrentCoffee();
-        foreach (string i in currentCoffee.ingredientsUsed)
+        int indexer = 0;
+        foreach (string i in playerMade.ingredientsUsed)
         {
-            if (playerMade.ingredientsUsed.Contains(i))
+            
+            for(int x = 0; x <currentCoffee.ingredientsUsed.Count; x++)
             {
-                ingredients[ingredientIndexer].color = Color.green;
-                ingredientIndexer++;
+                if(i == currentCoffee.ingredientsUsed[x])
+                {
+                    ingredients[x].color = Color.green;
+                }
             }
         }
     }

@@ -12,6 +12,13 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     public void AddIngredient(string ingredient)
     {
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
+        if (oswald != null)
+        {
+            if (oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (!currentCoffee.stirred && currentCoffee.size !=null)
         {
             currentCoffee.ingredientsUsed.Add(ingredient);
@@ -36,5 +43,9 @@ public class IngredientChoice : MonoBehaviour, MiniGame
         screen.SetActive(true);
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
 
+    }
+    public int MiniGameNumber()
+    {
+        return 7;
     }
 }
