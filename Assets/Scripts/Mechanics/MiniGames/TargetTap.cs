@@ -21,6 +21,7 @@ public class TargetTap : MonoBehaviour, MiniGame
     private int numWins = 0;
     [SerializeField]private bool isActive = false;
     public bool isTutorial;
+    
   
     void OnEnable()
     {
@@ -90,5 +91,10 @@ public class TargetTap : MonoBehaviour, MiniGame
         print("trgetTapStarted");
         minigameScreen.SetActive(true);
         background.SetActive(true);
+    }
+
+    public int MiniGameNumber()
+    {
+        return 0;
     }
 }

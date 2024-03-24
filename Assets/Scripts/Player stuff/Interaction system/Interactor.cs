@@ -16,13 +16,18 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject toolTip;
 
     private Player player;
-
+    private bool isTutorial = false;
     
 
     private void Awake()
     {
         player = GetComponent<Player>();
         interactPoint = transform.position;
+        
+        if (player.isTutorial)
+        {
+            isTutorial = true;
+        }
     }
     private void Update()
     {
@@ -75,6 +80,7 @@ public class Interactor : MonoBehaviour
                             //print(trigger.gameObject.name);
                             if (currentCoffee != null)
                             {
+                               
                                 if (!currentCoffee.stirred)
                                 {
                                     //print("trigger Chosen" + loopNum);
@@ -89,6 +95,8 @@ public class Interactor : MonoBehaviour
                            // print(npc.gameObject.name );
                             if (currentCoffee == null || currentCoffee.name != i.name || (currentCoffee.stirred && npc.GetCurrentWaypoint() == 4))
                             {
+                                if(currentCoffee != null) print(currentCoffee.name);
+                               
                                 //print("npc Chosen" + loopNum);
                                 interacted = true;
                                 interactable.Interact(player);

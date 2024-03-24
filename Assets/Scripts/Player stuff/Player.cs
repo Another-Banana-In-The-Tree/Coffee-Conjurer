@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     float footDelay;
 
     private Oswald oswald;
-    [SerializeField] private bool isTutorial = false;
+    public bool isTutorial = false;
     
     private void Awake()
     {

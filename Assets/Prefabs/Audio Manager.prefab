@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Walking
     clip: {fileID: 8300000, guid: 9c5fb2024d4112a4da40e65924bfdd6b, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1.02
     loop: 0
     source: {fileID: 0}

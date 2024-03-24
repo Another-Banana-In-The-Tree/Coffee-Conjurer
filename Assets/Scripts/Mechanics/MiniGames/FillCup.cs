@@ -39,6 +39,13 @@ public class FillCup : MonoBehaviour, MiniGame
     private void Update()
     {
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
+        if (oswald != null)
+        {
+            if (oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (!gameActive) return;
         //print(currentCoffee.roast);
 
@@ -67,7 +74,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private void TestSize()
     {
-        print("testsize");
+        //print("testsize");
         string output = "";
         if(currentFill < 0.28)
         {
@@ -163,5 +170,10 @@ public class FillCup : MonoBehaviour, MiniGame
         MiniGameScreen.SetActive(true);
         gameActive = true;
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+    }
+
+    public int MiniGameNumber()
+    {
+        return 5;
     }
 }

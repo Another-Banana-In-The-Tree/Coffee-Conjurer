@@ -15,9 +15,9 @@ public class Pressure : MonoBehaviour, MiniGame
     private bool isPlaying = false;
     [SerializeField] private float minTarget;
     [SerializeField] private float maxTarget;
-
+    private int miniGameNum = 2;
     private Coffee currentCoffee;
-    
+    private Oswald oswald;
 
 
 
@@ -28,7 +28,11 @@ public class Pressure : MonoBehaviour, MiniGame
     [SerializeField] private SpriteRenderer beanSprite;
 
     private List<float> points = new List<float>();
-   
+
+    private void Awake()
+    {
+        oswald = FindObjectOfType<Oswald>();
+    }
     private void Update()
     {
         if (isPlaying)
@@ -69,6 +73,13 @@ public class Pressure : MonoBehaviour, MiniGame
     }
     public void Play()
     {
+        if(oswald != null)
+        {
+            if(oswald.GetState() != MiniGameNumber() + 1)
+            {
+                return;
+            }
+        }
         if (currentCoffee.roast == null)
         {
            // if (fill >= 1) return;
@@ -134,6 +145,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
     public void Exit()
     {
+        print("this is your coffees roast" + currentCoffee.roast);
         roast.text = " ";
         fill = 0;
         timeCount = 0;
@@ -151,5 +163,10 @@ public class Pressure : MonoBehaviour, MiniGame
         canvas.SetActive(true);
         screen.SetActive(true);
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+    }
+
+    public int MiniGameNumber()
+    {
+        return 3;
     }
 }

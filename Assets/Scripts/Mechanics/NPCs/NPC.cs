@@ -99,7 +99,7 @@ public class NPC : MonoBehaviour, IInteractable
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
         DT =  gameObject.GetComponent<DialogueTrigger>();
-        DT.SetDialogueList(dialogueObject.GetDialogueStrings());
+       // DT.SetDialogueList(dialogueObject.GetDialogueStrings());
     }
 
     private void Update()

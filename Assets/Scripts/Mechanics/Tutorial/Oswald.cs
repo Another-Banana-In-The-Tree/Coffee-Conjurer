@@ -167,7 +167,7 @@ public class Oswald : MonoBehaviour, IInteractable
                 Incorrect();
             }
         }
-        if (tempCoffee.stirred)
+        if (tempCoffee.stirred && state == 10)
         {
             interacted = false;
             dialogueTrigger.Trigger(true);
@@ -185,7 +185,7 @@ public class Oswald : MonoBehaviour, IInteractable
     {
         
         print("minigame opened");
-        if(state == 3 || state == 5 || state == 7 || state == 9)
+        if(player.GetMinigame().MiniGameNumber() == state)
         {
             waitForDialogueFinish = true;
             PlayerInput.DialogueMode();
@@ -202,13 +202,18 @@ public class Oswald : MonoBehaviour, IInteractable
 
     }
 
+    public bool WaitForDialogueFinish()
+    {
+        return waitForDialogueFinish;
+    }
+
     public bool GetInteracted()
     {
         return interacted;
     }
 
-    public bool WaitForDialogueFinish()
+    public int GetState()
     {
-        return waitForDialogueFinish;
+        return state;
     }
 }
