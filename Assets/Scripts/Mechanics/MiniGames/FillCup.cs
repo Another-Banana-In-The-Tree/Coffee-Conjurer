@@ -12,7 +12,7 @@ public class FillCup : MonoBehaviour, MiniGame
     [SerializeField] private TargetTap spill;
     [SerializeField] private Player player;
     [SerializeField] private Slider slider;
-
+    public bool isTutorial;
     private Coffee currentCoffee;
 
 
@@ -26,7 +26,7 @@ public class FillCup : MonoBehaviour, MiniGame
     private bool gameActive = false;
 
     [SerializeField] private TextMeshProUGUI sizeText;
-
+    [SerializeField]private Oswald oswald;
     
 
     public void Fill(float value)
@@ -38,6 +38,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private void Update()
     {
+        if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (!gameActive) return;
         //print(currentCoffee.roast);
 
@@ -138,7 +139,10 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-        GameManager.Instance.orderMenu.UpdateCompletion();
+        if (!isTutorial || currentFill < 0.95)
+        {
+            GameManager.Instance.orderMenu.UpdateCompletion();
+        }
         sizeText.text = "empty";
         slider.value = 0;
         gameActive = false;

@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
                 timer = 0;
             }
         }
+
+        //playerSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
     }
 
     public void SetMovementDir(Vector2 Dir)
@@ -149,8 +151,8 @@ public class Player : MonoBehaviour
 
     public void StartMinigame(MiniGame newGame)
     {
-       
-        if(currentGame != null)
+        PlayerInput.EnableMinigame();
+        if (currentGame != null)
         {
             
             currentGame = null;
@@ -162,7 +164,7 @@ public class Player : MonoBehaviour
         {
             oswald.MiniGameOpened();
         }
-        PlayerInput.EnableMinigame();
+        
     }
     public MiniGame GetMinigame()
     {

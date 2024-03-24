@@ -41,7 +41,7 @@ public class OrderMenu : MonoBehaviour
         }
         else
         {
-            buttonText.text = "Open";
+            buttonText.text = "Orders";
             menuOpen = false;
         }
 
@@ -85,6 +85,16 @@ public class OrderMenu : MonoBehaviour
             sizeText.color = Compare(playerMade.size, currentCoffee.size);
             
         }
+        
+        if (isTutorial)
+        {
+            oswald.CheckTaskStatus();
+        }
+    }
+    
+    public void IngredientInput()
+    {
+        Coffee playerMade = CoffeeHandler.Instance.GetCurrentCoffee();
         foreach (string i in currentCoffee.ingredientsUsed)
         {
             if (playerMade.ingredientsUsed.Contains(i))
@@ -93,13 +103,7 @@ public class OrderMenu : MonoBehaviour
                 ingredientIndexer++;
             }
         }
-        if (isTutorial)
-        {
-            oswald.CheckTaskStatus();
-        }
     }
-    
-
 
 
     private Color Compare(string player, string customer)
@@ -160,7 +164,7 @@ public class OrderMenu : MonoBehaviour
     }
     public void UpdateGold(float gold)
     {
-        repText.text = "Gold: " + gold.ToString("F1");
+        goldText.text = "Gold: " + gold.ToString("F1");
     } 
 
 }

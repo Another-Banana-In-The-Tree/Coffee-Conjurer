@@ -277,7 +277,7 @@ public class NPC : MonoBehaviour, IInteractable
     {
         timeWaiting = 0;
         nextWaypointPos = seatWaypoint.transform.position;
-        seatWaypoint.AddCustomer(this);
+       // seatWaypoint.AddCustomer(this);
         isWaiting = true;
         isSitting = true;
         float distance = Vector3.Distance(transform.position, nextWaypointPos);

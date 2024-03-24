@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +19,8 @@ public class Oswald : MonoBehaviour, IInteractable
     public int state = 0;
     private bool menuOpened;
     private bool interacted = false;
+    private bool menuOpenWasTriggered = false;
+    private bool waitForDialogueFinish = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,23 +37,32 @@ public class Oswald : MonoBehaviour, IInteractable
     private void Update()
     {
        
-        if(state ==2 && menuOpened && (Vector2.Distance(player.transform.position, transform.position)< 0.7f))
+        if(state ==2 && menuOpened && (Vector2.Distance(player.transform.position, transform.position)< 0.9f) && !menuOpenWasTriggered)
         {
             //NextState();
             menuOpened = false;
+            menuOpenWasTriggered = true;
             dialogueTrigger.Trigger(true);
         }
 
     }
     public void Interact(Player player)
     {
-        if (state < 1 && !interacted)
+        if ( !interacted)
         {
             interacted = true;
 
             Debug.Log("Oswald is Talking");
+            
             dialogueTrigger.Trigger(true);
+            if(state == 11)
+            {
+                int currentState = animator.GetInteger("state");
+                animator.SetInteger("state", currentState + 1);
+            }
+            
         }
+        
     }
     public void DialogueFinish()
     {
@@ -65,23 +75,31 @@ public class Oswald : MonoBehaviour, IInteractable
                 Debug.Log("addingCoffee");
                 CoffeeHandler.Instance.AddOrder(coffee); //Load coffee when on state 2
                 break;
-            case 8:
+            case 12:
                 fadeScreen.FadeOutToLevel(levelScene); //Fade out to the level scene on state 8
                 break;
         }
         //Set the animator state to the next state
-        if (!isWrong) NextState();
+        if (state == 3 || state == 5 || state == 7 || state == 9)
+        {
+            PlayerInput.EnableMinigame();
+            if (waitForDialogueFinish)
+            {
+                waitForDialogueFinish = false;
+            }
+        }
+            if (!isWrong) NextState();
         isWrong = false;
     }
     public void NextState()
     {
         Debug.Log("switching state");
         int currentState = animator.GetInteger("state");
-        animator.SetInteger("state", currentState + 1);
+        if(currentState != 2 && currentState != 5 && currentState != 4 && currentState !=8 && currentState !=9) animator.SetInteger("state", currentState + 1);
         
         state++;
         if (state < dialogueList.Count) dialogueTrigger.SetDialogueList(dialogueList[state].GetDialogueStrings());
-        if (state < 2)
+        if (state < 2 || state == 12)
         {
             print("going to next dialogue");
             dialogueTrigger.Trigger(true);
@@ -101,7 +119,8 @@ public class Oswald : MonoBehaviour, IInteractable
         Coffee tempCoffee;
         
             tempCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
-            if (tempCoffee.roast != null && state == 3)
+        if (state < dialogueList.Count) dialogueTrigger.SetDialogueList(dialogueList[state].GetDialogueStrings());
+        if (tempCoffee.roast != null && state == 4)
             {
                 Debug.Log("Coffee exists");
                 if (tempCoffee.roast != coffee.roast)
@@ -110,17 +129,68 @@ public class Oswald : MonoBehaviour, IInteractable
                     tempCoffee.roast = null;
                     Incorrect();
                 }
+            else
+            {
+                dialogueTrigger.Trigger(true);
+                int currentState = animator.GetInteger("state");
+                animator.SetInteger("state", currentState + 1);
+            }
+            return;
                 
             }
+        if (tempCoffee.size != null && state == 6)
+        {
+            if (tempCoffee.size != coffee.size)
+            {
+                tempCoffee.size = null;
+                Incorrect();
+            }
+            else
+            {
         
+                dialogueTrigger.Trigger(true);
+                int currentState = animator.GetInteger("state");
+                animator.SetInteger("state", currentState + 1);
+            }
+            return;
+        }
+        if(state == 8)
+        {
+            if (tempCoffee.ingredientsUsed.Contains("RegMilk") && tempCoffee.ingredientsUsed.Contains("Vanilla"))
+            {
+                dialogueTrigger.Trigger(true);
+                int currentState = animator.GetInteger("state");
+                animator.SetInteger("state", currentState + 1);
+            }
+            else
+            {
+                Incorrect();
+            }
+        }
+        if (tempCoffee.stirred)
+        {
+            interacted = false;
+            dialogueTrigger.Trigger(true);
+            int currentState = animator.GetInteger("state");
+            animator.SetInteger("state", currentState + 1);
+            
+        }
+        
+
+                
     }
+
 
     public void MiniGameOpened()
     {
+        
         print("minigame opened");
-        if(state == 3)
+        if(state == 3 || state == 5 || state == 7 || state == 9)
         {
+            waitForDialogueFinish = true;
+            PlayerInput.DialogueMode();
             dialogueTrigger.Trigger(true);
+            
         }
     }
     public void MenuOpened(bool open)
@@ -130,5 +200,15 @@ public class Oswald : MonoBehaviour, IInteractable
             menuOpened = true;
         }
 
+    }
+
+    public bool GetInteracted()
+    {
+        return interacted;
+    }
+
+    public bool WaitForDialogueFinish()
+    {
+        return waitForDialogueFinish;
     }
 }

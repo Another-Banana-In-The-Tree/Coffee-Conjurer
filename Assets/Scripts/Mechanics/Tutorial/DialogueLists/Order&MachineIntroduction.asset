@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
-  m_Name: State2
+  m_Name: Order&MachineIntroduction
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: So, apprentice, before you are the many machines you'll be using to conjuer

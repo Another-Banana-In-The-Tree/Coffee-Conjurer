@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
-  m_Name: State3
+  m_Name: RoastInstructions
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: To roast the coffee, press the 'E' button repeatedly and keep the bar on
       the right temperature!
-    isEnd: 1
+    isEnd: 0
     isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
@@ -61,8 +61,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: And don't worry about small mistakes either, the roast will match whatever
-      temperature you've roasted it at the longest.
+  - text: Absolutely! And don't worry about small mistakes either, the roast will
+      match whatever temperature you've roasted it at the longest.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: ' '

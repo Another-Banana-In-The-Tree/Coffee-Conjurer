@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4432636846631578811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356576183820232076}
+  - component: {fileID: 8245108021506049357}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356576183820232076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432636846631578811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8245108021506049357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432636846631578811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c6f460d22059641986b4c0f953f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: 9c5fb2024d4112a4da40e65924bfdd6b, type: 3}
+    volume: 1
+    pitch: 1.02
+    loop: 0
+    source: {fileID: 0}
+  - name: Select
+    clip: {fileID: 8300000, guid: 0ddbfa8b9bd6a3b4285a817dd0e5ba6e, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: d9b2d2061a954e544a5b75ea87db580a, type: 3}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme2
+    clip: {fileID: 8300000, guid: c9a3b4bb88008ed4b930003cc7a9d4ac, type: 3}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme3
+    clip: {fileID: 8300000, guid: 3c7518651884a4a409ba695a1ae321e9, type: 3}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bell
+    clip: {fileID: 8300000, guid: 4374b5ebff278aa49968e89bbadac363, type: 3}
+    volume: 1
+    pitch: 1.45
+    loop: 0
+    source: {fileID: 0}
+  - name: Stirr
+    clip: {fileID: 8300000, guid: 0476dd389edf8e147b8ca07048fbd1c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
