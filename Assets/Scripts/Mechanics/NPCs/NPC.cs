@@ -76,8 +76,6 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer npcSprite;
     float moveHorizontal;
     float moveVertical;
-    float moveHorizontalAbs;
-    float moveVerticalAbs;
     DialogueTrigger DT;
     DialogueObject dialogueObject;
     
@@ -86,7 +84,8 @@ public class NPC : MonoBehaviour, IInteractable
         npcManager = FindAnyObjectByType<NPCManager>();
         waypoints = npcManager.GetWaypoints();
         exitWaypoint = npcManager.GetExitWaypoint();
-
+        //Animation
+        npcAnimation = GetComponent<Animator>();
        
         coffee = new Coffee(); //Preload coffee here
 
@@ -147,53 +146,64 @@ public class NPC : MonoBehaviour, IInteractable
     {
         
         //More Bad Animation Code courtesy of yours truly, Sean M
-        //moveHorizontal = moveDir.x;
-        //moveVertical = moveDir.y;
-        moveHorizontalAbs = Mathf.Abs(moveHorizontal);
-        moveVerticalAbs = Mathf.Abs(moveVertical);
+        moveHorizontal = nextWaypointPos.x;
+        moveVertical = nextWaypointPos.y;
+        Debug.Log("THE POWER OF NEXTWAYPOINTPOS IS  X:" +moveHorizontal + "  Y:" + moveVertical);
 
-        if (moveHorizontalAbs * -1 > 0)
+        if (npcAnimation != null)
         {
-            moveHorizontalAbs = moveHorizontalAbs * -1;
-        }
-        
-        if (moveVerticalAbs * -1 > 0)
-        {
-            moveVerticalAbs = moveVerticalAbs * -1;
-        }
-        
-        if (moveHorizontalAbs != 0)
-        {
-            if (moveHorizontal < 0)
+            if (isMoving)
             {
-                npcAnimation.SetBool("HoriFlip", true);
-                npcSprite.flipX = false;
+                if (moveHorizontal > 0.5)
+                {
+
+                    npcAnimation.SetBool("HoriFlip", true);
+                    npcAnimation.SetFloat("HoriSpeed", 1);
+
+                }
+                else if (moveHorizontal < 0.5)
+                {
+
+                    npcAnimation.SetBool("HoriFlip", false);
+                    npcAnimation.SetFloat("HoriSpeed", 1);
+
+
+                }
+                else
+                {
+                    npcAnimation.SetFloat("HoriSpeed", 0);
+                }
+
+                if (moveVertical > 0.5)
+                {
+
+                    npcAnimation.SetBool("VertFlip", true);
+                    npcAnimation.SetFloat("VertSpeed", 1);
+
+                }
+                else if (moveVertical < 0.5)
+                {
+
+                    npcAnimation.SetBool("VertFlip", false);
+                    npcAnimation.SetFloat("VertSpeed", 1);
+
+                }
+                else
+                {
+                    npcAnimation.SetFloat("VertSpeed", 0);
+                }
             }
             else
             {
-                npcSprite.flipX = true;
-                npcAnimation.SetBool("HoriFlip", false);
+                npcAnimation.SetFloat("HoriSpeed", 0);
+                npcAnimation.SetFloat("VertSpeed", 0);
             }
-            npcAnimation.SetFloat("HoriSpeed",moveHorizontalAbs);
-            
-        } else if (moveVerticalAbs != 0)
-        {
-            if (moveVertical < 0)
-            {
-                npcAnimation.SetBool("VertFlip", true);
-            }
-            else
-            {
-                npcAnimation.SetBool("VertFlip", false);
-            }
-            npcAnimation.SetFloat("VertSpeed",moveVerticalAbs);
-            
         }
-        else
-        { 
-            //npcAnimation.SetFloat("HoriSpeed",0);
-            //npcAnimation.SetFloat("VertSpeed",0);
-        }
+
+
+        //npcAnimation.SetBool("HoriFlip", true);
+        //npcSprite.flipX = false;
+        
     }
 
 
