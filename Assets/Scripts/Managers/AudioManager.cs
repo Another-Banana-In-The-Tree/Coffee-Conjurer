@@ -66,12 +66,12 @@ public class AudioManager : MonoBehaviour
         //find the name of the sound if nothing comes back return null.
         Sound s = Array.Find(sounds, sound => sound.name == name);
         
-        if (s == null)
+        if (s == null || s.source == null)
         {
             return;  
         }
         //play sound
-        
+        print(s.name);
         s.source.Play();
     }
 
