@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: FairyINTRO
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: Hey! Hey! Can I get a large iced coffee with milk?
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: '*You look around but don''t see anyone*'
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I'm right here douchebag!
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: Oh! Sorry I didn't see you there
+    dialogueOption2: A large? You sure you can drink all that?
+    dialogueOption3: Oh my god a fairy!
+    option1IndexJump: 3
+    option2IndexJump: 4
+    option3IndexJump: 6
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: 'Sigh You humans never take the time to really look at anything. One glance
+      and you think you''ve surveyed the whole room. '
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: My apologies, I'll be more careful in the future
+    dialogueOption2: Well that's a bit rude isn't it?
+    dialogueOption3: Well you aren't wrong
+    option1IndexJump: 8
+    option2IndexJump: 10
+    option3IndexJump: 11
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: You! You Fiend! I will not accept this harassment. You can bet I will not
+      come back to this shop unless it is to BURN IT TO THE GROUND
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Good luck with that
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Yes yes, gawk all you want. Can I get my Coffee please?
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: 'You better. '
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: '*He sits on the counter and taps his foot impatiently before grabbing
+      his coffee and flying off.*'
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Huh. Who would have thought that he could carry something that much bigger
+      than him. Something something ants you suppose.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Your face is rude, asshole.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I rarely am
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 7
+    option2IndexJump: 8
+    option3IndexJump: 9
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []

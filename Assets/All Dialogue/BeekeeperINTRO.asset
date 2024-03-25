@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: BeekeeperINTRO
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: Hello honey, just checking in to see if my favourite customer's business
+      is still going well.
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: Your Favourite Customer?
+    dialogueOption2: I don't know you lady
+    dialogueOption3: About as well as can be expected!
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I'm the owner of Staying Alive Honey, honey. I came to see how you were
+      handlin the shop all by yourself.
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: I'd say I was half handling it by myself already
+    dialogueOption2: Pretty decently, if I say so myself
+    dialogueOption3: This place is a mess
+    option1IndexJump: 6
+    option2IndexJump: 7
+    option3IndexJump: 8
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Well that's rather rude of you. I suppose I'll have to go to another shop.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: 'Well that''s good. I just wanted to let you know the next shipment is
+      well on it''s way.  '
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: We've been experimenting with some new spells. I imagine your patrons will
+      be quite happy with it! I'm glad your master has already told you all about
+      me, it would be quite confusing if he didn't. Maybe he's getting //less// forgetful
+      in his old age. Imagine that
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Ha! Oswald has always been a bit absentminded. Well then I'm sure you will
+      be pleased about our new delivery of Zombee honey. It's much better than the
+      previous. Enjoy!
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Well that's good! Perhaps you will do even better with this new patch of
+      Zombee honey! We've been experimenting with some new spells.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Well at least your honest. I hope this delivery of new and improved zombee
+      honey will help a bit
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []

@@ -8,13 +8,20 @@ using UnityEngine.Rendering.Universal;
 [Serializable]
 public class MenuManager : MonoBehaviour
 {
-    Scene scene;
-    public string _sceneName;
+    [SerializeField] string _tutorialSceneName;
+    [SerializeField] string _levelOneSceneName;
+
     [SerializeField] Light2D transitionLight;
     [SerializeField] float endRadius = 20;
     [SerializeField] float transitionSpeed = 1;
     bool isTransitionFinished = false;
     bool isStartPressed = false;
+    
+    bool isSkip = false;
+    bool isSkipPressed = false;
+
+    [SerializeField] GameObject[] skipDialogueHide;
+    [SerializeField] GameObject[] skipDialogueShow;
 
     private void Awake()
     {
@@ -23,16 +30,22 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         TransitionLight();
-        if (isTransitionFinished && isStartPressed)
+        if (isTransitionFinished && isStartPressed && isSkip)
         {
-            Debug.Log("Loading " + _sceneName);
-            SceneManager.LoadScene(_sceneName);
+            Debug.Log("Loading " + _tutorialSceneName);
+            SceneManager.LoadScene(_tutorialSceneName);
         }
-        Debug.Log(transitionLight.pointLightOuterRadius);
+        else if (isTransitionFinished && isStartPressed)
+        {
+            Debug.Log("Loading " + _levelOneSceneName);
+            SceneManager.LoadScene(_levelOneSceneName);
+        }
+        //Debug.Log(transitionLight.pointLightOuterRadius);
     }
-    public void SwitchScene()
+    public void SwitchScene(bool skip)
     {
         isStartPressed = true;
+        isSkip = skip;
         isTransitionFinished = false;
     }
     public void ExitGame()
@@ -57,6 +70,19 @@ public class MenuManager : MonoBehaviour
                 transitionLight.pointLightOuterRadius -= transitionSpeed * Time.deltaTime;
             }
             else if (transitionLight.pointLightOuterRadius <= 0) isTransitionFinished = true;
+        }
+    }
+    public void ShowSkip()
+    {
+        for (int i = 0; i < skipDialogueHide.Length; i++)
+        {
+            Debug.Log("Hiding " + skipDialogueHide[i].name);
+            skipDialogueHide[i].SetActive(false);
+        }
+        for (int i = 0; i < skipDialogueShow.Length; i++)
+        {
+            Debug.Log("Showing " + skipDialogueShow[i].name);
+            skipDialogueShow[i].SetActive(true);
         }
     }
 }

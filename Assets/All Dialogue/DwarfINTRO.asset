@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: DwarfINTRO
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: Oh why hello. Quite a fine establishment you have here. I'll have a medium
+      coffee, dark roast with dragon milk and cinnamon.
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: What's with the suit?
+    dialogueOption2: Thank you! I've worked hard on it.
+    dialogueOption3: Right away
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: 'Do you have a habit of asking customers intrusive questions? '
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I respect a hard worker. I'll be sure to come back. You've earned a loyal
+      customer.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Thank you
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
