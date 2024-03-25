@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Vector2 moveDir;
 
     //Components
-     private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private Interactor interactor;
     private AudioManager audio;
 
@@ -32,7 +32,10 @@ public class Player : MonoBehaviour
 
     private Oswald oswald;
     public bool isTutorial = false;
-    
+    [SerializeField] GameObject controlsTooltip;
+    bool hasMoved = false;
+    bool updatedTooltips = false;
+
     private void Awake()
     {
         PlayerInput.Init(this);
@@ -56,6 +59,7 @@ public class Player : MonoBehaviour
     {
         if (moveDir.magnitude !=0)
         {
+            if (!hasMoved) hasMoved = true;
             timer += Time.deltaTime;
             if (timer > footDelay + 0.01f)
             {
@@ -63,7 +67,11 @@ public class Player : MonoBehaviour
                 timer = 0;
             }
         }
-
+        if (isTutorial && hasMoved && !updatedTooltips)
+        {
+            controlsTooltip.GetComponent<Animator>().SetBool("isHidden", true);
+            updatedTooltips = true;
+        }
         //playerSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
     }
 

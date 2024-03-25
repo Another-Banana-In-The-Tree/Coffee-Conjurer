@@ -152,7 +152,7 @@ public class NPC : MonoBehaviour, IInteractable
         //More Bad Animation Code courtesy of yours truly, Sean M
         moveHorizontal = nextWaypointPos.x;
         moveVertical = nextWaypointPos.y;
-        Debug.Log("THE POWER OF NEXTWAYPOINTPOS IS  X:" +moveHorizontal + "  Y:" + moveVertical);
+        //Debug.Log("THE POWER OF NEXTWAYPOINTPOS IS  X:" +moveHorizontal + "  Y:" + moveVertical);
 
         if (npcAnimation != null)
         {
