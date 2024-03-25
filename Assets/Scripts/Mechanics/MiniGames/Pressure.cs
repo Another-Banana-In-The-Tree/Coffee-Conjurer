@@ -27,6 +27,9 @@ public class Pressure : MonoBehaviour, MiniGame
     [SerializeField] private TextMeshProUGUI roast;
     [SerializeField] private SpriteRenderer beanSprite;
 
+    [SerializeField] Color startColor;
+    [SerializeField] Color endColor;
+
     private List<float> points = new List<float>();
 
     private void Awake()
@@ -99,7 +102,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
         tempSum = tempSum / points.Count;
 
-        beanSprite.color = Color.Lerp(Color.white, Color.black, tempSum);
+        beanSprite.color = Color.Lerp(startColor, endColor, tempSum);
 
     }
 

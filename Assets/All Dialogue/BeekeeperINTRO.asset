@@ -45,7 +45,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Well that's rather rude of you. I suppose I'll have to go to another shop.
+  - text: Well that's rather rude of you...
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
