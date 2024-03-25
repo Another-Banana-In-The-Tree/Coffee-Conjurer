@@ -39,6 +39,17 @@ public class NPCManager : MonoBehaviour
             MoveNext();
             lastMoveTime = totalTime;
         }
+
+        if (customersInStore >= 5)
+        {
+            soundTimer += Time.deltaTime;
+            if (soundTimer > noiseDelay + 0.5f)
+            {
+                Debug.Log("Should Make Sound?");
+                audio.Play("Stirr");
+                soundTimer = 0;
+            }
+        }
     }
 
     public void MoveNext()

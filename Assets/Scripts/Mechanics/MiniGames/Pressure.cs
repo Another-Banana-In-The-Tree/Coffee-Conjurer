@@ -37,15 +37,15 @@ public class Pressure : MonoBehaviour, MiniGame
 
     private void Awake()
     {
-<<<<<<< HEAD
+
         audio = FindObjectOfType<AudioManager>();
     }
     void Start()
     {
         //roastDelay = audio.GetAudioLength("Heat");
-=======
+
         oswald = FindObjectOfType<Oswald>();
->>>>>>> main
+
     }
     private void Update()
     {

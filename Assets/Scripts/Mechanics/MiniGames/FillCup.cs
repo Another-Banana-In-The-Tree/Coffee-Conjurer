@@ -18,6 +18,8 @@ public class FillCup : MonoBehaviour, MiniGame
     //for audio
     [SerializeField] private float timer;
     [SerializeField] private float soundDelay = 1;
+    [SerializeField] private float soundTimer;
+    [SerializeField] private float noiseDelay = 1;
     private AudioManager audio;
 
 
@@ -31,12 +33,11 @@ public class FillCup : MonoBehaviour, MiniGame
     private bool gameActive = false;
 
     [SerializeField] private TextMeshProUGUI sizeText;
-<<<<<<< HEAD
 
-=======
+
+
     [SerializeField]private Oswald oswald;
     
->>>>>>> main
 
     private void Awake()
     {
@@ -57,6 +58,14 @@ public class FillCup : MonoBehaviour, MiniGame
 
     private void Update()
     {
+        soundTimer += Time.deltaTime;
+        if (soundTimer > noiseDelay + 0.5f)
+        {
+            Debug.Log("Should Make Sound?");
+            audio.Play("Machine");
+            soundTimer = 0;
+        }
+
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (oswald != null)
         {
