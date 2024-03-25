@@ -77,7 +77,7 @@ public class NPC : MonoBehaviour, IInteractable
     float moveHorizontal;
     float moveVertical;
     DialogueTrigger DT;
-    DialogueObject dialogueObject;
+    [SerializeField]DialogueObject dialogueObject;
     
     private void Start()
     {
@@ -98,7 +98,11 @@ public class NPC : MonoBehaviour, IInteractable
             coffee.ingredientsUsed.Add(ingredient.ToString());
         }
         DT =  gameObject.GetComponent<DialogueTrigger>();
-       // DT.SetDialogueList(dialogueObject.GetDialogueStrings());
+        if(dialogueObject != null)
+        {
+            DT.SetDialogueList(dialogueObject.GetDialogueStrings());
+        }
+       
     }
 
     private void Update()
@@ -253,13 +257,14 @@ public class NPC : MonoBehaviour, IInteractable
             emoteRenderer.enabled = true;
             emoteRenderer.sprite = disappointedImage;
             if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
-            
+            nextWaypoint.RemoveCustomer(this);
+
         }
         else
         {
             nextWaypointPos = exitWaypoint.transform.position;
         }
-        nextWaypoint.RemoveCustomer(this);
+        
     }
     public void UpdateLine(int offset)
     {
