@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: Hello honey, just checking in to see if my favourite customer's business
-      is still going well.
+      is still going well. Oh, and a large, light with Honey, I like it sweet.
     isEnd: 0
     isQuestion: 1
     dialogueOption1: Your Favourite Customer?
