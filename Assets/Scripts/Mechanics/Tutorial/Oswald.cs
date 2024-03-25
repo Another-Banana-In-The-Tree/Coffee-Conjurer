@@ -23,6 +23,7 @@ public class Oswald : MonoBehaviour, IInteractable
     private bool menuOpenWasTriggered = false;
     private bool waitForDialogueFinish = false;
     [SerializeField] Light2D[] minigameHighlights;
+    [SerializeField] SpriteRenderer orderMenuArrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,18 +109,22 @@ public class Oswald : MonoBehaviour, IInteractable
         }
         switch(state)
         {
-            case 2: case 3: case 4:
+            case 2:
+                orderMenuArrow.enabled = true;
+                break;
+            case 3:
+                orderMenuArrow.enabled = false;
                 minigameHighlights[0].enabled = true;
                 break;
-            case 5: case 6: 
+            case 5:
                 minigameHighlights[0].enabled = false;
                 minigameHighlights[1].enabled = true;
                 break;
-            case 7: case 8: 
+            case 7:
                 minigameHighlights[1].enabled = false;
                 minigameHighlights[2].enabled = true; 
                 break;
-            case 9: case 10:
+            case 9:
                 minigameHighlights[2].enabled = false;
                 minigameHighlights[3].enabled = true; 
                 break;
