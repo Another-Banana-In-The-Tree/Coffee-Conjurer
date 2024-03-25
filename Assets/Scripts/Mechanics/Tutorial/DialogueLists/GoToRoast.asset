@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: GoToRoast
   m_EditorClassIdentifier: 
   dialogueStrings:
+
   - text: Very good, now press 'E' to start roasting!
+
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
