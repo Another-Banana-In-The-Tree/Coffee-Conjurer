@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4576755983665376989}
   - component: {fileID: -2715355103131416143}
   m_Layer: 6
-  m_Name: Jimmy
+  m_Name: BeeKeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: -1827715412, guid: 0e606ee43b083144486a13b49eee08a8, type: 3}
+  m_Sprite: {fileID: 1791491251, guid: caed242bf446b994c8dd8e31be96358e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,10 +113,10 @@ MonoBehaviour:
   angryImage: {fileID: 1922298099, guid: 5b4dd27e9968b4a43adf444d68315c76, type: 3}
   coffeeImage: {fileID: 0}
   emoteRenderer: {fileID: 7009612954707584309}
-  customerName: Jimmy
-  coffeeSize: 0
+  customerName: BeeKeeper
+  coffeeSize: 2
   coffeeRoast: 2
-  ingredients: 010000000400000005000000
+  ingredients: 030000000600000007000000
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   npcSprite: {fileID: 7510906437564238313}
@@ -218,7 +218,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67998
+  m_InstanceId: 76726
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -246,7 +246,7 @@ Animator:
   m_GameObject: {fileID: 3363095848187858901}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 491402ab32daca949a4c796768af28dc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
