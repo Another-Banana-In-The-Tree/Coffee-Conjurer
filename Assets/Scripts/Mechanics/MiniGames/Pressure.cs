@@ -27,38 +27,19 @@ public class Pressure : MonoBehaviour, MiniGame
     [SerializeField] private TextMeshProUGUI roast;
     [SerializeField] private SpriteRenderer beanSprite;
 
-    //for audio
-    [SerializeField] private float soundTimer;
-    [SerializeField] private float roastDelay = 2;
-    private AudioManager audio;
-    
+    [SerializeField] Color startColor;
+    [SerializeField] Color endColor;
 
     private List<float> points = new List<float>();
 
     private void Awake()
     {
-
-        audio = FindObjectOfType<AudioManager>();
-    }
-    void Start()
-    {
-        //roastDelay = audio.GetAudioLength("Heat");
-
         oswald = FindObjectOfType<Oswald>();
-
     }
     private void Update()
     {
         if (isPlaying)
         {
-            
-            soundTimer += Time.deltaTime;
-            if (soundTimer > roastDelay + 0.5f)
-            {
-                Debug.Log("Should Make Sound?");
-                audio.Play("Heat");
-                soundTimer = 0;
-            }
             if (timeCount >= 1)
             {
                 GameEnd();
@@ -86,9 +67,6 @@ public class Pressure : MonoBehaviour, MiniGame
                 fill = 0;
             }
             fillBar.fillAmount = fill;
-
-            
-
         }
     }
 
@@ -124,7 +102,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
         tempSum = tempSum / points.Count;
 
-        beanSprite.color = Color.Lerp(Color.white, Color.black, tempSum);
+        beanSprite.color = Color.Lerp(startColor, endColor, tempSum);
 
     }
 

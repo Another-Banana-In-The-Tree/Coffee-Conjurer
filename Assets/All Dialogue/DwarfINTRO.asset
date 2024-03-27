@@ -16,7 +16,7 @@ MonoBehaviour:
   - text: Oh why hello. Quite a fine establishment you have here. I'll have a medium
       coffee, dark roast with dragon milk and cinnamon.
     isEnd: 0
-    isQuestion: 0
+    isQuestion: 1
     dialogueOption1: What's with the suit?
     dialogueOption2: Thank you! I've worked hard on it.
     dialogueOption3: Right away

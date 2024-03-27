@@ -28,9 +28,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: 'when given the coffee: Thank you very much. I was a little worried the
-      quality would go down without Oswald operating the shop but you seem to be
-      capable.  '
+  - text: Thank you. I was a tad worried the quality will go down without Oswald
+      operating the shop but you seem to be capable. Don't let me down.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

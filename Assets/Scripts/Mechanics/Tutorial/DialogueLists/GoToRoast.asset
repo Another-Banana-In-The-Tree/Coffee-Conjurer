@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: GoToRoast
   m_EditorClassIdentifier: 
   dialogueStrings:
-
-  - text: Very good, now press 'E' to start roasting!
-
+  - text: Now come down here and press 'E' to open the minigame
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

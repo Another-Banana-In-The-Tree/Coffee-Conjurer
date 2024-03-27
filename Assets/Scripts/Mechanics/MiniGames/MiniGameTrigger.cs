@@ -20,4 +20,9 @@ public class MiniGameTrigger : MonoBehaviour, IInteractable
         player.StartMinigame(game);
         
     }
+
+    public MiniGame Game()
+    {
+        return game;
+    }
 }

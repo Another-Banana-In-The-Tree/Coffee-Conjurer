@@ -58,7 +58,14 @@ public class DialogueManager : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
-    
+    private void Update()
+    {
+        if(dialogueParent.activeInHierarchy)
+        {
+            PlayerInput.DialogueMode();
+        }
+    }
+
     public void DialogueStart(List<dialogueString> textToPrint, NPC npc)
     {
         if (inDialogue) return;
@@ -111,7 +118,7 @@ public class DialogueManager : MonoBehaviour
         
         while (currentDialougeIndex < dialoguelist.Count)
         {
-            //PlayerInput.DialogueMode();
+            
             skippable = true;
             if (skipTyping)
             {
