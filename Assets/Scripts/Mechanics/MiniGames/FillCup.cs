@@ -140,19 +140,23 @@ public class FillCup : MonoBehaviour, MiniGame
         {
             currentCoffee.size = "Large";
         }
+        else if (currentFill == 0)
+        {
+            currentCoffee.size = null;
+        }
         else
         {
             currentCoffee.size = "Not Right";
         }
-        Exit();
+       // Exit();
         print(currentCoffee.size);
         
     }
     public void OverFill()
     {
         
-        finish();
-       // Exit();
+        //finish();
+        Exit();
 
         player.StartMinigame(spill);
         
@@ -164,6 +168,7 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
+        finish();
         if (!isTutorial || currentFill < 0.95)
         {
             GameManager.Instance.orderMenu.UpdateCompletion();
