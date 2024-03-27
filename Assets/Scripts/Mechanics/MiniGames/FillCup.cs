@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -27,13 +28,16 @@ public class FillCup : MonoBehaviour, MiniGame
 
     [SerializeField] private TextMeshProUGUI sizeText;
     [SerializeField]private Oswald oswald;
+    private bool isHeld;
+    
     
 
     public void Fill(float value)
     {
-        
+           
         fillMod = Mathf.Pow( value, 2);
-       // print(fillMod);
+        isHeld = true;
+        // print(fillMod);
     }
 
     private void Update()
@@ -48,6 +52,20 @@ public class FillCup : MonoBehaviour, MiniGame
         }
         if (!gameActive) return;
         //print(currentCoffee.roast);
+        /*if(!isHeld && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            isHeld = true;
+        }*/
+        if(isHeld && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isHeld = false;
+        }
+        if (!isHeld && fillMod > 0)
+        {
+            fillMod = 0f;
+           
+            slider.value = fillMod;
+        }
 
         if(currentFill > 0.95)
         {

@@ -254,6 +254,7 @@ public class NPC : MonoBehaviour, IInteractable
         isMoving = true;
         if (isMad)
         {
+            GameManager.Instance.ChangeRep(-5);
             emoteRenderer.enabled = true;
             emoteRenderer.sprite = disappointedImage;
             if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
