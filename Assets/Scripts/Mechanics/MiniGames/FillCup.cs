@@ -28,7 +28,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     [SerializeField] private TextMeshProUGUI sizeText;
     [SerializeField]private Oswald oswald;
-    private bool isHeld;
+    private bool isHeld = true;
     
     
 
@@ -63,7 +63,7 @@ public class FillCup : MonoBehaviour, MiniGame
         if (!isHeld && fillMod > 0)
         {
             fillMod = 0f;
-           
+          
             slider.value = fillMod;
         }
 
