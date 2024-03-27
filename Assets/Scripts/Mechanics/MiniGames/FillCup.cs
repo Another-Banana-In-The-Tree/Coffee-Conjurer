@@ -45,13 +45,13 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Fill(float value)
     {
-        timer += Time.deltaTime;
+        /*timer += Time.deltaTime;
         if (timer > soundDelay + 0.5f)
         {
             Debug.Log("Should Make Sound?");
             audio.Play("Heat");
             timer = 0;
-        }
+        }*/
         fillMod = Mathf.Pow( value, 2);
        // print(fillMod);
     }
