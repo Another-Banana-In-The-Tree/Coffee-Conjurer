@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
-  speed: 1
+  speed: 2
   patience: 0
-  timeInStore: 0
+  timeInStore: 15
   talkingImage: {fileID: 21300000, guid: 4674a8441f50f704b93be14e53e9d49c, type: 3}
   happyImage: {fileID: 1555358138, guid: 7fa7453c35b60b946bbd21ff08fd65cc, type: 3}
   disappointedImage: {fileID: 21300000, guid: 34202d3b7ffb1d042a8389f8b9923677, type: 3}
@@ -203,6 +203,7 @@ MonoBehaviour:
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   npcSprite: {fileID: 0}
+  dialogueObject: {fileID: 0}
 --- !u!50 &7501690101214262305
 Rigidbody2D:
   serializedVersion: 4

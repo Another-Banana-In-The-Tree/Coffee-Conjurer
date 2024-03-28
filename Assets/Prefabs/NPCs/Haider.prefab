@@ -203,6 +203,7 @@ MonoBehaviour:
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   npcSprite: {fileID: 0}
+  dialogueObject: {fileID: 0}
 --- !u!50 &5464061139150913415
 Rigidbody2D:
   serializedVersion: 4

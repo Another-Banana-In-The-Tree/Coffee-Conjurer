@@ -5028,8 +5028,8 @@ MonoBehaviour:
   pointText: {fileID: 7915229106764988164}
   roast: {fileID: 8134494716449361447}
   beanSprite: {fileID: 915709956185354573}
-  startColor: {r: 0.2924528, g: 0.1932837, b: 0.08663224, a: 1}
-  endColor: {r: 0, g: 0, b: 0, a: 0}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
+  endColor: {r: 0.18867922, g: 0.09770446, b: 0.04538981, a: 1}
 --- !u!1 &3807020303790566951
 GameObject:
   m_ObjectHideFlags: 0
