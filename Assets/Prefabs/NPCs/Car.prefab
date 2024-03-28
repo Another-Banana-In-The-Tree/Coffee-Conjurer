@@ -195,6 +195,8 @@ MonoBehaviour:
   angryImage: {fileID: 1922298099, guid: 5b4dd27e9968b4a43adf444d68315c76, type: 3}
   coffeeImage: {fileID: 0}
   emoteRenderer: {fileID: 503150508409871394}
+  emoteDisplayTime: 5
+  emoteDecaySpeed: 5
   customerName: Haider
   coffeeSize: 2
   coffeeRoast: 0

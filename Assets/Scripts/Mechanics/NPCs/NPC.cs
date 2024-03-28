@@ -30,6 +30,8 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] Sprite angryImage;
     [SerializeField] Sprite coffeeImage;
     [SerializeField] SpriteRenderer emoteRenderer;
+    [SerializeField] float emoteDisplayTime = 5;
+    [SerializeField] float emoteDecaySpeed = 3;
 
     [SerializeField] string customerName = "";
     public enum CoffeeSize
@@ -115,6 +117,10 @@ public class NPC : MonoBehaviour, IInteractable
         {
             
             LeaveStore(true);
+        }
+        if (isSitting && timeWaiting > emoteDisplayTime && emoteRenderer.color.a > 0)
+        {
+            emoteRenderer.color = new Color(emoteRenderer.color.r, emoteRenderer.color.g, emoteRenderer.color.b, emoteRenderer.color.a - emoteDecaySpeed/1000);
         }
         if (isSitting && timeWaiting > timeInStore)
         {
