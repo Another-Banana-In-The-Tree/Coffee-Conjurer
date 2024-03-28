@@ -33,19 +33,21 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     }
     void Start()
     {
-       /* for(int i = 0; i < numObjects; i++)
-        {
-            float angle = i * Mathf.PI * 2/numObjects * numRev  ;
-            float x = Mathf.Cos(angle) * spiralSize; 
-            float y = Mathf.Sin(angle) * spiralSize;
-            Vector3 pos = startPos.position  + new Vector3(x, y, 0);
-            positions.Add(Instantiate(boundsDraw, pos, Quaternion.identity, startPos));
+        /* for(int i = 0; i < numObjects; i++)
+         {
+             float angle = i * Mathf.PI * 2/numObjects * numRev  ;
+             float x = Mathf.Cos(angle) * spiralSize; 
+             float y = Mathf.Sin(angle) * spiralSize;
+             Vector3 pos = startPos.position  + new Vector3(x, y, 0);
+             positions.Add(Instantiate(boundsDraw, pos, Quaternion.identity, startPos));
 
-            spiralSize += growSpeed;
-        }
+             spiralSize += growSpeed;
+         }
 
-        boundsDraw.SetActive(false);
-*/
+         boundsDraw.SetActive(false);
+ */
+
+        soundTimer = 3;
 
         int iterate = 0;
         foreach (Transform child in boundsDraw.transform)
@@ -65,8 +67,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     // Update is called once per frame
     void Update()
     {
+        
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (!gameRunning) return;
+        soundTimer += Time.deltaTime;
         if (oswald != null)
         {
             if (oswald.GetState() != MiniGameNumber() + 1)
@@ -88,7 +92,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
                 //Debug.Log("next spot");
 
-                soundTimer += Time.deltaTime;
+                
                 if (soundTimer > noiseDelay + 0.5f)
                 {
                     Debug.Log("Should Make Sound?");

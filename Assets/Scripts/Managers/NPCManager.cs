@@ -35,6 +35,7 @@ public class NPCManager : MonoBehaviour
     {
         totalTime += Time.deltaTime;
         timeSinceLastMove = totalTime - lastMoveTime;
+        soundTimer += Time.deltaTime;
 
         if (timeSinceLastMove >= moveDelay && customersInStore < _customers.Length)
         {
@@ -44,13 +45,17 @@ public class NPCManager : MonoBehaviour
 
         if (customersInStore >= 5)
         {
-            soundTimer += Time.deltaTime;
+            
             if (soundTimer > noiseDelay + 0.5f)
             {
                 Debug.Log("Should Make Sound?");
                 audio.Play("Cafe");
                 soundTimer = 0;
             }
+        }
+        else
+        {
+            audio.Stop("Cafe");
         }
     }
 

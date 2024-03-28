@@ -57,10 +57,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         if (moveDir.magnitude !=0)
         {
             if (!hasMoved) hasMoved = true;
-            timer += Time.deltaTime;
+            
             if (timer > footDelay + 0.01f)
             {
                 audio.Play("Walking");
