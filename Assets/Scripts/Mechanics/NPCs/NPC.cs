@@ -118,7 +118,6 @@ public class NPC : MonoBehaviour, IInteractable
         }
         if (timeWaiting > patience && nextWaypoint == waypoints[1] && !isLeaving)
         {
-            
             LeaveStore(true);
         }
         if (isSitting && timeWaiting > emoteDisplayTime && emoteRenderer.color.a > 0)
@@ -141,11 +140,10 @@ public class NPC : MonoBehaviour, IInteractable
             else
             {
                // if (isUpdatingLine) isUpdatingLine = false;
+                if (isSitting) isMoving = false;
                 if (nextWaypoint.GetIsLine())
                 {
-                    DisableMovement();
-                    
-                    
+                    DisableMovement();                    
                 }
                 else
                 {
@@ -303,7 +301,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void SitDown()
     {
         timeWaiting = 0;
-        distancePadding = 0;
+        distancePadding = 0.001f;
         nextWaypointPos = new Vector3(seatWaypoint.transform.position.x, seatWaypoint.transform.position.y + seatOffset, seatWaypoint.transform.position.z);
        // seatWaypoint.AddCustomer(this);
         isWaiting = true;
