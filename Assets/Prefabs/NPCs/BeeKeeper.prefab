@@ -113,6 +113,8 @@ MonoBehaviour:
   angryImage: {fileID: 1922298099, guid: 5b4dd27e9968b4a43adf444d68315c76, type: 3}
   coffeeImage: {fileID: 0}
   emoteRenderer: {fileID: 7009612954707584309}
+  emoteDisplayTime: 5
+  emoteDecaySpeed: 5
   customerName: BeeKeeper
   coffeeSize: 2
   coffeeRoast: 2
