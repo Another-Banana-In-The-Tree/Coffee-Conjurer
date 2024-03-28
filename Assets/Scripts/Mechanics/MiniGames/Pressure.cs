@@ -102,6 +102,8 @@ public class Pressure : MonoBehaviour, MiniGame
            // if (fill >= 1) return;
             AddMore();
         }
+        
+        
     }
 
     private void AddMore()
@@ -172,6 +174,7 @@ public class Pressure : MonoBehaviour, MiniGame
         screen.SetActive(false);
         PlayerInput.EnableGame();
         // CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+        audio.Stop("Heat");
     }
 
     public void gameStarted()

@@ -74,6 +74,19 @@ public class AudioManager : MonoBehaviour
         print(s.name);
         s.source.Play();
     }
+    public void Stop(string name)
+    {
+        //find the name of the sound if nothing comes back return null.
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null || s.source == null)
+        {
+            return;
+        }
+        //play sound
+        print(s.name);
+        s.source.Stop();
+    }
 
     public float GetAudioLength(string name)
     {
@@ -93,6 +106,10 @@ public class AudioManager : MonoBehaviour
     {
         s.source.Play();
     }
+    private void Stop(Sound s)
+    {
+        s.source.Stop();
+    }
 
     public void SetVolume(float mod)
     {
@@ -102,5 +119,6 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume * volumeMod;
         }
     }
+
 }
 

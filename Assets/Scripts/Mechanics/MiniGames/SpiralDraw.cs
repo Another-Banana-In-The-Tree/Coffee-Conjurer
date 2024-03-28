@@ -105,6 +105,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
                 PlayerInput.EnableGame();
                 Exit();
                 Debug.Log("Wongame");
+                
             }
         }
     }
@@ -131,6 +132,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         {
             i.SetActive(true);
         }
+        audio.Stop("Stirr");
     }
 
     public void gameStarted()

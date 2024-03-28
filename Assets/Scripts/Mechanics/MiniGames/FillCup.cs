@@ -40,29 +40,34 @@ public class FillCup : MonoBehaviour, MiniGame
     {
         audio = FindObjectOfType<AudioManager>();
     }
+    private void Start()
+    {
+        timer = 3;
+    }
     public void Fill(float value)
     {
+        
+        fillMod = Mathf.Pow( value, 2);
+        isHeld = true;
+        // print(fillMod);
         timer += Time.deltaTime;
         if (timer > soundDelay + 0.5f)
         {
             Debug.Log("Should Make Sound?");
-            audio.Play("Stirr");
+            audio.Play("Pour");
             timer = 0;
         }
-        fillMod = Mathf.Pow( value, 2);
-        isHeld = true;
-        // print(fillMod);
     }
 
     private void Update()
     {
-        soundTimer += Time.deltaTime;
+        /*soundTimer += Time.deltaTime;
         if (soundTimer > noiseDelay + 0.5f)
         {
             Debug.Log("Should Make Sound?");
             audio.Play("Machine");
             soundTimer = 0;
-        }
+        }*/
 
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (oswald != null)
@@ -81,15 +86,21 @@ public class FillCup : MonoBehaviour, MiniGame
         if(isHeld && Input.GetKeyUp(KeyCode.Mouse0))
         {
             isHeld = false;
+            audio.Stop("Pour");
+            
         }
         if (!isHeld && fillMod > 0)
         {
             fillMod = 0f;
           
             slider.value = fillMod;
+            
+
+
+
         }
 
-        if(currentFill > 0.95)
+        if (currentFill > 0.95)
         {
             gameActive = false;
             print("Overfill!");
