@@ -19,7 +19,9 @@ public class Pressure : MonoBehaviour, MiniGame
     private Coffee currentCoffee;
     private Oswald oswald;
 
-
+    [SerializeField] private float soundTimer;
+    [SerializeField] private float roastDelay = 2;
+    private AudioManager audio;
 
 
     [SerializeField] private float timeCount;
@@ -35,11 +37,23 @@ public class Pressure : MonoBehaviour, MiniGame
     private void Awake()
     {
         oswald = FindObjectOfType<Oswald>();
+        audio = FindObjectOfType<AudioManager>();
+    }
+    private void Start()
+    {
+        soundTimer = 2;
     }
     private void Update()
     {
         if (isPlaying)
         {
+            soundTimer += Time.deltaTime;
+            if (soundTimer > roastDelay + 0.5f)
+            {
+                Debug.Log("Should Make Sound?");
+                audio.Play("Heat");
+                soundTimer = 0;
+            }
             if (timeCount >= 1)
             {
                 GameEnd();
