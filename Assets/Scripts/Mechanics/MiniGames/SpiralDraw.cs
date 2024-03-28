@@ -7,10 +7,13 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     [SerializeField] private GameObject minigameScreen;
     [SerializeField] private GameObject boundsDraw;
     //[SerializeField] private Transform startPos;
-  //  [SerializeField] private float spiralSize;
-   // [SerializeField] private float growSpeed;
-   // [SerializeField] private int numObjects;
-   // [SerializeField] private float numRev;
+    //  [SerializeField] private float spiralSize;
+    // [SerializeField] private float growSpeed;
+    // [SerializeField] private int numObjects;
+    // [SerializeField] private float numRev;
+    [SerializeField] private float soundTimer;
+    [SerializeField] private float noiseDelay = 1;
+    private AudioManager audio;
 
     private GameObject[] positions = new GameObject[50];
    
@@ -24,6 +27,10 @@ public class SpiralDraw : MonoBehaviour, MiniGame
     [SerializeField] private Oswald oswald;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        audio = FindObjectOfType<AudioManager>();
+    }
     void Start()
     {
        /* for(int i = 0; i < numObjects; i++)
@@ -81,7 +88,13 @@ public class SpiralDraw : MonoBehaviour, MiniGame
 
                 //Debug.Log("next spot");
 
-
+                soundTimer += Time.deltaTime;
+                if (soundTimer > noiseDelay + 0.5f)
+                {
+                    Debug.Log("Should Make Sound?");
+                    audio.Play("Stirr");
+                    soundTimer = 0;
+                }
 
             }
             if (currentSpace == positions.Length && gameRunning)
@@ -92,6 +105,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
                 PlayerInput.EnableGame();
                 Exit();
                 Debug.Log("Wongame");
+                
             }
         }
     }
@@ -118,6 +132,7 @@ public class SpiralDraw : MonoBehaviour, MiniGame
         {
             i.SetActive(true);
         }
+        audio.Stop("Stirr");
     }
 
     public void gameStarted()

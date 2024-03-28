@@ -22,6 +22,8 @@ public class NPCManager : MonoBehaviour
     private float lastMoveTime = 0;
     private int customersLeft;
     private float totalTime;
+    private float soundTimer;
+    private float noiseDelay = 2;
     private void Awake()
     {
         //Load waypoints into list for ease of use
@@ -38,6 +40,17 @@ public class NPCManager : MonoBehaviour
         {
             MoveNext();
             lastMoveTime = totalTime;
+        }
+
+        if (customersInStore >= 5)
+        {
+            soundTimer += Time.deltaTime;
+            if (soundTimer > noiseDelay + 0.5f)
+            {
+                Debug.Log("Should Make Sound?");
+                audio.Play("Cafe");
+                soundTimer = 0;
+            }
         }
     }
 
