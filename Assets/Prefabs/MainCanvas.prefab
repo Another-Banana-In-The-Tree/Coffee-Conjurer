@@ -3809,7 +3809,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3915,6 +3915,7 @@ GameObject:
   - component: {fileID: 272710847237252865}
   - component: {fileID: 8284665746112437982}
   - component: {fileID: 6486784889383650515}
+  - component: {fileID: 4928902489071292552}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
@@ -4014,6 +4015,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4928902489071292552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789029578381532964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f53ba9c213ca54f9074201b80c1c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcManager: {fileID: 0}
 --- !u!1 &7234121625744449619
 GameObject:
   m_ObjectHideFlags: 0

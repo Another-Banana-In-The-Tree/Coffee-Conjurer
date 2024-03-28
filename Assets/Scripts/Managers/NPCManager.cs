@@ -67,8 +67,13 @@ public class NPCManager : MonoBehaviour
         customersLeft--;
         if(customersLeft == 0)
         {
-            Invoke("EndLevel", 8f);
+            Invoke("EndLevel", 4f);
         }
+    }
+
+    public int GetCustomersLeft()
+    {
+        return customersLeft;
     }
 
     private void EndLevel()
