@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1827715412, guid: 0e606ee43b083144486a13b49eee08a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
-  speed: 1
+  speed: 2
   patience: 180
-  timeInStore: 60
+  timeInStore: 15
   talkingImage: {fileID: 21300000, guid: 4674a8441f50f704b93be14e53e9d49c, type: 3}
   happyImage: {fileID: 1555358138, guid: 7fa7453c35b60b946bbd21ff08fd65cc, type: 3}
   disappointedImage: {fileID: 21300000, guid: 34202d3b7ffb1d042a8389f8b9923677, type: 3}
@@ -120,6 +120,7 @@ MonoBehaviour:
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   npcSprite: {fileID: 7510906437564238313}
+  dialogueObject: {fileID: 0}
 --- !u!50 &4550207226394229265
 Rigidbody2D:
   serializedVersion: 4
@@ -218,7 +219,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67998
+  m_InstanceId: 134212
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}

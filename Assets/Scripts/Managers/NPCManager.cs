@@ -78,6 +78,7 @@ public class NPCManager : MonoBehaviour
 
     private void EndLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex != 4) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else SceneManager.LoadScene("MainMenu");
     }
 }
