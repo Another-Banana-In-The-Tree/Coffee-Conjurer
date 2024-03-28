@@ -36,8 +36,8 @@ MonoBehaviour:
     dialogueOption1: Sounds simple enough!
     dialogueOption2: Finally, a use for my magic!
     dialogueOption3: I know how to use fire old man!!
-    option1IndexJump: 3
-    option2IndexJump: 3
+    option1IndexJump: 4
+    option2IndexJump: 4
     option3IndexJump: 2
     startDialogueEvent:
       m_PersistentCalls:
@@ -55,6 +55,22 @@ MonoBehaviour:
     option1IndexJump: 3
     option2IndexJump: 3
     option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Oh and don't worry about small mistakes either, the roast will match whatever
+      temperature you've roasted it at the longest.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: ' '
+    dialogueOption2: ' '
+    dialogueOption3: ' '
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
