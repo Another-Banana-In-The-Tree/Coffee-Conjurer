@@ -72,6 +72,7 @@ public class NPC : MonoBehaviour, IInteractable
     NPCManager npcManager;
     LineWaypoint[] waypoints;
     LineWaypoint exitWaypoint;
+    private AudioManager audio;
 
     //ANIMATION CODE - EDIT AT THE RISK OF BREAKING ALL OF THE ANIMATION
     private Animator npcAnimation;
@@ -88,7 +89,8 @@ public class NPC : MonoBehaviour, IInteractable
         exitWaypoint = npcManager.GetExitWaypoint();
         //Animation
         npcAnimation = GetComponent<Animator>();
-       
+        audio = FindObjectOfType<AudioManager>();
+
         coffee = new Coffee(); //Preload coffee here
 
         //Load Coffee based on defined parameters
@@ -310,9 +312,21 @@ public class NPC : MonoBehaviour, IInteractable
             emoteRenderer.enabled = true;
             //Debug.Log(emoteRenderer.enabled);
             float tempScore = GameManager.Instance.GetScore();
-            if (tempScore >= 7) emoteRenderer.sprite = happyImage; FindObjectOfType<AudioManager>().Play("Done Well");//Debug.Log("Happy");
-            if (tempScore >= 3 && tempScore < 7) emoteRenderer.sprite = disappointedImage; FindObjectOfType<AudioManager>().Play("Done Poor"); //Debug.Log("Disppointed");
-            if (tempScore < 3) emoteRenderer.sprite = angryImage; FindObjectOfType<AudioManager>().Play("Guest Unsatisfied");//Debug.Log("Gross");
+            if (tempScore >= 7)
+            {
+                emoteRenderer.sprite = happyImage;
+                audio.Play("Done Well");//Debug.Log("Happy");
+            }
+            if (tempScore >= 3 && tempScore < 7)
+            {
+                emoteRenderer.sprite = disappointedImage;
+                audio.Play("Done Poor"); //Debug.Log("Disppointed");
+            }
+            if (tempScore < 3)
+            {
+                emoteRenderer.sprite = angryImage; 
+                audio.Play("Guest Unsatisfied");//Debug.Log("Gross");
+            }
         }
     }
     public void FinishVisit()
