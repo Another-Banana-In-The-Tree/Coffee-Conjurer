@@ -109,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1135319964353225902}
   - component: {fileID: 5028979137818981935}
+  - component: {fileID: 4345665060086276412}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -183,6 +184,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4345665060086276412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561257488409900187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &849934809930710975
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8896686583117897088}
   - component: {fileID: 612865519926863886}
+  - component: {fileID: 49534803367706910}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -614,6 +630,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &49534803367706910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185037446472205427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &1257516925416931247
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8261460804624628752}
   - component: {fileID: 2652441534069422004}
+  - component: {fileID: 6817364258233740668}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -698,6 +729,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6817364258233740668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257516925416931247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &1353340866343345108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1127,7 @@ MonoBehaviour:
   - {x: 0.119999886, y: -0.120000005, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 142040
+  m_InstanceId: 75882
   m_LocalBounds:
     m_Center: {x: 0, y: -0.000000029802322, z: 0}
     m_Extent: {x: 0.119999886, y: 0.119999975, z: 0}
@@ -1146,6 +1191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178741067419877203}
   - component: {fileID: 6968583473896713149}
+  - component: {fileID: 7926087611559337778}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -1220,6 +1266,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7926087611559337778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680786358619712391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &1753294717647594259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 585403539156811082}
   - component: {fileID: 5032284128962502443}
+  - component: {fileID: 1143940016036425315}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -1507,6 +1568,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1143940016036425315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932558986330257704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &1938515323421399490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3603,7 +3678,7 @@ MonoBehaviour:
   - {x: 0.120000124, y: -0.12, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 141982
+  m_InstanceId: 75824
   m_LocalBounds:
     m_Center: {x: 0.00000011920929, y: 0, z: 0}
     m_Extent: {x: 0.120000005, y: 0.12, z: 0}
@@ -3711,6 +3786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6777899961984790222}
   - component: {fileID: 2747173661980055499}
+  - component: {fileID: 8357969430604230704}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -3785,6 +3861,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8357969430604230704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515301172814486073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &2786637841709950419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +3962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704304817586240659}
   - component: {fileID: 3624686590259049666}
+  - component: {fileID: 8841005326948861212}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -3946,6 +4037,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8841005326948861212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803386291566716377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &3010188424994281712
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,7 +4416,7 @@ MonoBehaviour:
   - {x: -7.995463, y: 1.021322, z: 0}
   m_ShapePathHash: 1132109279
   m_Mesh: {fileID: 0}
-  m_InstanceId: 141990
+  m_InstanceId: 75832
   m_LocalBounds:
     m_Center: {x: -8.49533, y: 3.0163984, z: 0}
     m_Extent: {x: 0.4998672, y: 1.9950765, z: 0}
@@ -4948,7 +5053,7 @@ MonoBehaviour:
   - {x: 0.119999886, y: -0.120000005, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 142286
+  m_InstanceId: 76128
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.119999886, y: 0.120000005, z: 0}
@@ -5191,6 +5296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1064205243978976243}
   - component: {fileID: 7863614095521803609}
+  - component: {fileID: 2158851041228764080}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -5265,6 +5371,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2158851041228764080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4424759835333711275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &4463032458310018802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,6 +5727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3781212593189038685}
   - component: {fileID: 1194053333661051717}
+  - component: {fileID: 5690477400024093532}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -5681,6 +5802,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5690477400024093532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026311100710026532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &5202250001708703946
 GameObject:
   m_ObjectHideFlags: 0
@@ -6007,6 +6142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548469604759555535}
   - component: {fileID: 3445103341403028403}
+  - component: {fileID: 8410578649340088314}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -6081,6 +6217,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8410578649340088314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594725812471835111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &6021284825106053316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6091,6 +6241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3061539173436211235}
   - component: {fileID: 9083125047294872134}
+  - component: {fileID: 1566065813731429321}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -6165,6 +6316,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1566065813731429321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021284825106053316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &6309132458258524000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,7 +6442,7 @@ MonoBehaviour:
   - {x: 0.120000005, y: -0.119999975, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 142026
+  m_InstanceId: 75868
   m_LocalBounds:
     m_Center: {x: 0.000000059604645, y: 0.000000014901161, z: 0}
     m_Extent: {x: 0.119999945, y: 0.11999999, z: 0}
@@ -6341,6 +6506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3537391861896436276}
   - component: {fileID: 9076331953040573383}
+  - component: {fileID: 4509227469491896323}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: Untagged
@@ -6415,6 +6581,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4509227469491896323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342553058331093330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &6383222249003045802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6582,6 +6762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1966158381253960970}
   - component: {fileID: 4409292897814923516}
+  - component: {fileID: 8285027099178550943}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -6656,6 +6837,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8285027099178550943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022883302311431014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &7116111669697902090
 GameObject:
   m_ObjectHideFlags: 0
@@ -7604,7 +7799,7 @@ MonoBehaviour:
   - {x: -3.8702073, y: 2.0036511, z: 0}
   m_ShapePathHash: 824421002
   m_Mesh: {fileID: 0}
-  m_InstanceId: 142140
+  m_InstanceId: 75982
   m_LocalBounds:
     m_Center: {x: -3.531033, y: 2.4433885, z: 0}
     m_Extent: {x: 0.39909935, y: 0.4397372, z: 0}
@@ -8322,7 +8517,7 @@ MonoBehaviour:
   - {x: -2.9992692, y: -1.015413, z: 0}
   m_ShapePathHash: -1233194164
   m_Mesh: {fileID: 0}
-  m_InstanceId: 142174
+  m_InstanceId: 76016
   m_LocalBounds:
     m_Center: {x: -5.505369, y: 1.5198581, z: 0}
     m_Extent: {x: 2.5076563, y: 2.5352712, z: 0}
