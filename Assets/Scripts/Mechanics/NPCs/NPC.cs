@@ -68,6 +68,7 @@ public class NPC : MonoBehaviour, IInteractable
     Vector3 nextWaypointPos;
     int _nextWaypointCounter = 0;
     [SerializeField] float distancePadding = 0.5f;
+    [SerializeField] float seatOffset = 0.2f;
 
     NPCManager npcManager;
     LineWaypoint[] waypoints;
@@ -300,7 +301,8 @@ public class NPC : MonoBehaviour, IInteractable
     public void SitDown()
     {
         timeWaiting = 0;
-        nextWaypointPos = seatWaypoint.transform.position;
+        distancePadding = 0;
+        nextWaypointPos = new Vector3(seatWaypoint.transform.position.x, seatWaypoint.transform.position.y + seatOffset, seatWaypoint.transform.position.z);
        // seatWaypoint.AddCustomer(this);
         isWaiting = true;
         isSitting = true;
