@@ -201,7 +201,11 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
-        finish();
+        if(currentCoffee.size == null)
+        {
+            finish();
+        }
+        
         if (!isTutorial || currentFill < 0.95)
         {
             GameManager.Instance.orderMenu.UpdateCompletion();
