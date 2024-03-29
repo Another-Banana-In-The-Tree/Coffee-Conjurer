@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class Oswald : MonoBehaviour, IInteractable
@@ -21,6 +22,8 @@ public class Oswald : MonoBehaviour, IInteractable
     private bool interacted = false;
     private bool menuOpenWasTriggered = false;
     private bool waitForDialogueFinish = false;
+    [SerializeField] Light2D[] minigameHighlights;
+    [SerializeField] SpriteRenderer orderMenuArrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +107,32 @@ public class Oswald : MonoBehaviour, IInteractable
             print("going to next dialogue");
             dialogueTrigger.Trigger(true);
         }
+        switch(state)
+        {
+            case 2:
+                orderMenuArrow.enabled = true;
+                break;
+            case 3:
+                orderMenuArrow.enabled = false;
+                minigameHighlights[0].enabled = true;
+                break;
+            case 5:
+                minigameHighlights[0].enabled = false;
+                minigameHighlights[1].enabled = true;
+                break;
+            case 7:
+                minigameHighlights[1].enabled = false;
+                minigameHighlights[2].enabled = true; 
+                break;
+            case 9:
+                minigameHighlights[2].enabled = false;
+                minigameHighlights[3].enabled = true; 
+                break;
+            case 11:
+                minigameHighlights[3].enabled = false;
+                break;
+        }
+
     }
     public void Incorrect()
     {

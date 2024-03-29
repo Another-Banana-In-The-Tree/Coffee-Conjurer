@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IngredientChoice : MonoBehaviour, MiniGame
 {
@@ -9,6 +10,7 @@ public class IngredientChoice : MonoBehaviour, MiniGame
     [SerializeField] private GameObject screen;
     [SerializeField] private GameObject backGround;
     [SerializeField] private Oswald oswald;
+    [SerializeField] Button[] ingredientButtons;
     public void AddIngredient(string ingredient)
     {
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
@@ -42,6 +44,10 @@ public class IngredientChoice : MonoBehaviour, MiniGame
         backGround.SetActive(true);
         screen.SetActive(true);
         currentCoffee = CoffeeHandler.Instance.GetCurrentCoffee();
+        foreach (Button b in ingredientButtons)
+        {
+            if (!currentCoffee.ingredientsUsed.Contains(b.name)) b.interactable = true;
+        }
 
     }
     public int MiniGameNumber()
