@@ -39,7 +39,7 @@ public class Settings : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ChangePauseState();
         }

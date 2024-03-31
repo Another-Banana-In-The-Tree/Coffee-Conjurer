@@ -2597,7 +2597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'Escape' to close
+  m_text: Press 'Tab' to close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f523230abbce749448293552dce3c276, type: 2}
   m_sharedMaterial: {fileID: 774358764061585151, guid: f523230abbce749448293552dce3c276, type: 2}
