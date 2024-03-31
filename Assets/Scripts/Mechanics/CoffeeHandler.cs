@@ -5,13 +5,18 @@ using UnityEngine;
 public class CoffeeHandler : MonoBehaviour
 {
 
+    //COFFEE
+    private Coffee currentCoffee;
 
+    [SerializeField] private OrderMenu orderMenu;
+    private Queue<Coffee> coffeeQueue = new Queue<Coffee>();
+    private Queue<Coffee> customerOders = new Queue<Coffee>();
     public static CoffeeHandler Instance { get; private set; }
     
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
+        print("awaake");
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -20,16 +25,11 @@ public class CoffeeHandler : MonoBehaviour
         {
             Instance = this;
         }
-
+        orderMenu = FindObjectOfType<OrderMenu>();
        
     }
 
-    //COFFEE
-    private Coffee currentCoffee;
-
-    [SerializeField] private OrderMenu orderMenu;
-    private Queue<Coffee> coffeeQueue = new Queue<Coffee>();
-    private Queue<Coffee> customerOders = new Queue<Coffee>();
+   
 
 
     public void AddOrder(Coffee newOrder)
@@ -44,6 +44,10 @@ public class CoffeeHandler : MonoBehaviour
         foreach(string i in test.ingredientsUsed)
         {
             print(i);
+        }
+        if(orderMenu == null)
+        {
+            orderMenu = FindObjectOfType<OrderMenu>();
         }
         orderMenu.changeActiveOrders(test);
 

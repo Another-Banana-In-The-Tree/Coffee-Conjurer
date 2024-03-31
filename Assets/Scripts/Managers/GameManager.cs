@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -12,22 +13,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private NPCManager npcManager;
     float currentScore = 0;
     [SerializeField] public OrderMenu orderMenu;
+   
+    
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
         {
+           // instanceNum++;
             Destroy(this);
         }
         else
         {
+           // instanceNum++;
             Instance = this;
         }
-
+     
         
     }
-
+  
     public void changeGold(float change)
     {
         gold += change;
@@ -101,5 +106,6 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    
    
 }
