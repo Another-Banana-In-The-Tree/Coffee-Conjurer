@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RoastInstructions
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: To roast the coffee, press the 'E' button repeatedly and keep the bar on
-      the right temperature!
+  - text: To roast the coffee, press the 'E' button or left mouse button repeatedly
+      and keep the bar on the right temperature!
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 
