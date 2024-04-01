@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Security.Authentication;
 //using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -29,9 +30,11 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] Sprite disappointedImage;
     [SerializeField] Sprite angryImage;
     [SerializeField] Sprite coffeeImage;
+    [SerializeField] Sprite exclamationMark;
     [SerializeField] SpriteRenderer emoteRenderer;
     [SerializeField] float emoteDisplayTime = 5;
     [SerializeField] float emoteDecaySpeed = 3;
+    [SerializeField] float warningBuffer = 5;
 
     [SerializeField] string customerName = "";
     public enum CoffeeSize
@@ -115,6 +118,10 @@ public class NPC : MonoBehaviour, IInteractable
         if (isWaiting)
         {
             timeWaiting += Time.deltaTime;
+        }
+        if (timeWaiting > patience - warningBuffer && nextWaypoint == waypoints[1] && !isLeaving && isWaiting)
+        {
+            ShowEmote(exclamationMark);
         }
         if (timeWaiting > patience && nextWaypoint == waypoints[1] && !isLeaving)
         {
@@ -262,8 +269,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isMad)
         {
             GameManager.Instance.ChangeRep(-5);
-            emoteRenderer.enabled = true;
-            emoteRenderer.sprite = disappointedImage;
+            ShowEmote(disappointedImage);
             if (nextWaypoint == waypoints[1]) nextWaypointPos = exitWaypoint.transform.position;
             nextWaypoint.RemoveCustomer(this);
 
@@ -276,10 +282,8 @@ public class NPC : MonoBehaviour, IInteractable
     }
     public void UpdateLine(int offset)
     {
-        
         isMoving = true;
         isUpdatingLine = true;
-        
             if (nextWaypoint.GetIsVeritcal())
             {
                 nextWaypointPos = waypoints[3].transform.position + new Vector3(0,-nextWaypoint.GetLineLength()+offset, 0);
@@ -289,14 +293,10 @@ public class NPC : MonoBehaviour, IInteractable
             //print("horizontal");
             nextWaypointPos = waypoints[1].transform.position + new Vector3((nextWaypoint.GetLineLength() - offset), 0, 0);
             }
-
             if((nextWaypoint.GetLineLength() - offset) == 0 && !isInteractable)
              {
-
                  SetInteractable();
              }
-
-        
     }
     public void SitDown()
     {
@@ -309,22 +309,21 @@ public class NPC : MonoBehaviour, IInteractable
         float distance = Vector3.Distance(transform.position, nextWaypointPos);
         if ((distance >= distancePadding)) 
         {
-            emoteRenderer.enabled = true;
             //Debug.Log(emoteRenderer.enabled);
             float tempScore = GameManager.Instance.GetScore();
             if (tempScore >= 7)
             {
-                emoteRenderer.sprite = happyImage;
+                ShowEmote(happyImage);
                 audio.Play("Done Well");//Debug.Log("Happy");
             }
             if (tempScore >= 3 && tempScore < 7)
             {
-                emoteRenderer.sprite = disappointedImage;
+                ShowEmote(disappointedImage);
                 audio.Play("Done Poor"); //Debug.Log("Disppointed");
             }
             if (tempScore < 3)
             {
-                emoteRenderer.sprite = angryImage; 
+                ShowEmote(angryImage); 
                 audio.Play("Guest Unsatisfied");//Debug.Log("Gross");
             }
         }
@@ -369,6 +368,18 @@ public class NPC : MonoBehaviour, IInteractable
         nextWaypoint.RemoveCustomer(this);
         SetNextPoint();
     }
+    public void ShowEmote(Sprite emote)
+    {
+
+        emoteRenderer.enabled = true;
+        emoteRenderer.sprite = emote;
+        Debug.Log("Showing " + emote.name);
+        Debug.Log("Current Emote = " + emoteRenderer.sprite.name);
+    }
+    public void HideEmote()
+    {
+        emoteRenderer.enabled = false;
+    }
     public void Interact(Player player)
     {
         //Debug.Log("Interacted!");
@@ -377,17 +388,11 @@ public class NPC : MonoBehaviour, IInteractable
         if (nextWaypoint == waypoints[1])
         {
             isWaiting = false;
+            ShowEmote(talkingImage);
             DT.Trigger(false);
-            //remember to chhange iswaiting to true when dialogue finishes (for later)
-            //Debug.Log("Coffee Added!");
-            //Show sprite image above head based on certain variables
-            emoteRenderer.enabled = true;
-            emoteRenderer.sprite = talkingImage;
 
-            //Add coffee order and re-enable line movement
+            //Add coffee order
             CoffeeHandler.Instance.AddOrder(coffee);
-            
-            
         }
         if (nextWaypoint == waypoints[3])
         {
