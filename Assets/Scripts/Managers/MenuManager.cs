@@ -25,6 +25,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
         if (transitionLight != null) transitionLight.pointLightOuterRadius = 0;
     }
     private void Update()
