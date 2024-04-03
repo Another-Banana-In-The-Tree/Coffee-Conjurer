@@ -49,7 +49,7 @@ public class CoffeeHandler : MonoBehaviour
         {
             orderMenu = FindObjectOfType<OrderMenu>();
         }
-        orderMenu.changeActiveOrders(test);
+        if(currentCoffee.stirred)orderMenu.changeActiveOrders(test);
 
     }
 

@@ -60,6 +60,7 @@ public class OrderMenu : MonoBehaviour
 
     private void UpdateActiveOrders()
     {
+
         int temp = 0;
         nameText.text = currentCoffee.name;
         roastText.text = "Roast: " + currentCoffee.roast;

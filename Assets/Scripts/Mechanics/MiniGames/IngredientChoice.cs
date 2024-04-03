@@ -21,7 +21,7 @@ public class IngredientChoice : MonoBehaviour, MiniGame
                 return;
             }
         }
-        if (!currentCoffee.stirred && currentCoffee.size !=null)
+        if (/*!currentCoffee.stirred && */currentCoffee.size !=null)
         {
             currentCoffee.ingredientsUsed.Add(ingredient);
             GameManager.Instance.orderMenu.IngredientInput();
