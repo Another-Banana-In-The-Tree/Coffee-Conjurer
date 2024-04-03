@@ -125,7 +125,7 @@ MonoBehaviour:
   distancePadding: 0.5
   seatOffset: 0.2
   npcSprite: {fileID: 7510906437564238313}
-  dialogueObject: {fileID: 11400000, guid: 9fe097aeb0ea4364aa5162ee363e5836, type: 2}
+  dialogueObject: {fileID: 11400000, guid: c41f3eb98dfd4c64886bee412e90b39e, type: 2}
 --- !u!50 &4550207226394229265
 Rigidbody2D:
   serializedVersion: 4
