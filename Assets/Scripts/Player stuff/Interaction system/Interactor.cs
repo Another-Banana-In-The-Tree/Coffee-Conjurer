@@ -99,7 +99,7 @@ public class Interactor : MonoBehaviour
                         if (i.TryGetComponent(out NPC npc))
                         {
                            // print(npc.gameObject.name );
-                            if (currentCoffee == null || currentCoffee.name != i.name || (currentCoffee.stirred && npc.GetCurrentWaypoint() == 4))
+                            if (currentCoffee == null || currentCoffee.name != i.name || (currentCoffee.size != null && npc.GetCurrentWaypoint() == 4))
                             {
                                 if(currentCoffee != null) print(currentCoffee.name);
                                

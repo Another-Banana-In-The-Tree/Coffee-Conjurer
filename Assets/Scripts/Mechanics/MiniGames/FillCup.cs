@@ -46,7 +46,7 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Fill(float value)
     {
-        
+        if (currentCoffee.roast == null) return;
         fillMod = Mathf.Pow( value, 2);
         isHeld = true;
         // print(fillMod);
