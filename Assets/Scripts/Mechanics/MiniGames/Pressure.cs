@@ -164,6 +164,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
     public void Exit()
     {
+        beanSprite.color = startColor;
         print("this is your coffees roast" + currentCoffee.roast);
         roast.text = " ";
         fill = 0;

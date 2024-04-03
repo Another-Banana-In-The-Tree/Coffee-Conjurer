@@ -36,7 +36,12 @@ public class GameManager : MonoBehaviour
      
         
     }
-  
+    private void Start()
+    {
+        orderMenu.UpdateRep(reputation);
+        orderMenu.UpdateGold(gold);
+    }
+
     public void changeGold(float change)
     {
         gold += change;
