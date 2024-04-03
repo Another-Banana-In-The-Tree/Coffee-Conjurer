@@ -201,6 +201,16 @@ public class FillCup : MonoBehaviour, MiniGame
     {
 
     }
+    public void ResetCup()
+    {
+        if (currentCoffee.ingredientsUsed.Count > 0 || currentCoffee.stirred) return;
+        sizeText.text = "empty";
+        slider.value = 0;
+        currentFill = 0;
+        fill.fillAmount = 0;
+
+        currentCoffee.size = null;
+    }
     public void Exit()
     {
         if(currentCoffee.size == null)
