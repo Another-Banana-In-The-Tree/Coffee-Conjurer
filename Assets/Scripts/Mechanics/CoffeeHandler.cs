@@ -49,7 +49,11 @@ public class CoffeeHandler : MonoBehaviour
         {
             orderMenu = FindObjectOfType<OrderMenu>();
         }
-        if(currentCoffee.stirred)orderMenu.changeActiveOrders(test);
+        if (customerOders.Count ==1)
+        {
+            print("there is no order queued");
+            orderMenu.changeActiveOrders(test);
+        }
 
     }
 

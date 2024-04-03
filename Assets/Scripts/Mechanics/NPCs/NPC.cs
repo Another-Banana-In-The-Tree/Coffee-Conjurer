@@ -115,7 +115,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        npcSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
+        //npcSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
         if (isWaiting)
         {
             timeWaiting += Time.deltaTime;

@@ -181,14 +181,16 @@ public class FillCup : MonoBehaviour, MiniGame
         {
             currentCoffee.size = "Not Right";
         }
-       // Exit();
+        // Exit();
+        audio.Stop("Pour");
         print(currentCoffee.size);
         
     }
     public void OverFill()
     {
-        
+
         //finish();
+        audio.Stop("Pour");
         Exit();
 
         player.StartMinigame(spill);

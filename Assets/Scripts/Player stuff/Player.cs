@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             controlsTooltip.GetComponent<Animator>().SetBool("isHidden", true);
             updatedTooltips = true;
         }
-        playerSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
+       // playerSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
     }
 
     public void SetMovementDir(Vector2 Dir)
