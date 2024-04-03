@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AfterPickup
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: '*Schlurp* .... Mmmm, wow that was a good coffee! What handsome young man
-      taught you to make such a good coffee?'
+  - text: ' .... Mmmm, wow that was a good coffee! What handsome young man taught
+      you to make such a good coffee?'
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
-  m_Name: Success&Patience&Reputation
+  m_Name: JamesTHREE
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Just a reminder, any step you do correctly will be highlighted in green
-      on the reciept, and anything you do wrong will be red!
+  - text: Hello again, I'll have a small iced coffee, light roast with milk again
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 
@@ -29,28 +28,46 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Remember, apprentice, don't let the customers wait too long! We don't want
-      them to get mad and leave, that would tarnish our reputation!
+  - text: By the way, did you know? There's a bakery across the street that's been
+      experimenting with portals. Their advertising says they have the best cakes,
+      but that's a total lie
     isEnd: 0
-    isQuestion: 0
-    dialogueOption1: 
-    dialogueOption2: 
-    dialogueOption3: 
-    option1IndexJump: 0
-    option2IndexJump: 0
-    option3IndexJump: 0
+    isQuestion: 1
+    dialogueOption1: I didn't no
+    dialogueOption2: Never heard of it before
+    dialogueOption3: Nope
+    option1IndexJump: 1
+    option2IndexJump: 1
+    option3IndexJump: 1
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: With that, I'm off! Can't wait to retire! I think....
+  - text: Well I wouldn't recommend it, place gives me the creeps.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
     dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: By the way, did you know? There's a bakery across the street that's been
+      experimenting with portals. Their advertising says they have the best cakes,
+      but that's a total lie
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: I didn't no
+    dialogueOption2: Never heard of it before
+    dialogueOption3: Nope
     option1IndexJump: 0
     option2IndexJump: 0
     option3IndexJump: 0

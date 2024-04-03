@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: I'll have a small coffee, but dark roast this time, and with regular milk
-      and yet tears.
+      and yeti tears.
     isEnd: 0
     isQuestion: 1
     dialogueOption1: Don't you dare go hollow!
-    dialogueOption2: Sounds delicious!
+    dialogueOption2: Hope you enjoy
     dialogueOption3: Nice armour you got there!
     option1IndexJump: 2
     option2IndexJump: 2
@@ -44,9 +44,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: By the way, I hear there's a bakery across the street that's been experimenting
-      with portals. Their advertising says they have the best cakes, but that's a
-      total lie!
+  - text: Well, have a good day. I'm off to the academy
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
