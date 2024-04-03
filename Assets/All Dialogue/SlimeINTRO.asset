@@ -28,7 +28,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Sorry about that, didn't know you don't speak slimeish.
+  - text: Sorry about that, didn't know you don't speak slimeish. I'll take a Medium,
+      medium roast with regular milk and vanilla. Thanks!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

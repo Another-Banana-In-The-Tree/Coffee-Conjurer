@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
 
         float timePenalty = time;
         //float superDelay = 0;
+        if(incorrect == 0 && correct < 10)
+        {
+            correct = 10;
+        }
         
         tempScore = correct + (incorrect * (timePenalty / 60)) - (timePenalty/120);
        

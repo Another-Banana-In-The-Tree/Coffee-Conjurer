@@ -18,11 +18,11 @@ MonoBehaviour:
     isEnd: 0
     isQuestion: 1
     dialogueOption1: Well cheers to you!
-    dialogueOption2: So, do you have some time for some training now?
-    dialogueOption3: Glad to finally be rid of it?
+    dialogueOption2: Glad to finally be rid of it?
+    dialogueOption3: 
     option1IndexJump: 1
-    option2IndexJump: 2
-    option3IndexJump: 3
+    option2IndexJump: 3
+    option3IndexJump: 0
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
