@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
+  m_Name: JamesTHREE
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - text: Hello again, I'll have small iced coffee, light roast with milk again
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: By the way, did you know? There's a bakery across the street that's been
+      experimenting with portals. Their advertising says they have the best cakes,
+      but that's a total lie
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: I didn't no
+    dialogueOption2: Never heard of it before
+    dialogueOption3: Nope
+    option1IndexJump: 1
+    option2IndexJump: 1
+    option3IndexJump: 1
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Well I wouldn't recommend it, place gives me the creeps.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: By the way, did you know? There's a bakery across the street that's been
+      experimenting with portals. Their advertising says they have the best cakes,
+      but that's a total lie
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: I didn't no
+    dialogueOption2: Never heard of it before
+    dialogueOption3: Nope
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []

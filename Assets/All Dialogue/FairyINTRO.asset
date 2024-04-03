@@ -49,9 +49,9 @@ MonoBehaviour:
     dialogueOption1: Oh! Sorry I didn't see you there
     dialogueOption2: A large? You sure you can drink all that?
     dialogueOption3: Oh my god a fairy!
-    option1IndexJump: 3
-    option2IndexJump: 4
-    option3IndexJump: 6
+    option1IndexJump: 4
+    option2IndexJump: 5
+    option3IndexJump: 7
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -65,9 +65,9 @@ MonoBehaviour:
     dialogueOption1: My apologies, I'll be more careful in the future
     dialogueOption2: Well that's a bit rude isn't it?
     dialogueOption3: Well you aren't wrong
-    option1IndexJump: 8
-    option2IndexJump: 10
-    option3IndexJump: 11
+    option1IndexJump: 7
+    option2IndexJump: 9
+    option3IndexJump: 10
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -75,7 +75,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: You! You Fiend! I will not accept this harassment. You can bet I will not
-      come back to this shop unless it is to BURN IT TO THE GROUND
+      come back to this shop a second time.. Now give me my coffee
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 
@@ -136,24 +136,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: '*He sits on the counter and taps his foot impatiently before grabbing
-      his coffee and flying off.*'
-    isEnd: 0
-    isQuestion: 0
-    dialogueOption1: 
-    dialogueOption2: 
-    dialogueOption3: 
-    option1IndexJump: 7
-    option2IndexJump: 8
-    option3IndexJump: 9
-    startDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    endDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - text: Huh. Who would have thought that he could carry something that much bigger
-      than him. Something something ants you suppose.
+  - text: '*He taps his foot impatiently*'
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
@@ -168,7 +151,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Your face is rude, asshole.
+  - text: Whatever. Just get me my coffee
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
@@ -184,7 +167,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: I rarely am
-    isEnd: 0
+    isEnd: 1
     isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
