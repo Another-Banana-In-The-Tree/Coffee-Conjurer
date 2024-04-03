@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
     private static Controls _controls;
+    
     private DialogueManager dialogue;
     public static bool isPaused = false;
     public static void Init(Player player)
     {
+        
+        
         _controls = new Controls();
 
         _controls.Game.Movement.performed += ctx =>
@@ -51,7 +55,7 @@ public class PlayerInput : MonoBehaviour
         };
         _controls.DevTool.SetSize.performed += ctx =>
         {
-
+            print("testing this button");
             switch (ctx.ReadValue<float>())
             {
                 case 1:
@@ -78,31 +82,32 @@ public class PlayerInput : MonoBehaviour
              CoffeeHandler.Instance.PrintCurrentCoffee();
         };
 
+        _controls.DevTool.Skip.performed += ctx =>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        };
+
         _controls.Dialogue.Skip.performed += ctx =>
         {
             DialogueManager.Instance.SkipDialogue();
         };
 
 
-        _controls.MenuControls.Pause.performed += ctx =>
-        {
-            if (!isPaused)
-            {
-                
-                Time.timeScale = 0;
-                Settings.Instance.gameObject.SetActive(true);
-            }
-            else
-            {
-                
-                Time.timeScale = 1;
-                Settings.Instance.gameObject.SetActive(false);
-            }
-            isPaused = !isPaused;
-        };
+
+
+        
+
 
         _controls.MenuControls.Enable();
         _controls.DevTool.Enable();
+    }
+
+    public static void Unnasign()
+    {
+        _controls.Disable();
+
+
+        
     }
 
     public static void EnableGame()
@@ -131,5 +136,9 @@ public class PlayerInput : MonoBehaviour
     {
         _controls.Dialogue.Disable();
         _controls.Game.Enable();
+    }
+    public static void EnablePause()
+    {
+        _controls.MenuControls.Enable();
     }
 }

@@ -87,6 +87,7 @@ public class TargetTap : MonoBehaviour, MiniGame
 
     public void gameStarted()
     {
+        countdown.text = "Messes left: 3"; 
         isActive = true;
         print("trgetTapStarted");
         minigameScreen.SetActive(true);

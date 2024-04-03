@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -27,17 +28,47 @@ public class FillCup : MonoBehaviour, MiniGame
 
     [SerializeField] private TextMeshProUGUI sizeText;
     [SerializeField]private Oswald oswald;
-    
+    private bool isHeld = true;
 
+    [SerializeField] private float timer;
+    [SerializeField] private float soundDelay = 1;
+    [SerializeField] private float soundTimer;
+    [SerializeField] private float noiseDelay = 1;
+    private AudioManager audio;
+
+    private void Awake()
+    {
+        audio = FindObjectOfType<AudioManager>();
+    }
+    private void Start()
+    {
+        timer = 3;
+    }
     public void Fill(float value)
     {
         
         fillMod = Mathf.Pow( value, 2);
-       // print(fillMod);
+        isHeld = true;
+        // print(fillMod);
+        timer += Time.deltaTime;
+        if (timer > soundDelay + 0.5f)
+        {
+            Debug.Log("Should Make Sound?");
+            audio.Play("Pour");
+            timer = 0;
+        }
     }
 
     private void Update()
     {
+        /*soundTimer += Time.deltaTime;
+        if (soundTimer > noiseDelay + 0.5f)
+        {
+            Debug.Log("Should Make Sound?");
+            audio.Play("Machine");
+            soundTimer = 0;
+        }*/
+
         if (oswald != null && oswald.WaitForDialogueFinish()) return;
         if (oswald != null)
         {
@@ -48,8 +79,28 @@ public class FillCup : MonoBehaviour, MiniGame
         }
         if (!gameActive) return;
         //print(currentCoffee.roast);
+        /*if(!isHeld && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            isHeld = true;
+        }*/
+        if(isHeld && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isHeld = false;
+            audio.Stop("Pour");
+            
+        }
+        if (!isHeld && fillMod > 0)
+        {
+            fillMod = 0f;
+          
+            slider.value = fillMod;
+            
 
-        if(currentFill > 0.95)
+
+
+        }
+
+        if (currentFill > 0.95)
         {
             gameActive = false;
             print("Overfill!");
@@ -122,19 +173,23 @@ public class FillCup : MonoBehaviour, MiniGame
         {
             currentCoffee.size = "Large";
         }
+        else if (currentFill == 0)
+        {
+            currentCoffee.size = null;
+        }
         else
         {
             currentCoffee.size = "Not Right";
         }
-        Exit();
+       // Exit();
         print(currentCoffee.size);
         
     }
     public void OverFill()
     {
         
-        finish();
-       // Exit();
+        //finish();
+        Exit();
 
         player.StartMinigame(spill);
         
@@ -146,6 +201,11 @@ public class FillCup : MonoBehaviour, MiniGame
     }
     public void Exit()
     {
+        if(currentCoffee.size == null)
+        {
+            finish();
+        }
+        
         if (!isTutorial || currentFill < 0.95)
         {
             GameManager.Instance.orderMenu.UpdateCompletion();

@@ -36,11 +36,15 @@ public class Player : MonoBehaviour
     bool hasMoved = false;
     bool updatedTooltips = false;
 
+    private static Player Instance;
+
     private void Awake()
     {
-        PlayerInput.Init(this);
-        PlayerInput.EnableGame();
 
+        PlayerInput.Init(this);
+
+
+        PlayerInput.EnableGame();
         playerAnimation = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         interactor = GetComponent<Interactor>();
@@ -48,6 +52,9 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+       
+           
+
         menu = GameManager.Instance.orderMenu;
 
         footDelay = audio.GetAudioLength("Walking");
@@ -57,10 +64,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         if (moveDir.magnitude !=0)
         {
             if (!hasMoved) hasMoved = true;
-            timer += Time.deltaTime;
+            
             if (timer > footDelay + 0.01f)
             {
                 audio.Play("Walking");

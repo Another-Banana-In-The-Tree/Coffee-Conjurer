@@ -40,10 +40,11 @@ public class Oswald : MonoBehaviour, IInteractable
     private void Update()
     {
        
-        if(state ==2 && menuOpened && (Vector2.Distance(player.transform.position, transform.position)< 0.9f) && !menuOpenWasTriggered)
+        if(state ==2 && menuOpened && !menuOpenWasTriggered)
         {
             //NextState();
             menuOpened = false;
+            orderMenuArrow.enabled = false;
             menuOpenWasTriggered = true;
             dialogueTrigger.Trigger(true);
         }

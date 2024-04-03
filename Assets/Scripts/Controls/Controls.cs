@@ -208,7 +208,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f0d48fb9-8c96-4967-b5a0-0132d3d8ab57"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -242,6 +242,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""eff8ef3d-1b8d-47e4-bdfa-f79777e76f1d"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3404f361-f757-4522-8348-32243b180d7a"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -286,6 +297,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""CreateCoffee"",
                     ""type"": ""Button"",
                     ""id"": ""2c5ca89c-8ae4-4672-911d-e4697d4adf74"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4fece36-f7cb-4c35-88d3-5865f4b3417e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -380,6 +400,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""CreateCoffee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8491e087-a738-4d5f-99a6-058112404460"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -467,6 +498,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_DevTool_SetSize = m_DevTool.FindAction("SetSize", throwIfNotFound: true);
         m_DevTool_CompareCoffee = m_DevTool.FindAction("CompareCoffee", throwIfNotFound: true);
         m_DevTool_CreateCoffee = m_DevTool.FindAction("CreateCoffee", throwIfNotFound: true);
+        m_DevTool_Skip = m_DevTool.FindAction("Skip", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Skip = m_Dialogue.FindAction("Skip", throwIfNotFound: true);
@@ -646,6 +678,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_DevTool_SetSize;
     private readonly InputAction m_DevTool_CompareCoffee;
     private readonly InputAction m_DevTool_CreateCoffee;
+    private readonly InputAction m_DevTool_Skip;
     public struct DevToolActions
     {
         private @Controls m_Wrapper;
@@ -654,6 +687,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @SetSize => m_Wrapper.m_DevTool_SetSize;
         public InputAction @CompareCoffee => m_Wrapper.m_DevTool_CompareCoffee;
         public InputAction @CreateCoffee => m_Wrapper.m_DevTool_CreateCoffee;
+        public InputAction @Skip => m_Wrapper.m_DevTool_Skip;
         public InputActionMap Get() { return m_Wrapper.m_DevTool; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -675,6 +709,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @CreateCoffee.started += instance.OnCreateCoffee;
             @CreateCoffee.performed += instance.OnCreateCoffee;
             @CreateCoffee.canceled += instance.OnCreateCoffee;
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
         }
 
         private void UnregisterCallbacks(IDevToolActions instance)
@@ -691,6 +728,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @CreateCoffee.started -= instance.OnCreateCoffee;
             @CreateCoffee.performed -= instance.OnCreateCoffee;
             @CreateCoffee.canceled -= instance.OnCreateCoffee;
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
         }
 
         public void RemoveCallbacks(IDevToolActions instance)
@@ -816,6 +856,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSetSize(InputAction.CallbackContext context);
         void OnCompareCoffee(InputAction.CallbackContext context);
         void OnCreateCoffee(InputAction.CallbackContext context);
+        void OnSkip(InputAction.CallbackContext context);
     }
     public interface IDialogueActions
     {

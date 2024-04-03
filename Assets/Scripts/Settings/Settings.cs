@@ -10,25 +10,39 @@ public class Settings : MonoBehaviour
     [SerializeField] private TextMeshProUGUI volumeText;
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private AudioManager audioManager;
-
+    private bool isPaused = false;
+    [SerializeField] private GameObject rendering;
+    private int num;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-
+        
+                if (Instance != null && Instance != this)
+                {
+                    Destroy(this);
+                }
+                else
+                {
+                    Instance = this;
+           
+                }
+        
+        isPaused = false;
+        rendering = null;
+        rendering = transform.GetChild(0).gameObject;
         UpdateOutPut(volumeText, "100");
         UpdateOutPut(speedText, "x1");
 
-        gameObject.SetActive(false);
-
+        rendering.SetActive(false);
+        rendering = transform.GetChild(0).gameObject;
+        //PlayerInput.EnablePause();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangePauseState();
+        }
     }
 
     public void ChangeVolume(float newVol)
@@ -56,4 +70,25 @@ public class Settings : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+
+    public void ChangePauseState()
+    {
+        print("pause state = " + isPaused);
+        num++;
+       // if (num % 2 == 0) return;
+        if (this == null) return;
+        if (isPaused)
+        {
+            print("unpause");
+            Time.timeScale = 1;
+
+        }
+        else if(!isPaused)
+        {
+            print("pause");
+            Time.timeScale = 0;
+        }
+        isPaused = !isPaused;
+        rendering.SetActive(isPaused);
+    }
 }

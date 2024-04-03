@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1068064469, guid: f16d6f15f8352ca40801751c4f6abaee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -104,22 +104,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
-  speed: 1
+  speed: 2
   patience: 180
-  timeInStore: 60
+  timeInStore: 15
   talkingImage: {fileID: 21300000, guid: 4674a8441f50f704b93be14e53e9d49c, type: 3}
   happyImage: {fileID: 1555358138, guid: 7fa7453c35b60b946bbd21ff08fd65cc, type: 3}
   disappointedImage: {fileID: 21300000, guid: 34202d3b7ffb1d042a8389f8b9923677, type: 3}
   angryImage: {fileID: 1922298099, guid: 5b4dd27e9968b4a43adf444d68315c76, type: 3}
   coffeeImage: {fileID: 0}
+  exclamationMark: {fileID: -269887329, guid: 22ce86f8bd623724c964f4ddaa69fbf3, type: 3}
   emoteRenderer: {fileID: 7009612954707584309}
+  emoteDisplayTime: 5
+  emoteDecaySpeed: 5
   customerName: Aspiring Wizard
   coffeeSize: 2
   coffeeRoast: 2
   ingredients: 030000000600000007000000
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
+  seatOffset: 0.2
   npcSprite: {fileID: 7510906437564238313}
+  dialogueObject: {fileID: 0}
 --- !u!50 &4550207226394229265
 Rigidbody2D:
   serializedVersion: 4
@@ -218,7 +223,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 76582
+  m_InstanceId: 144946
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -329,7 +334,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 4674a8441f50f704b93be14e53e9d49c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

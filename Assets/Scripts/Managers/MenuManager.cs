@@ -25,11 +25,13 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        transitionLight.pointLightOuterRadius = 0;
+        Time.timeScale = 1.0f;
+        if (transitionLight != null) transitionLight.pointLightOuterRadius = 0;
     }
     private void Update()
     {
         TransitionLight();
+        //if (isTransitionFinished) transitionLight.pointLightOuterRadius = 0;
         if (isTransitionFinished && isStartPressed && isSkip)
         {
             Debug.Log("Loading " + _tutorialSceneName);

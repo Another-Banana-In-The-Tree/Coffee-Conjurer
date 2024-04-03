@@ -17,6 +17,7 @@ public class Interactor : MonoBehaviour
 
     private Player player;
     private bool isTutorial = false;
+    private Oswald oswaldSave;
     
 
     private void Awake()
@@ -27,6 +28,7 @@ public class Interactor : MonoBehaviour
         if (player.isTutorial)
         {
             isTutorial = true;
+            oswaldSave = FindObjectOfType<Oswald>();
         }
     }
     private void Update()
@@ -80,6 +82,10 @@ public class Interactor : MonoBehaviour
                             //print(trigger.gameObject.name);
                             if (currentCoffee != null)
                             {
+                                if (isTutorial)
+                                {
+                                    if (trigger.Game().MiniGameNumber() > oswaldSave.GetState()) return;
+                                }
                                
                                 if (!currentCoffee.stirred)
                                 {

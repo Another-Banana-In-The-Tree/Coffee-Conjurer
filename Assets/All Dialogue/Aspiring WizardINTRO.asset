@@ -28,9 +28,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: 'when given the coffee: Thank you very much. I was a little worried the
-      quality would go down without Oswald operating the shop but you seem to be
-      capable.  '
+  - text: Thank you. I was a tad worried the quality will go down without Oswald
+      operating the shop but you seem to be capable. Don't let me down.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
@@ -48,7 +47,7 @@ MonoBehaviour:
   - text: Yeah you can say that again. I hate Evocation class so much. Does your
       master teach you much evocation?
     isEnd: 0
-    isQuestion: 0
+    isQuestion: 1
     dialogueOption1: Nothing more than the basics, and thank god for that
     dialogueOption2: Yeah, I love blowing things up
     dialogueOption3: What's Evocation?
@@ -64,8 +63,8 @@ MonoBehaviour:
   - text: 'Oh I''m fine, fine. Just a bit of a uh- accident today in class. Someone
       accidentally cast their fireball at me instead of the intended straw training
       target. '
-    isEnd: 1
-    isQuestion: 0
+    isEnd: 0
+    isQuestion: 1
     dialogueOption1: '*Laugh at their expense*'
     dialogueOption2: Are you sure they didn't do it on purpose?
     dialogueOption3: That's rough buddy

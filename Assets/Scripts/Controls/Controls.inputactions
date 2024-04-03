@@ -186,7 +186,7 @@
                 {
                     "name": "",
                     "id": "f0d48fb9-8c96-4967-b5a0-0132d3d8ab57",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -220,6 +220,17 @@
                     "name": "",
                     "id": "eff8ef3d-1b8d-47e4-bdfa-f79777e76f1d",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3404f361-f757-4522-8348-32243b180d7a",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -264,6 +275,15 @@
                     "name": "CreateCoffee",
                     "type": "Button",
                     "id": "2c5ca89c-8ae4-4672-911d-e4697d4adf74",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "f4fece36-f7cb-4c35-88d3-5865f4b3417e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -356,6 +376,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CreateCoffee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8491e087-a738-4d5f-99a6-058112404460",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

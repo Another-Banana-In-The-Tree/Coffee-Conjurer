@@ -22,6 +22,8 @@ public class NPCManager : MonoBehaviour
     private float lastMoveTime = 0;
     private int customersLeft;
     private float totalTime;
+    private float soundTimer;
+    private float noiseDelay = 2;
     private void Awake()
     {
         //Load waypoints into list for ease of use
@@ -33,11 +35,27 @@ public class NPCManager : MonoBehaviour
     {
         totalTime += Time.deltaTime;
         timeSinceLastMove = totalTime - lastMoveTime;
+        soundTimer += Time.deltaTime;
 
         if (timeSinceLastMove >= moveDelay && customersInStore < _customers.Length)
         {
             MoveNext();
             lastMoveTime = totalTime;
+        }
+
+        if (customersInStore >= 5)
+        {
+            
+            if (soundTimer > noiseDelay + 0.5f)
+            {
+                Debug.Log("Should Make Sound?");
+                audio.Play("Cafe");
+                soundTimer = 0;
+            }
+        }
+        else
+        {
+            audio.Stop("Cafe");
         }
     }
 
@@ -67,12 +85,18 @@ public class NPCManager : MonoBehaviour
         customersLeft--;
         if(customersLeft == 0)
         {
-            Invoke("EndLevel", 8f);
+            Invoke("EndLevel", 4f);
         }
+    }
+
+    public int GetCustomersLeft()
+    {
+        return customersLeft;
     }
 
     private void EndLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex != 4) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else SceneManager.LoadScene("MainMenu");
     }
 }

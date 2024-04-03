@@ -19,7 +19,9 @@ public class Pressure : MonoBehaviour, MiniGame
     private Coffee currentCoffee;
     private Oswald oswald;
 
-
+    [SerializeField] private float soundTimer;
+    [SerializeField] private float roastDelay = 2;
+    private AudioManager audio;
 
 
     [SerializeField] private float timeCount;
@@ -27,16 +29,31 @@ public class Pressure : MonoBehaviour, MiniGame
     [SerializeField] private TextMeshProUGUI roast;
     [SerializeField] private SpriteRenderer beanSprite;
 
+    [SerializeField] Color startColor;
+    [SerializeField] Color endColor;
+
     private List<float> points = new List<float>();
 
     private void Awake()
     {
         oswald = FindObjectOfType<Oswald>();
+        audio = FindObjectOfType<AudioManager>();
+    }
+    private void Start()
+    {
+        soundTimer = 2;
     }
     private void Update()
     {
         if (isPlaying)
         {
+            soundTimer += Time.deltaTime;
+            if (soundTimer > roastDelay + 0.5f)
+            {
+                Debug.Log("Should Make Sound?");
+                audio.Play("Heat");
+                soundTimer = 0;
+            }
             if (timeCount >= 1)
             {
                 GameEnd();
@@ -85,6 +102,8 @@ public class Pressure : MonoBehaviour, MiniGame
            // if (fill >= 1) return;
             AddMore();
         }
+        
+        
     }
 
     private void AddMore()
@@ -99,7 +118,7 @@ public class Pressure : MonoBehaviour, MiniGame
 
         tempSum = tempSum / points.Count;
 
-        beanSprite.color = Color.Lerp(Color.white, Color.black, tempSum);
+        beanSprite.color = Color.Lerp(startColor, endColor, tempSum);
 
     }
 
@@ -155,6 +174,7 @@ public class Pressure : MonoBehaviour, MiniGame
         screen.SetActive(false);
         PlayerInput.EnableGame();
         // CoffeeHandler.Instance.testSpecificCoffee(currentCoffee.name);
+        audio.Stop("Heat");
     }
 
     public void gameStarted()
