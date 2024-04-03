@@ -85,7 +85,7 @@ public class NPCManager : MonoBehaviour
         customersLeft--;
         if(customersLeft == 0)
         {
-            Invoke("EndLevel", 4f);
+            EndLevel();
         }
     }
 
@@ -97,6 +97,6 @@ public class NPCManager : MonoBehaviour
     private void EndLevel()
     {
         if (SceneManager.GetActiveScene().buildIndex != 4) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        else SceneManager.LoadScene("MainMenu");
+        else GameManager.Instance.EndingCard();
     }
 }

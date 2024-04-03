@@ -129,7 +129,7 @@ public class FillCup : MonoBehaviour, MiniGame
         string output = "";
         if(currentFill < 0.28)
         {
-            output = "Empty";
+            output = "Not Quite Small";
         }
        else if (currentFill > 0.28 && currentFill < 0.38)
         {
@@ -160,7 +160,7 @@ public class FillCup : MonoBehaviour, MiniGame
 
     public void finish()
     {
-        if (currentCoffee.roast == null) return;
+        if (currentCoffee.roast == null || currentFill < 0.1) return;
         if(currentFill > 0.28 && currentFill < 0.38)
         {
             currentCoffee.size = "Small";

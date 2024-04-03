@@ -94,7 +94,7 @@ public class NPC : MonoBehaviour, IInteractable
         //Animation
         npcAnimation = GetComponent<Animator>();
         audio = FindObjectOfType<AudioManager>();
-
+        npcSprite = GetComponent<SpriteRenderer>();
         coffee = new Coffee(); //Preload coffee here
 
         //Load Coffee based on defined parameters
@@ -115,6 +115,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        npcSprite.sortingOrder = 8 - (int)Mathf.Clamp(transform.position.y, -2f, 7f);
         if (isWaiting)
         {
             timeWaiting += Time.deltaTime;

@@ -62,8 +62,8 @@ public class OrderMenu : MonoBehaviour
     {
         int temp = 0;
         nameText.text = currentCoffee.name;
-        roastText.text = currentCoffee.roast;
-        sizeText.text = currentCoffee.size;
+        roastText.text = "Roast: " + currentCoffee.roast;
+        sizeText.text = "Size: " + currentCoffee.size;
         foreach(string i in currentCoffee.ingredientsUsed)
         {
             ingredients[temp].text = IngredientNameCorrector(i);

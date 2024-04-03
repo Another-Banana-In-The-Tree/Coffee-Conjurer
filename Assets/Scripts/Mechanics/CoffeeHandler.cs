@@ -129,7 +129,7 @@ public class CoffeeHandler : MonoBehaviour
         }
         else
         {
-            bad--;
+            bad -= 2;
             print("size dont match");
         }
 
@@ -140,7 +140,7 @@ public class CoffeeHandler : MonoBehaviour
         }
         else
         {
-            bad--;
+            bad-= 2;
             print("roast dont match");
         }
         if (finishedCoffee.stirred)
@@ -152,11 +152,12 @@ public class CoffeeHandler : MonoBehaviour
         {
             if (finishedCoffee.ingredientsUsed.Contains(i))
             {
-                points += 2; ;
+                points += 1 ;
                 print("contains " + i);
             }
             if (!finishedCoffee.ingredientsUsed.Contains(i))
             {
+                bad -= 1;
                 print("missing ingredient");
             }
         }
@@ -164,7 +165,7 @@ public class CoffeeHandler : MonoBehaviour
         {
             if (!customerOrder.ingredientsUsed.Contains(i))
             {
-                bad--;
+                bad -= 2;
                 print("customerDidnt want that");
             }
         }

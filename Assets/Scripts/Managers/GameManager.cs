@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private NPCManager npcManager;
     float currentScore = 0;
     [SerializeField] public OrderMenu orderMenu;
+    [SerializeField] private GameObject endingCard;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI finalGoldText;
    
     
     private void Awake()
@@ -63,7 +67,7 @@ public class GameManager : MonoBehaviour
         float timePenalty = time;
         //float superDelay = 0;
         
-        tempScore = correct + (incorrect * (timePenalty / 50));
+        tempScore = correct + (incorrect * (timePenalty / 60)) - (timePenalty/120);
        
         
 
@@ -102,9 +106,16 @@ public class GameManager : MonoBehaviour
     {
         messes.Remove(removeTagret);
     }
-   public void AddMess()
+   public void EndingCard()
     {
-
+        finalGoldText.text = "Final gold earned: " + (int)gold;
+        finalScoreText.text = "Final reputation earned: " + (int)reputation;
+        PlayerInput.DisableGame();
+        endingCard.SetActive(true);
+    }
+    public void EndButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
     
    

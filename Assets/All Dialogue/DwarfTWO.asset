@@ -35,9 +35,9 @@ MonoBehaviour:
     dialogueOption1: It certainly seems to be running smoother now
     dialogueOption2: That's been your experience then?
     dialogueOption3: Finally getting the hang of things
-    option1IndexJump: 1
-    option2IndexJump: 2
-    option3IndexJump: 3
+    option1IndexJump: 3
+    option2IndexJump: 4
+    option3IndexJump: 5
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
