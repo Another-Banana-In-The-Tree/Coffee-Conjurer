@@ -90,7 +90,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Good luck with that
+  - text: Yes yes, gawk all you want. Can I get my Coffee please? A large medium
+      roast with vegetable milk and caramel drizzle.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
@@ -105,8 +106,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Yes yes, gawk all you want. Can I get my Coffee please?
-    isEnd: 0
+  - text: Good luck with that
+    isEnd: 1
     isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 

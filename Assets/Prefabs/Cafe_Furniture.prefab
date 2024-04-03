@@ -1129,7 +1129,7 @@ MonoBehaviour:
   - {x: -0.0033157216, y: -0.11379923, z: 0}
   m_ShapePathHash: -2098531016
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66430
+  m_InstanceId: 48364
   m_LocalBounds:
     m_Center: {x: -0.0016032681, y: 0.0008709803, z: 0}
     m_Extent: {x: 0.063249946, y: 0.11482947, z: 0}
@@ -3682,7 +3682,7 @@ MonoBehaviour:
   - {x: 0.120000124, y: -0.12, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66372
+  m_InstanceId: 48304
   m_LocalBounds:
     m_Center: {x: 0.00000011920929, y: 0, z: 0}
     m_Extent: {x: 0.120000005, y: 0.12, z: 0}
@@ -4420,7 +4420,7 @@ MonoBehaviour:
   - {x: -7.995463, y: 1.021322, z: 0}
   m_ShapePathHash: 1132109279
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66380
+  m_InstanceId: 48312
   m_LocalBounds:
     m_Center: {x: -8.49533, y: 3.0163984, z: 0}
     m_Extent: {x: 0.4998672, y: 1.9950765, z: 0}
@@ -5088,7 +5088,7 @@ MonoBehaviour:
   - {x: -0.018283565, y: -0.12653099, z: 0}
   m_ShapePathHash: 789734197
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66694
+  m_InstanceId: 48630
   m_LocalBounds:
     m_Center: {x: -0.02050881, y: -0.02808731, z: 0}
     m_Extent: {x: 0.071087785, y: 0.09844368, z: 0}
@@ -6504,7 +6504,7 @@ MonoBehaviour:
   - {x: 0.120000005, y: -0.119999975, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66416
+  m_InstanceId: 48350
   m_LocalBounds:
     m_Center: {x: 0.000000059604645, y: 0.000000014901161, z: 0}
     m_Extent: {x: 0.119999945, y: 0.11999999, z: 0}
@@ -7861,7 +7861,7 @@ MonoBehaviour:
   - {x: -3.8702073, y: 2.0036511, z: 0}
   m_ShapePathHash: 824421002
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66536
+  m_InstanceId: 48472
   m_LocalBounds:
     m_Center: {x: -3.531033, y: 2.4433885, z: 0}
     m_Extent: {x: 0.39909935, y: 0.4397372, z: 0}
@@ -8043,6 +8043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2410141252727393938}
   - component: {fileID: 7620852968892604667}
+  - component: {fileID: 7311115098286895825}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -8117,6 +8118,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7311115098286895825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657546772336156726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLine: 0
+  isLineVertical: 0
 --- !u!1 &7668252090367300883
 GameObject:
   m_ObjectHideFlags: 0
@@ -8579,7 +8594,7 @@ MonoBehaviour:
   - {x: -2.9992692, y: -1.015413, z: 0}
   m_ShapePathHash: -1233194164
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66570
+  m_InstanceId: 48506
   m_LocalBounds:
     m_Center: {x: -5.505369, y: 1.5198581, z: 0}
     m_Extent: {x: 2.5076563, y: 2.5352712, z: 0}
@@ -8792,7 +8807,7 @@ MonoBehaviour:
   - {x: 0.119999886, y: -0.120000005, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -74390
+  m_InstanceId: 48148
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.119999886, y: 0.120000005, z: 0}

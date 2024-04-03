@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Aspiring WizardINTRO
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Can I get a light roast with vegetable milk. Oh! A large please
+  - text: Can I get a dark roast with vegetable milk? Oh! A large please
     isEnd: 0
     isQuestion: 1
     dialogueOption1: Right Away!

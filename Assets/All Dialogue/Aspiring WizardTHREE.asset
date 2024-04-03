@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: Hello again! I'm finally finished with my last exam. Here to celebrate
-      with a light roast large with dragon's milk and zombee honey
+      with a dark roast large with dragon's milk and zombee honey
     isEnd: 0
     isQuestion: 1
     dialogueOption1: Well cheers to you!

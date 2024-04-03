@@ -19,7 +19,7 @@ MonoBehaviour:
     isEnd: 0
     isQuestion: 1
     dialogueOption1: Horatio's Academy for Mages?
-    dialogueOption2: '[Being a regular won''t get you anything, you know'
+    dialogueOption2: Being a regular won't get you anything, you know
     dialogueOption3: Need coffee to get through the classes?
     option1IndexJump: 1
     option2IndexJump: 2
@@ -46,7 +46,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Yep, classes can get pretty crazy.
+  - text: Well I wasn't expecting it, but you didn't need to be rude about it.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
@@ -61,7 +61,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Well I wasn't expecting it, but you didn't need to be rude about it.
+  - text: Yep, classes can get pretty crazy.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

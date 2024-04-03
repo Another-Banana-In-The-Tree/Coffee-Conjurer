@@ -30,8 +30,8 @@ MonoBehaviour:
         m_Calls: []
   - text: All of the coffee here tastes terrible, so just be lucky I live in such
       a terrible city that your's is the least bad.
-    isEnd: 0
-    isQuestion: 1
+    isEnd: 1
+    isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
     dialogueOption3: 
@@ -45,8 +45,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Not a word barista. Coffee, now.
-    isEnd: 0
-    isQuestion: 1
+    isEnd: 1
+    isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
     dialogueOption3: 
@@ -60,8 +60,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: 'What''s it to you? '
-    isEnd: 0
-    isQuestion: 1
+    isEnd: 1
+    isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
     dialogueOption3: 
