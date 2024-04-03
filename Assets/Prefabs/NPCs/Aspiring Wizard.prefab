@@ -116,6 +116,7 @@ MonoBehaviour:
   emoteRenderer: {fileID: 7009612954707584309}
   emoteDisplayTime: 5
   emoteDecaySpeed: 5
+  warningBuffer: 5
   customerName: Aspiring Wizard
   coffeeSize: 2
   coffeeRoast: 2
@@ -223,7 +224,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 144946
+  m_InstanceId: 40594
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -251,7 +252,7 @@ Animator:
   m_GameObject: {fileID: 3363095848187858901}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f2529663cd83664b89eb459f7b916cc, type: 2}
+  m_Controller: {fileID: 9100000, guid: fc92e01dc2c3e704298ff6e66445f3cb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

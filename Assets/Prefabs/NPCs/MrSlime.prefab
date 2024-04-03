@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 125584169423108323}
   - component: {fileID: 5589754465361537085}
   - component: {fileID: 8268206244324701815}
+  - component: {fileID: 634490673823400524}
   m_Layer: 6
   m_Name: MrSlime
   m_TagString: Untagged
@@ -223,7 +224,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 161936
+  m_InstanceId: 55718
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -241,6 +242,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguestrings: []
   other: {fileID: 0}
+--- !u!95 &634490673823400524
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991188926388027738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b9b9f47e1266ae542b6050e21281c3cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4889546718501528066
 PrefabInstance:
   m_ObjectHideFlags: 0
