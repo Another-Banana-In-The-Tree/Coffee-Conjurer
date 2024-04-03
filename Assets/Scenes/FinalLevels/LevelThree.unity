@@ -1384,6 +1384,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1521601010753964739, guid: 081d707d5b470b14c825fab5928cce99, type: 3}
+      propertyPath: seatWaypoint
+      value: 
+      objectReference: {fileID: 1985778543}
+    - target: {fileID: 1521601010753964739, guid: 081d707d5b470b14c825fab5928cce99, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 11400000, guid: 5cf81a355e62a0b4c885b799e08179f3, type: 2}
@@ -4018,6 +4022,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1521601010753964739, guid: 5e8f37210b3b1104680d1672d3300f14, type: 3}
+      propertyPath: seatWaypoint
+      value: 
+      objectReference: {fileID: 1985778544}
+    - target: {fileID: 1521601010753964739, guid: 5e8f37210b3b1104680d1672d3300f14, type: 3}
       propertyPath: ingredients.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -4673,6 +4681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 430333061458313057, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 664861508007775804, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: audioManager
       value: 
@@ -4787,35 +4799,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5931735102967275349, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5931735102967275349, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5931735102967275349, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6725746697437450613, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6725746697437450613, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6979957208320350112, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6979957208320350112, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6979957208320350112, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7059341473607661042, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: repText
@@ -4831,15 +4843,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7216689867319424788, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7216689867319424788, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7216689867319424788, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7910214418022477812, guid: ca60c0c276ee3964992371734f507fbe, type: 3}
       propertyPath: m_Camera
@@ -5490,7 +5502,7 @@ PrefabInstance:
     - target: {fileID: 1521601010753964739, guid: 89f9189414f6c0c428859e89bf2f4e78, type: 3}
       propertyPath: seatWaypoint
       value: 
-      objectReference: {fileID: 1985778543}
+      objectReference: {fileID: 1985778545}
     - target: {fileID: 1521601010753964739, guid: 89f9189414f6c0c428859e89bf2f4e78, type: 3}
       propertyPath: dialogueObject
       value: 
@@ -7127,7 +7139,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &1985778543 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7311115098286895825, guid: ebe87a302fb07454aa95c923079aaf6e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8357969430604230704, guid: ebe87a302fb07454aa95c923079aaf6e, type: 3}
+  m_PrefabInstance: {fileID: 1985778540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1985778544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1566065813731429321, guid: ebe87a302fb07454aa95c923079aaf6e, type: 3}
+  m_PrefabInstance: {fileID: 1985778540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea8273921a3cc449200793e9021763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1985778545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6484000958137874052, guid: ebe87a302fb07454aa95c923079aaf6e, type: 3}
   m_PrefabInstance: {fileID: 1985778540}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -7471,10 +7505,10 @@ SceneRoots:
   - {fileID: 1628641457}
   - {fileID: 1073032327}
   - {fileID: 283538049}
+  - {fileID: 273597010}
+  - {fileID: 1278213168}
   - {fileID: 1392869063}
   - {fileID: 246779112}
   - {fileID: 643126776}
   - {fileID: 2013078652}
   - {fileID: 1985778540}
-  - {fileID: 1278213168}
-  - {fileID: 273597010}
