@@ -13,9 +13,40 @@ MonoBehaviour:
   m_Name: JamesTWO
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: I hear there's a bakery across the street that's been experimenting with
-      portals. Their advertising says they have the best cakes, but that's a total
-      lie
+  - text: I'll have a small coffee, but dark roast this time, and with regular milk
+      and yet tears.
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: Don't you dare go hollow!
+    dialogueOption2: Sounds delicious!
+    dialogueOption3: Nice armour you got there!
+    option1IndexJump: 2
+    option2IndexJump: 2
+    option3IndexJump: 1
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Thanks! I listened to a lot of "Plin Plin Plon"s to get it.
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 0
+    option2IndexJump: 0
+    option3IndexJump: 0
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: By the way, I hear there's a bakery across the street that's been experimenting
+      with portals. Their advertising says they have the best cakes, but that's a
+      total lie!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
