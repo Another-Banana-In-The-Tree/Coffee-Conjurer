@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JamesTHREE
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Hello again, I'll have small iced coffee, light roast with milk again
+  - text: Hello again, I'll have a small iced coffee, light roast with milk again
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 

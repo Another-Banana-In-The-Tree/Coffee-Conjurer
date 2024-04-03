@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FairyINTRO
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Hey! Hey! Can I get a large iced coffee with milk?
+  - text: Hey! Hey! Can I get a large iced light roast coffee with milk?
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 
