@@ -34,10 +34,14 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().name == "LevelOne" || SceneManager.GetActiveScene().name == "Tutorial"  )
+         
         {
-            currentScore = 0;
+            gold = 0;
             reputation = 0;
+
+            print("resetting");
+            
         }
      
         
