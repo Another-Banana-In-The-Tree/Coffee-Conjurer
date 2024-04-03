@@ -99,7 +99,7 @@ public class PlayerInput : MonoBehaviour
 
 
         _controls.MenuControls.Enable();
-        _controls.DevTool.Enable();
+       // _controls.DevTool.Enable();
     }
 
     public static void Unnasign()
