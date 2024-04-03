@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
            // instanceNum++;
             Instance = this;
         }
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            currentScore = 0;
+            reputation = 0;
+        }
      
         
     }

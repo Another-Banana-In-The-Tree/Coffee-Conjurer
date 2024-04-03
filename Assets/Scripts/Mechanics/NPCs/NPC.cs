@@ -173,6 +173,7 @@ public class NPC : MonoBehaviour, IInteractable
         {
             if (isMoving)
             {
+                npcAnimation.SetBool("IsWaiting", false);
                 if (moveHorizontal > 0.5)
                 {
 
@@ -212,10 +213,15 @@ public class NPC : MonoBehaviour, IInteractable
                     npcAnimation.SetFloat("VertSpeed", 0);
                 }
             }
+            
             else
             {
                 npcAnimation.SetFloat("HoriSpeed", 0);
                 npcAnimation.SetFloat("VertSpeed", 0);
+                if (nextWaypoint == waypoints[3])
+                {
+                    npcAnimation.SetBool("IsWaiting", true);
+                }
             }
         }
 
@@ -303,6 +309,7 @@ public class NPC : MonoBehaviour, IInteractable
     {
         timeWaiting = 0;
         distancePadding = 0.001f;
+        nextWaypoint = seatWaypoint;
         nextWaypointPos = new Vector3(seatWaypoint.transform.position.x, seatWaypoint.transform.position.y + seatOffset, seatWaypoint.transform.position.z);
        // seatWaypoint.AddCustomer(this);
         isWaiting = true;
@@ -397,13 +404,14 @@ public class NPC : MonoBehaviour, IInteractable
         }
         if (nextWaypoint == waypoints[3])
         {
+            nextWaypoint.RemoveCustomer(this);
             //Show sprite image above head based on certain variables
             isWaiting = false;
 
             CoffeeHandler.Instance.CompareCoffee(timeWaiting);
             EnableMovement();
             SitDown();
-            nextWaypoint.RemoveCustomer(this);
+            
             SetNextPoint();
         }
     }
