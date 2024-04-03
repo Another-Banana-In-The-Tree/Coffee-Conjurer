@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueStrings:
   - text: Hello! I'm back again I- *yaaaaawn* really need a coffee right now. A large
-      please, just black.
-    isEnd: 0
-    isQuestion: 1
+      dark roast please, just black.
+    isEnd: 1
+    isQuestion: 0
     dialogueOption1: 
     dialogueOption2: 
     dialogueOption3: 

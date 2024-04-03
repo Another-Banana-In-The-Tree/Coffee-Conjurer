@@ -13,8 +13,23 @@ MonoBehaviour:
   m_Name: DwarfTWO
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Nice to see you again, the business seems to be running well. The first
-      few days are always the roughest huh?
+  - text: Nice to see you again, I'll have my usual.
+    isEnd: 0
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: The business seems to be running well, by the way. The first few days are
+      always the roughest huh?
     isEnd: 0
     isQuestion: 1
     dialogueOption1: It certainly seems to be running smoother now
@@ -29,22 +44,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: 
-    isEnd: 1
-    isQuestion: 0
-    dialogueOption1: 
-    dialogueOption2: 
-    dialogueOption3: 
-    option1IndexJump: 1
-    option2IndexJump: 2
-    option3IndexJump: 3
-    startDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    endDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - text: Good for you, running a business is no game.
+  - text: Rock and stone!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
@@ -61,6 +61,21 @@ MonoBehaviour:
         m_Calls: []
   - text: Yep, every business needs to get its feet of the ground first and foremost.
       You seemed to manage that just fine, I've got high hopes for this little shop.
+    isEnd: 1
+    isQuestion: 0
+    dialogueOption1: 
+    dialogueOption2: 
+    dialogueOption3: 
+    option1IndexJump: 1
+    option2IndexJump: 2
+    option3IndexJump: 3
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Good for you, running a business is no game.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
