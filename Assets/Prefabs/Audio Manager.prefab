@@ -57,6 +57,12 @@ MonoBehaviour:
     pitch: 1.1
     loop: 0
     source: {fileID: 0}
+  - name: Theme3
+    clip: {fileID: 8300000, guid: 42f096041a542114693cd8af8fccda49, type: 3}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Theme
     clip: {fileID: 8300000, guid: d9b2d2061a954e544a5b75ea87db580a, type: 3}
     volume: 0.65
@@ -69,15 +75,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Theme3
-    clip: {fileID: 8300000, guid: 3c7518651884a4a409ba695a1ae321e9, type: 3}
-    volume: 0.65
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
   - name: Bell
     clip: {fileID: 8300000, guid: 4374b5ebff278aa49968e89bbadac363, type: 3}
-    volume: 1
+    volume: 0.907
     pitch: 1.45
     loop: 0
     source: {fileID: 0}
@@ -113,13 +113,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pour
     clip: {fileID: 8300000, guid: fe99ebfc0eb64ce4d9b39aaba43e55a8, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Cafe
     clip: {fileID: 8300000, guid: 994e30acd043418499e255cb70a7d45d, type: 3}
-    volume: 0.25
+    volume: 0.157
     pitch: 1
     loop: 0
     source: {fileID: 0}
