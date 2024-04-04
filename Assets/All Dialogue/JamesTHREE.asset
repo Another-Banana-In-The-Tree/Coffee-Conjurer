@@ -36,9 +36,9 @@ MonoBehaviour:
     dialogueOption1: I didn't no
     dialogueOption2: Never heard of it before
     dialogueOption3: Nope
-    option1IndexJump: 1
-    option2IndexJump: 1
-    option3IndexJump: 1
+    option1IndexJump: 2
+    option2IndexJump: 2
+    option3IndexJump: 2
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -51,23 +51,6 @@ MonoBehaviour:
     dialogueOption1: 
     dialogueOption2: 
     dialogueOption3: 
-    option1IndexJump: 0
-    option2IndexJump: 0
-    option3IndexJump: 0
-    startDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    endDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - text: By the way, did you know? There's a bakery across the street that's been
-      experimenting with portals. Their advertising says they have the best cakes,
-      but that's a total lie
-    isEnd: 0
-    isQuestion: 1
-    dialogueOption1: I didn't no
-    dialogueOption2: Never heard of it before
-    dialogueOption3: Nope
     option1IndexJump: 0
     option2IndexJump: 0
     option3IndexJump: 0
