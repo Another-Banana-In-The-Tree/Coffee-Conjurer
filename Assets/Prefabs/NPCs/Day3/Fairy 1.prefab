@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4576755983665376989}
   - component: {fileID: -2715355103131416143}
   m_Layer: 6
-  m_Name: Fairy
+  m_Name: Fairy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   distancePadding: 0.5
   seatOffset: 0.2
   npcSprite: {fileID: 7510906437564238313}
-  dialogueObject: {fileID: 11400000, guid: 9fe097aeb0ea4364aa5162ee363e5836, type: 2}
+  dialogueObject: {fileID: 11400000, guid: c41f3eb98dfd4c64886bee412e90b39e, type: 2}
 --- !u!50 &4550207226394229265
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +224,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45750
+  m_InstanceId: 43452
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}

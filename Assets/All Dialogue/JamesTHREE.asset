@@ -10,26 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668d9229bafaaba4e8f0005275d9d98b, type: 3}
-  m_Name: JamesTWO
+  m_Name: JamesTHREE
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: I'll have a small coffee, but dark roast this time, and with regular milk
-      and yeti tears.
-    isEnd: 0
-    isQuestion: 1
-    dialogueOption1: Don't you dare go hollow!
-    dialogueOption2: Hope you enjoy
-    dialogueOption3: Nice armour you got there!
-    option1IndexJump: 2
-    option2IndexJump: 2
-    option3IndexJump: 1
-    startDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    endDialogueEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - text: Thanks! I listened to a lot of "Plin Plin Plon"s to get it.
+  - text: Hello again, I'll have a small iced coffee, light roast with milk again
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 
@@ -44,7 +28,24 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Well, have a good day. I'm off to the academy
+  - text: By the way, did you know? There's a bakery across the street that's been
+      experimenting with portals. Their advertising says they have the best cakes,
+      but that's a total lie
+    isEnd: 0
+    isQuestion: 1
+    dialogueOption1: I didn't no
+    dialogueOption2: Never heard of it before
+    dialogueOption3: Nope
+    option1IndexJump: 2
+    option2IndexJump: 2
+    option3IndexJump: 2
+    startDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    endDialogueEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Well I wouldn't recommend it, place gives me the creeps.
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 

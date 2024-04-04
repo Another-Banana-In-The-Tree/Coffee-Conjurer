@@ -81,8 +81,50 @@ MonoBehaviour:
     pitch: 1.45
     loop: 0
     source: {fileID: 0}
+  - name: Heat
+    clip: {fileID: 8300000, guid: 8feb62f8606e80446b66474017b62374, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Stirr
     clip: {fileID: 8300000, guid: 0476dd389edf8e147b8ca07048fbd1c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Done Well
+    clip: {fileID: 8300000, guid: 9cc8689fc984938488bfda45b921ef10, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Done Poor
+    clip: {fileID: 8300000, guid: eb755aa990294dd459edde7cc0dbee21, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Guest Unsatisfied
+    clip: {fileID: 8300000, guid: e337d954fc9ac9e448f01748966f8338, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pour
+    clip: {fileID: 8300000, guid: fe99ebfc0eb64ce4d9b39aaba43e55a8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Cafe
+    clip: {fileID: 8300000, guid: 994e30acd043418499e255cb70a7d45d, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme4
+    clip: {fileID: 8300000, guid: be1f68ce8a386aa41b62e22e1041624b, type: 3}
     volume: 1
     pitch: 1
     loop: 0

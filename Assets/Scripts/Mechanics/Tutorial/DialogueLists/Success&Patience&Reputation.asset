@@ -29,8 +29,8 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: Oh! Remember, apprentice, don't let the customers wait too long! We don't
-      want them to get mad and leave, that would tarnish our reputation!
+  - text: Remember, apprentice, don't let the customers wait too long! We don't want
+      them to get mad and leave, that would tarnish our reputation!
     isEnd: 0
     isQuestion: 0
     dialogueOption1: 

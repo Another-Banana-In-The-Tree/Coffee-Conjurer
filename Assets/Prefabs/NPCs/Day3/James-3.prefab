@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4576755983665376989}
   - component: {fileID: -2715355103131416143}
   m_Layer: 6
-  m_Name: Fairy
+  m_Name: James-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 545525610, guid: a061ef262a559574e8b5bd4d949521e5, type: 3}
+  m_Sprite: {fileID: 818255539, guid: 70e56392c4b83ec4c9965b7d43994d3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,15 +117,15 @@ MonoBehaviour:
   emoteDisplayTime: 5
   emoteDecaySpeed: 5
   warningBuffer: 5
-  customerName: Fairy
-  coffeeSize: 2
-  coffeeRoast: 1
-  ingredients: 
+  customerName: James
+  coffeeSize: 0
+  coffeeRoast: 0
+  ingredients: 0000000008000000
   seatWaypoint: {fileID: 0}
   distancePadding: 0.5
   seatOffset: 0.2
   npcSprite: {fileID: 7510906437564238313}
-  dialogueObject: {fileID: 11400000, guid: 9fe097aeb0ea4364aa5162ee363e5836, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 9236f8d1bfa774c40bf10cef25e063b2, type: 2}
 --- !u!50 &4550207226394229265
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +224,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45750
+  m_InstanceId: 34680
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -252,7 +252,7 @@ Animator:
   m_GameObject: {fileID: 3363095848187858901}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5b056077074724a43aabf6181fee8a44, type: 2}
+  m_Controller: {fileID: 9100000, guid: b6a916c5aae761743ae1162d30817bd5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
