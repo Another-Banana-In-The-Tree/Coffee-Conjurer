@@ -49,9 +49,9 @@ MonoBehaviour:
     dialogueOption1: Oh! Sorry I didn't see you there
     dialogueOption2: A large? You sure you can drink all that?
     dialogueOption3: Oh my god a fairy!
-    option1IndexJump: 4
-    option2IndexJump: 5
-    option3IndexJump: 7
+    option1IndexJump: 3
+    option2IndexJump: 4
+    option3IndexJump: 5
     startDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
