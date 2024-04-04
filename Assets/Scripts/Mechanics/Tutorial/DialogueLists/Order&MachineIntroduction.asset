@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Order&MachineIntroduction
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: So, apprentice, before you are the many machines you'll be using to conjuer
-      coffee! Seeing as you're inept at magic...
+  - text: So, apprentice, in front of you are the many machines and stations you'll
+      be using to conjuer coffee! Seeing as you're inept at magic...
     isEnd: 1
     isQuestion: 1
     dialogueOption1: Wow, thanks...
