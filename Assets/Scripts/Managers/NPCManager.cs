@@ -23,7 +23,9 @@ public class NPCManager : MonoBehaviour
     private int customersLeft;
     private float totalTime;
     private float soundTimer;
-    private float noiseDelay = 2;
+    
+    [SerializeField] private GameObject bell;
+    [SerializeField] private float noiseDelay = 2;
     private void Awake()
     {
         //Load waypoints into list for ease of use
@@ -59,13 +61,21 @@ public class NPCManager : MonoBehaviour
         }
     }
 
+    private void EndBell()
+    {
+        bell.SetActive(false);
+    }
+
     public void MoveNext()
     {
+        bell.SetActive(true);
+        
         _customers[customersInStore].gameObject.SetActive(true);
         _customers[customersInStore].SetNextPoint();
         _customers[customersInStore].EnableMovement();
         customersInStore++;
         audio.Play("Bell");
+        Invoke("EndBell", 1f);
     }
     public LineWaypoint[] GetWaypoints()
     {
