@@ -29,7 +29,7 @@ MonoBehaviour:
     endDialogueEvent:
       m_PersistentCalls:
         m_Calls: []
-  - text: light brown is for light roast, medium brown is for medium roast, and dark
+  - text: Light brown is for light roast, medium brown is for medium roast, and dark
       brown is for dark roast!
     isEnd: 0
     isQuestion: 1
