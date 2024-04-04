@@ -7,6 +7,7 @@ using TMPro;
 public class Pressure : MonoBehaviour, MiniGame 
 {
     [SerializeField] private Image fillBar;
+    [SerializeField] private Image fillTimer;
     [SerializeField]private float fill = 0;
     [SerializeField] private float timePenalty;
     [SerializeField] private float clickBonus;
@@ -64,7 +65,7 @@ public class Pressure : MonoBehaviour, MiniGame
                 timeCount += 0.2f * Time.deltaTime;
 
                 // pointText.text = timeCount.ToString("F1");
-
+                fillTimer.fillAmount = timeCount;
                 UpdateCurrentRoast(fill);
                 
             }
@@ -169,6 +170,7 @@ public class Pressure : MonoBehaviour, MiniGame
         roast.text = " ";
         fill = 0;
         timeCount = 0;
+        fillTimer.fillAmount = 0;
         points.Clear();
         isPlaying = false;
         canvas.SetActive(false);
