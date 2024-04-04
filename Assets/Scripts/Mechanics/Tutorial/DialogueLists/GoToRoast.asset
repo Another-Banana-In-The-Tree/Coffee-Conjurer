@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GoToRoast
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - text: Now come down here and press 'E' at the roast station, let's get going!q
+  - text: Now come down here and press 'E' at the roast station, let's get going!
     isEnd: 1
     isQuestion: 0
     dialogueOption1: 
