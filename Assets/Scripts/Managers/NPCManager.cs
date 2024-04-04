@@ -23,7 +23,7 @@ public class NPCManager : MonoBehaviour
     private int customersLeft;
     private float totalTime;
     private float soundTimer;
-    private float noiseDelay = 2;
+    [SerializeField] private float noiseDelay = 2;
     private void Awake()
     {
         //Load waypoints into list for ease of use
